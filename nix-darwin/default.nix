@@ -15,7 +15,7 @@
         self.darwinModules.home-manager
         self.xxx.my-home
         ./nix.nix
-        ./system.nix
+        ./shell.nix
         ./network.nix
         ./macos.nix
         ./fonts.nix

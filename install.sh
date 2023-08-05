@@ -93,7 +93,8 @@ function set_hostname() {
   current_hostname=$(hostname -s)
   if [ "$current_hostname" != "$hostname" ]; then
     print $info_level "Setting hostname to $hostname"
-    sudo hostname -s "$hostname"
+    sudo scutil --set ComputerName "$hostname"
+    sudo scutil --set LocalHostName "$hostname"
   else
     print $success_level "Hostname already set to $hostname, skipping..."
   fi

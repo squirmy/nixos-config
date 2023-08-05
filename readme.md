@@ -28,7 +28,7 @@ It's based heavily on srid's [nixos-config](https://github.com/srid/nixos-config
 ### Clone this repository:
 
 ```bash
-mkdir -p ~/.config
+mkdir -p "$HOME/.config"
 git clone https://github.com/squirmy/nixos-config "$HOME/.config/nixos-config"
 ```
 
@@ -46,7 +46,7 @@ cd "$HOME/.config/nixos-config"
 I plan to run this on a fresh setup from time to time so I have created an install script to automate the above tasks. It can be tweaked for your own setup. Please be careful using this and take the time to understand how it works before you run it.
 
 ```bash
-sh <(curl -L 'https://raw.githubusercontent.com/squirmy/nixos-config/main/install.sh')
+bash <(curl -L 'https://raw.githubusercontent.com/squirmy/nixos-config/main/install.sh')
 ```
 
 ## I'm Not Squirmy

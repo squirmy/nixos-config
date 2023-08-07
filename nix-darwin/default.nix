@@ -2,7 +2,7 @@
 
 {
   flake = {
-    xxx = {
+    darwinModules = {
       my-home = {
         home-manager.users.${config.myself.username} = { pkgs, ... }: {
           imports = [
@@ -12,8 +12,7 @@
       };
 
       default.imports = [
-        self.darwinModules.home-manager
-        self.xxx.my-home
+        self.darwinModules.my-home
         ./nix.nix
         ./shell.nix
         ./network.nix

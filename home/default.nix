@@ -17,6 +17,7 @@
         # Programs and packages to manage with home manager.
         imports = [
           ./terminal.nix
+          ./secrets.nix
           ./ssh.nix
           ./git.nix
           ./rust.nix

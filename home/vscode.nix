@@ -8,6 +8,9 @@
   programs.vscode.extensions = with pkgs.vscode-extensions; [
     bbenoist.nix
     dbaeumer.vscode-eslint
+    rust-lang.rust-analyzer
+    tamasfe.even-better-toml
+    serayuzgur.crates
   ];
 
   programs.vscode.userSettings = {

@@ -25,7 +25,6 @@
     # Why: Applications installed by home-manager don't show up in spotlight.
     # Issue: https://github.com/nix-community/home-manager/issues/1341
     "raycast"
-    "visual-studio-code"
   ];
 
   # For cli packages that aren't currently available for macOS in `nixpkgs`.Packages should be

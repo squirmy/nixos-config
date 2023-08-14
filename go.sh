@@ -8,6 +8,23 @@
 # below. But it will only work once `darwin-rebuild` is installed.
 # https://github.com/srid/nixos-flake/blob/master/flake-module.nix
 
-HOSTNAME=$(hostname -s)
+hostname="Adams-MBP"
 
-nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${HOSTNAME}"
+function set_hostname() {
+  current_hostname=$(hostname -s)
+  if [ "$current_hostname" != "$hostname" ]; then
+    read -p "Change hostname from: '$current_hostname' to '$hostname' ? " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      echo "Setting hostname to $hostname"
+      sudo scutil --set ComputerName "$hostname"
+      sudo scutil --set LocalHostName "$hostname"
+    else
+      exit -1
+    fi
+  fi
+}
+
+set_hostname
+
+nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"

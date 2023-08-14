@@ -9,6 +9,16 @@
     # The Uncompromising Nix Code Formatter
     # https://github.com/kamadorueda/alejandra
     alejandra
+
+    # shfmt
+    # A shell parser, formatter, and interpreter with bash support; includes shfmt
+    # https://github.com/mvdan/sh
+    shfmt
+
+    # treefmt
+    # one CLI to format your repo
+    # https://github.com/numtide/treefmt
+    treefmt
   ];
 
   programs.vscode.enable = true;

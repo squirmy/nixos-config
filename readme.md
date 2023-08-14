@@ -45,6 +45,13 @@ cd "$HOME/.config/nixos-config"
 
 I plan to run this on a fresh setup from time to time so I have created an install script to automate the above tasks. It can be tweaked for your own setup. Please be careful using this and take the time to understand how it works before you run it.
 
+Steps:
+
+1. Sign in with your Apple ID
+2. Enable FileVault
+3. Restart
+4. Run the install script
+
 ```bash
 bash <(curl -L 'https://raw.githubusercontent.com/squirmy/nixos-config/main/install.sh')
 ```

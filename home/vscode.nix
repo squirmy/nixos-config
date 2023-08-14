@@ -29,6 +29,11 @@
     # one CLI to format your repo
     # https://github.com/numtide/treefmt
     treefmt
+
+    # shellcheck
+    # ShellCheck, a static analysis tool for shell scripts
+    # https://github.com/koalaman/shellcheck
+    shellcheck
   ];
 
   programs.vscode.enable = true;
@@ -42,6 +47,7 @@
     tamasfe.even-better-toml
     serayuzgur.crates
     esbenp.prettier-vscode
+    timonwong.shellcheck
   ];
 
   programs.vscode.userSettings = {
@@ -124,6 +130,8 @@
       "editor.defaultFormatter" = "tamasfe.even-better-toml";
       "editor.formatOnSave" = true;
     };
+
+    "shellcheck.executablePath" = "${pkgs.shellcheck.bin}/bin/shellcheck";
 
     # exclude these directories from cmd + shift + f
     "search.exclude" = {

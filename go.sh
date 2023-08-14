@@ -20,7 +20,7 @@ function set_hostname() {
       sudo scutil --set ComputerName "$hostname"
       sudo scutil --set LocalHostName "$hostname"
     else
-      exit -1
+      exit 1
     fi
   fi
 }

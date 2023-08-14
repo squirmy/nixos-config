@@ -19,11 +19,11 @@
   }
 
   function print_installed() {
-    print $success_level "${1} already installed, skipping..."
+    print "$success_level" "${1} already installed, skipping..."
   }
 
   function print_installing() {
-    print $info_level "Installing ${1}..."
+    print "$info_level" "Installing ${1}..."
   }
 
   function install_clt() {
@@ -52,6 +52,7 @@
       # Get nix into the path
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         set +u
+        # shellcheck disable=SC1091
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
         set -u
       fi
@@ -81,24 +82,24 @@
     etc_shells_backup="${etc_shells}.before-nix-darwin"
     if [ -f $etc_shells ]; then
       if [ -f $etc_shells_backup ]; then
-        print $success_level "Backup file $etc_shells_backup already exists, skipping..."
+        print "$success_level" "Backup file $etc_shells_backup already exists, skipping..."
       else
-        print $info_level "Backing up $etc_shells to $etc_shells_backup..."
+        print "$info_level" "Backing up $etc_shells to $etc_shells_backup..."
         sudo mv /etc/shells /etc/shells.before-nix-darwin
       fi
     else
-      print $success_level "$etc_shells already backed up, skipping..."
+      print "$success_level" "$etc_shells already backed up, skipping..."
     fi
   }
 
   function set_hostname() {
     current_hostname=$(hostname -s)
     if [ "$current_hostname" != "$hostname" ]; then
-      print $info_level "Setting hostname to $hostname"
+      print "$info_level" "Setting hostname to $hostname"
       sudo scutil --set ComputerName "$hostname"
       sudo scutil --set LocalHostName "$hostname"
     else
-      print $success_level "Hostname already set to $hostname, skipping..."
+      print "$success_level" "Hostname already set to $hostname, skipping..."
     fi
   }
 
@@ -111,9 +112,9 @@
 
   current_username=$(id -un)
   if [ "$current_username" != "$username" ]; then
-    print $error_level "If you're $username. You've got the wrong username: ${current_username}"
-    print $error_level "If you're not. This script is for helping me install from fresh. Take your time to understand what this does before running it."
-    exit -1
+    print "$error_level" "If you're $username. You've got the wrong username: ${current_username}"
+    print "$error_level" "If you're not. This script is for helping me install from fresh. Take your time to understand what this does before running it."
+    exit 1
   fi
 
   install_clt

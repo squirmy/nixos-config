@@ -1,6 +1,9 @@
-{ pkgs, flake, config, ... }:
-
 {
+  pkgs,
+  flake,
+  config,
+  ...
+}: {
   environment.shells = with pkgs; [
     bashInteractive
     zsh
@@ -13,4 +16,4 @@
   programs.zsh.shellInit = ''
     eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
   '';
-} 
+}

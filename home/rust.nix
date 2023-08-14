@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # fenix
   # Rust toolchains and rust-analyzer nightly for Nix
   # https://github.com/nix-community/fenix

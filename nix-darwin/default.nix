@@ -1,10 +1,12 @@
-{ self, config, ... }:
-
 {
+  self,
+  config,
+  ...
+}: {
   flake = {
     darwinModules = {
       my-home = {
-        home-manager.users.${config.myself.username} = { pkgs, ... }: {
+        home-manager.users.${config.myself.username} = {pkgs, ...}: {
           imports = [
             self.homeModules.default
           ];

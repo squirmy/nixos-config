@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   homebrew.enable = true;
   homebrew.onActivation.autoUpdate = true;
   homebrew.onActivation.cleanup = "zap";
@@ -19,7 +17,7 @@
   # limitiations, e.g., Transmit, install the Homebrew Cask.
   homebrew.casks = [
     # Raycast
-    # Raycast is a blazingly fast, totally extendable launcher. It lets you 
+    # Raycast is a blazingly fast, totally extendable launcher. It lets you
     # complete tasks, calculate, share common links, and much more.
     # https://www.raycast.com/
     # Why: Applications installed by home-manager don't show up in spotlight.
@@ -32,4 +30,3 @@
   homebrew.brews = [
   ];
 }
-  

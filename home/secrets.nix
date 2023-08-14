@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # A basic password store implementation using a yubikey
   # to decrypt the secrets + yubikey agent for ssh auth.
   # https://words.filippo.io/dispatches/passage/
@@ -11,10 +9,10 @@
     # https://github.com/FiloSottile/age
     age
 
-    # age-plugin-yubikey 
+    # age-plugin-yubikey
     # Enables files to be encrypted to age identities stored on YubiKeys.
     # https://github.com/str4d/age-plugin-yubikey
-    age-plugin-yubikey 
+    age-plugin-yubikey
 
     # passage
     # A fork of password-store that uses age as backend.
@@ -38,9 +36,9 @@
     config.KeepAlive = true;
     config.Label = "yubikey-agent";
     config.ProgramArguments = [
-        "${pkgs.yubikey-agent}/bin/yubikey-agent"
-        "-l"
-        "/tmp/yubikey-agent.sock"
+      "${pkgs.yubikey-agent}/bin/yubikey-agent"
+      "-l"
+      "/tmp/yubikey-agent.sock"
     ];
   };
 

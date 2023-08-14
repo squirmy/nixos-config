@@ -1,6 +1,8 @@
-{ config, flake, ... }:
-
 {
+  config,
+  flake,
+  ...
+}: {
   # Git
   programs.git.enable = true;
   programs.git.userName = flake.config.myself.name;
@@ -21,7 +23,7 @@
 
   # Delta
   # https://github.com/dandavison/delta
-  # Why: Enhanced `git diff` with syntax highlighting. 
+  # Why: Enhanced `git diff` with syntax highlighting.
   # Also used for `git add -p`
   programs.git.delta.enable = true;
 
@@ -55,7 +57,7 @@
       push_gauge_fg: Rgb(36, 39, 58),
       tag_fg: Rgb(244, 219, 214),
       branch_fg: Rgb(139, 213, 202)
-    )  
+    )
   '';
 
   # GitHub CLI

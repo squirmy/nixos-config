@@ -1,6 +1,8 @@
-{ pkgs, flake, ... }:
-
 {
+  pkgs,
+  flake,
+  ...
+}: {
   # Allow using TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -28,4 +30,4 @@
     name = flake.config.myself.username;
     home = flake.config.myself.home;
   };
-} 
+}

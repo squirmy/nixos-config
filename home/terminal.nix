@@ -1,9 +1,11 @@
-{ config, flake, ... }:
-let
+{
+  config,
+  flake,
+  ...
+}: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   inherit (flake.config.myself) flakeDirectory;
-in
-{
+in {
   # zsh
   # Why: It's the default on macOS, and I was previously
   # using oh-my-zsh.
@@ -33,7 +35,7 @@ in
   # kitty
   # The fast, feature-rich, GPU based terminal emulator
   # https://sw.kovidgoyal.net/kitty/
-  # Why: 
+  # Why:
   #   1. Font & Color scheme is able to be configured easily, unlike iterm.
   #   2. Wasn't impressed with the Alacritty maintainers attitude towards
   #      accepting contributions from the community.

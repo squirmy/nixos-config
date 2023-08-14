@@ -1,6 +1,9 @@
-{ flake, pkgs, lib, ... }:
-
 {
+  flake,
+  pkgs,
+  lib,
+  ...
+}: {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -12,15 +15,15 @@
 
   nix = {
     package = pkgs.nixUnstable;
-    nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${flake.inputs.nixpkgs}"];
     registry.nixpkgs.flake = flake.inputs.nixpkgs;
     settings = {
       # https://github.com/NixOS/nix/issues/7273
       auto-optimise-store = false;
       experimental-features = "nix-command flakes repl-flake";
-      extra-platforms = lib.mkIf (pkgs.system == "aarch64-darwin") [ "aarch64-darwin x86_64-darwin" ];
+      extra-platforms = lib.mkIf (pkgs.system == "aarch64-darwin") ["aarch64-darwin x86_64-darwin"];
       max-jobs = "auto";
-      trusted-users = [ "@admin" ];
+      trusted-users = ["@admin"];
 
       # List of binary cache URLs used to obtain pre-built binaries of Nix packages
       # https://nixos.wiki/wiki/Binary_Cache

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # nil
     # NIx Language server, an incremental analysis assistent for writing in Nix.
@@ -86,7 +84,7 @@
     "nix.serverSettings" = {
       "nil" = {
         "formatting" = {
-          "command" = [ "alejandra" ];
+          "command" = ["alejandra"];
         };
       };
     };

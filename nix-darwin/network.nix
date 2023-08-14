@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   # Use fast dns resolvers.
   networking.dns = [
     # Cloudflare
@@ -14,4 +12,3 @@
     "USB 10/100/1000 LAN"
   ];
 }
-

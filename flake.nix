@@ -15,24 +15,24 @@
     fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, ... }: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-    systems = [ "aarch64-darwin" "x86_64-darwin" ];
+  outputs = inputs @ {self, ...}:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["aarch64-darwin" "x86_64-darwin"];
 
-    imports = [ 
-      inputs.nixos-flake.flakeModule
-      ./users
-      ./home
-      ./nix-darwin
-      
-    ];
+      imports = [
+        inputs.nixos-flake.flakeModule
+        ./users
+        ./home
+        ./nix-darwin
+      ];
 
-    flake = {
-      darwinConfigurations."Adams-MBP" = self.nixos-flake.lib.mkMacosHomeManagerSystem {
-        nixpkgs.hostPlatform = "aarch64-darwin";
-        imports = [
-          self.darwinModules.default
-        ];
+      flake = {
+        darwinConfigurations."Adams-MBP" = self.nixos-flake.lib.mkMacosHomeManagerSystem {
+          nixpkgs.hostPlatform = "aarch64-darwin";
+          imports = [
+            self.darwinModules.default
+          ];
+        };
       };
     };
-  };
 }

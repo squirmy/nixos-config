@@ -7,10 +7,10 @@
     # https://github.com/oxalica/nil
     nil
 
-    # nixpkgs-fmt
-    # Nix code formatter for nixpkgs 
-    # https://github.com/nix-community/nixpkgs-fmt
-    nixpkgs-fmt
+    # Alejandra
+    # The Uncompromising Nix Code Formatter
+    # https://github.com/kamadorueda/alejandra
+    alejandra
   ];
 
   programs.vscode.enable = true;
@@ -86,7 +86,7 @@
     "nix.serverSettings" = {
       "nil" = {
         "formatting" = {
-          "command" = [ "nixpkgs-fmt" ];
+          "command" = [ "alejandra" ];
         };
       };
     };

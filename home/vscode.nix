@@ -15,6 +15,16 @@
     # https://github.com/mvdan/sh
     shfmt
 
+    # Prettier
+    # Opinionated Code Formatter
+    # https://github.com/prettier/prettier
+    nodePackages.prettier
+
+    # taplo
+    # A TOML toolkit written in Rust
+    # https://github.com/tamasfe/taplo
+    taplo
+
     # treefmt
     # one CLI to format your repo
     # https://github.com/numtide/treefmt
@@ -31,6 +41,7 @@
     rust-lang.rust-analyzer
     tamasfe.even-better-toml
     serayuzgur.crates
+    esbenp.prettier-vscode
   ];
 
   programs.vscode.userSettings = {
@@ -99,6 +110,18 @@
       };
     };
     "[nix]" = {
+      "editor.formatOnSave" = true;
+    };
+
+    # markdown
+    "[markdown]" = {
+      "editor.formatOnSave" = true;
+      "editor.defaultFormatter" = "esbenp.prettier-vscode";
+    };
+
+    # markdown
+    "[toml]" = {
+      "editor.defaultFormatter" = "tamasfe.even-better-toml";
       "editor.formatOnSave" = true;
     };
 

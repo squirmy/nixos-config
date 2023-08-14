@@ -8,3 +8,13 @@ includes = ["*.nix"]
 command = "shfmt"
 includes = ["*.sh"]
 options = ["-bn", "-ci", "-sr", "-i", "2", "-s", "-w"]
+
+[formatter.prettier]
+command = "prettier"
+includes = ["*.md"]
+options = ["--write"]
+
+[formatter.taplo]
+command = "taplo"
+includes = ["*.toml"]
+options = ["fmt"]

@@ -34,6 +34,11 @@
     # ShellCheck, a static analysis tool for shell scripts
     # https://github.com/koalaman/shellcheck
     shellcheck
+
+    # pre-commit
+    # A framework for managing and maintaining multi-language pre-commit hooks
+    # https://pre-commit.com
+    pre-commit
   ];
 
   programs.vscode.enable = true;

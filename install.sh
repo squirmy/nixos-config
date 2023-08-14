@@ -7,7 +7,8 @@ set -euo pipefail
 username="squirmy"
 hostname="Adams-MBP"
 nixos_config_dir="$HOME/.config/nixos-config"
-nixos_config_repo="git@github.com:$username/nixos-config.git"
+nixos_config_repo_ssh="git@github.com:$username/nixos-config.git"
+nixos_config_repo_http="https://github.com/$username/nixos-config"
 
 info_level="\033[0;33m"
 success_level="\033[0;32m"
@@ -70,7 +71,8 @@ function install_homebrew() {
 
 function clone_nixos_config() {
   if [ ! -d "$nixos_config_dir" ]; then
-    git clone "$nixos_config_repo" "$nixos_config_dir"
+    git clone "$nixos_config_repo_http" "$nixos_config_dir"
+    git -C "$nixos_config_dir" remote set-url origin "$nixos_config_repo_ssh"
   fi
 }
 

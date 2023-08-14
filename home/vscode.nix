@@ -130,7 +130,7 @@
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
     };
 
-    # markdown
+    # toml
     "[toml]" = {
       "editor.defaultFormatter" = "tamasfe.even-better-toml";
       "editor.formatOnSave" = true;

@@ -11,7 +11,7 @@ options = ["-bn", "-ci", "-sr", "-i", "2", "-s", "-w"]
 
 [formatter.prettier]
 command = "prettier"
-includes = ["*.md"]
+includes = ["*.md", "*.yaml"]
 options = ["--write"]
 
 [formatter.taplo]

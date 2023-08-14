@@ -41,7 +41,7 @@ cd "$HOME/.config/nixos-config"
 ./go.sh
 ```
 
-### Installaing on a fresh macOS installation
+### Installing on a fresh macOS installation
 
 I plan to run this on a fresh setup from time to time so I have created an install script to automate the above tasks. It can be tweaked for your own setup. Please be careful using this and take the time to understand how it works before you run it.
 

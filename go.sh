@@ -25,6 +25,9 @@ function set_hostname() {
   fi
 }
 
+# My hostname seemed to reset itself when setting up a fresh mac. Possibly
+# being set by company mdm software. So I check here to see if it needs to
+# be set again.
 set_hostname
 
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"

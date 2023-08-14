@@ -55,6 +55,13 @@
     timonwong.shellcheck
   ];
 
+  programs.zsh = {
+    envExtra = ''
+      # Remove color from pre-commit. It's hard to read.
+      export PRE_COMMIT_COLOR=never
+    '';
+  };
+
   programs.vscode.userSettings = {
     # Visual Tweaks
     "editor.accessibilitySupport" = "off";

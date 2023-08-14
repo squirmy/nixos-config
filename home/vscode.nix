@@ -41,6 +41,13 @@
     pre-commit
   ];
 
+  programs.zsh = {
+    envExtra = ''
+      # Remove color from pre-commit. It's hard to read.
+      export PRE_COMMIT_COLOR=never
+    '';
+  };
+
   programs.vscode.enable = true;
   programs.vscode.enableUpdateCheck = false;
   programs.vscode.enableExtensionUpdateCheck = false;
@@ -54,13 +61,6 @@
     esbenp.prettier-vscode
     timonwong.shellcheck
   ];
-
-  programs.zsh = {
-    envExtra = ''
-      # Remove color from pre-commit. It's hard to read.
-      export PRE_COMMIT_COLOR=never
-    '';
-  };
 
   programs.vscode.userSettings = {
     # Visual Tweaks

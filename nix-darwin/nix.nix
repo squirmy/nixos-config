@@ -30,13 +30,22 @@
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
+        "https://squirmy.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "squirmy.cachix.org-1:ke0hGUzJx+rdwiZaNxQzAHTfTlGa8VyDpfwgywfwP28="
       ];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    # Cachix
+    # Never build software twice
+    # https://www.cachix.org
+    cachix
+  ];
 
   # Enable nix-daemon to support multi-user mode nix.
   # This is the recommended nix installation option.

@@ -1,0 +1,23 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  tests:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@v12
+        with:
+          name: squirmy
+          extraPullNames: srid
+      - name: Build the flake
+        run: |
+          # Github Action runners do not support M1 yet.
+          nix run nixpkgs#sd 'nixpkgs.hostPlatform = "aarch64-darwin"' 'nixpkgs.hostPlatform = "x86_64-darwin"' flake.nix
+          nix run nixpkgs#nixci

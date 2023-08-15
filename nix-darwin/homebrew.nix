@@ -23,6 +23,13 @@
     # Why: Applications installed by home-manager don't show up in spotlight.
     # Issue: https://github.com/nix-community/home-manager/issues/1341
     "raycast"
+
+    # 1password
+    # A password manager, digital vault, form filler and secure digital wallet.
+    # https://1password.com
+    # Why: Tried using nixpkgs#_1password-gui but this fails to launch
+    # as it's not in the /Applications folder
+    "1password"
   ];
 
   # For cli packages that aren't currently available for macOS in `nixpkgs`.Packages should be

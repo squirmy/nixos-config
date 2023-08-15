@@ -10,7 +10,7 @@
 
   # Prefer installing application from the Mac App Store
   homebrew.masApps = {
-    # "1Password for Safari" = 1569813296;
+    "1Password for Safari" = 1569813296;
   };
 
   # If an app isn't available in the Mac App Store, or the version in the App Store has

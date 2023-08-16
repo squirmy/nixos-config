@@ -19,6 +19,7 @@
           ./ssh.nix
           ./git.nix
           ./rust.nix
+          ./nodejs.nix
           ./vscode.nix
         ];
       };

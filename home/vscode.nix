@@ -51,6 +51,7 @@
   programs.vscode.enable = true;
   programs.vscode.enableUpdateCheck = false;
   programs.vscode.enableExtensionUpdateCheck = false;
+  programs.vscode.mutableExtensionsDir = false;
 
   programs.vscode.extensions = with pkgs.vscode-extensions; [
     jnoortheen.nix-ide
@@ -60,6 +61,7 @@
     serayuzgur.crates
     esbenp.prettier-vscode
     timonwong.shellcheck
+    svelte.svelte-vscode
   ];
 
   programs.vscode.userSettings = {
@@ -86,6 +88,7 @@
     "typescript.updateImportsOnFileMove.enabled" = "always";
 
     # eslint configuration
+    "prettier.enable" = false;
     "editor.formatOnSave" = false;
     "editor.codeActionsOnSave" = {
       "source.fixAll" = false;
@@ -104,6 +107,7 @@
       "jsonc"
       "json5"
       "yaml"
+      "svelte"
     ];
     "eslint.codeActionsOnSave.rules" = [
       "!unused-imports/no-unused-imports"
@@ -152,5 +156,11 @@
       "**/node_modules" = true;
       "**/pnpm-lock.yaml" = true;
     };
+
+    "svelte.ask-to-enable-ts-plugin" = false;
+    # "svelte.enable-ts-plugin" = true;
+    # "[svelte]" = {
+    #   "editor.defaultFormatter" = "svelte.svelte-vscode";
+    # };
   };
 }

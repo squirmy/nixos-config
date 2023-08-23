@@ -62,6 +62,7 @@
     esbenp.prettier-vscode
     timonwong.shellcheck
     svelte.svelte-vscode
+    bradlc.vscode-tailwindcss
   ];
 
   programs.vscode.userSettings = {

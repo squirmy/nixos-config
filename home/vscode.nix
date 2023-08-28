@@ -63,6 +63,8 @@
     timonwong.shellcheck
     svelte.svelte-vscode
     bradlc.vscode-tailwindcss
+    github.vscode-github-actions
+    github.vscode-pull-request-github
   ];
 
   programs.vscode.userSettings = {

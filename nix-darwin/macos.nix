@@ -1,8 +1,4 @@
-{
-  pkgs,
-  flake,
-  ...
-}: {
+{flake, ...}: {
   # Allow using TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 

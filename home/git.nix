@@ -1,8 +1,4 @@
-{
-  config,
-  flake,
-  ...
-}: {
+{flake, ...}: {
   # Git
   programs.git.enable = true;
   programs.git.userName = flake.config.myself.name;

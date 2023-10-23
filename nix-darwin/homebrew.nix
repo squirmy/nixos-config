@@ -1,4 +1,4 @@
-{config, ...}: {
+{...}: {
   homebrew.enable = true;
   homebrew.onActivation.autoUpdate = true;
   homebrew.onActivation.cleanup = "zap";

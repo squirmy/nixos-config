@@ -13,6 +13,9 @@
     # Rust toolchains and rust-analyzer nightly for Nix
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Nix expressions for VSCode and OpenVSX extensions updated daily
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs = inputs @ {self, ...}:

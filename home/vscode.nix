@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  flake,
+  ...
+}: let
+  marketplace = flake.inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
+in {
   home.packages = with pkgs; [
     # nil
     # NIx Language server, an incremental analysis assistent for writing in Nix.
@@ -53,7 +59,7 @@
   programs.vscode.enableExtensionUpdateCheck = false;
   programs.vscode.mutableExtensionsDir = false;
 
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
+  programs.vscode.extensions = with marketplace; [
     jnoortheen.nix-ide
     dbaeumer.vscode-eslint
     rust-lang.rust-analyzer
@@ -64,7 +70,6 @@
     svelte.svelte-vscode
     bradlc.vscode-tailwindcss
     github.vscode-github-actions
-    github.vscode-pull-request-github
   ];
 
   programs.vscode.userSettings = {

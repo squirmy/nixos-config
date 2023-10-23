@@ -81,6 +81,10 @@
     "editor.fontLigatures" = true;
     "editor.fontWeight" = "450"; # Retina
     "workbench.fontAliasing" = "antialiased";
+    "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
+    "terminal.integrated.fontSize" = "13";
+    "terminal.integrated.fontWeight" = "450";
+    "terminal.integrated.fontWeightBold" = "600";
 
     # Default Behaviors
     "workbench.startupEditor" = "newUntitledFile";

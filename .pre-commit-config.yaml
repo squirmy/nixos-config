@@ -8,3 +8,10 @@ repos:
     hooks:
       - id: check-added-large-files
       - id: end-of-file-fixer
+  - repo: local
+    hooks:
+      - id: treefmt
+        name: treefmt
+        entry: treefmt
+        language: system
+        always_run: true

@@ -70,6 +70,7 @@ in {
     svelte.svelte-vscode
     bradlc.vscode-tailwindcss
     github.vscode-github-actions
+    eamodio.gitlens
   ];
 
   programs.vscode.userSettings = {
@@ -96,35 +97,8 @@ in {
     "terminal.integrated.defaultProfile.osx" = "zsh";
 
     # js/ts
-    "javascript.updateImportsOnFileMove.enabled" = "always";
-    "typescript.updateImportsOnFileMove.enabled" = "always";
-
-    # eslint configuration
-    "prettier.enable" = false;
-    "editor.formatOnSave" = false;
-    "editor.codeActionsOnSave" = {
-      "source.fixAll" = false;
-      "source.fixAll.eslint" = true;
-      "source.organizeImports" = false;
-    };
-    "eslint.validate" = [
-      "javascript"
-      "javascriptreact"
-      "typescript"
-      "typescriptreact"
-      "vue"
-      "html"
-      "markdown"
-      "json"
-      "jsonc"
-      "json5"
-      "yaml"
-      "svelte"
-    ];
-    "eslint.codeActionsOnSave.rules" = [
-      "!unused-imports/no-unused-imports"
-      "*"
-    ];
+    "javascript.updateImportsOnFileMove.enabled" = "never";
+    "typescript.updateImportsOnFileMove.enabled" = "never";
 
     # rust linting and formatting
     "rust-analyzer.check.command" = "clippy";
@@ -161,18 +135,6 @@ in {
 
     "shellcheck.executablePath" = "${pkgs.shellcheck.bin}/bin/shellcheck";
 
-    # exclude these directories from cmd + shift + f
-    "search.exclude" = {
-      "**/.git" = true;
-      "**/.pnpm" = true;
-      "**/node_modules" = true;
-      "**/pnpm-lock.yaml" = true;
-    };
-
     "svelte.ask-to-enable-ts-plugin" = false;
-    # "svelte.enable-ts-plugin" = true;
-    # "[svelte]" = {
-    #   "editor.defaultFormatter" = "svelte.svelte-vscode";
-    # };
   };
 }

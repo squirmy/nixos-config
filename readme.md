@@ -16,8 +16,6 @@ Combined, they proved a handy resource for working out where I was going wrong, 
 
 One thing is for sure, creating your own flake is personal, as each of the above configurations were differently structured. This configuration is no different.
 
-It's based heavily on srid's [nixos-config](https://github.com/srid/nixos-config). Without his [nixos-flake](https://github.com/srid/nixos-flake) module, modularizing the configuration would not have been as clean in this project.
-
 ## Getting Started
 
 ### Install pre-requisites:

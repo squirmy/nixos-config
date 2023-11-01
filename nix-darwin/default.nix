@@ -5,16 +5,14 @@
 }: {
   flake = {
     darwinModules = {
-      my-home = {
-        home-manager.users.${config.myself.username} = {pkgs, ...}: {
-          imports = [
-            self.homeModules.default
-          ];
-        };
-      };
-
-      default.imports = [
-        self.darwinModules.my-home
+      imports = [
+        {
+          home-manager.users.${config.myself.username} = {pkgs, ...}: {
+            imports = [
+              self.homeModules
+            ];
+          };
+        }
         ./nix.nix
         ./shell.nix
         ./network.nix

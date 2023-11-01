@@ -32,7 +32,7 @@
         darwinConfigurations."Adams-MBP" = self.lib.mkMacosHomeManagerSystem {
           nixpkgs.hostPlatform = "aarch64-darwin";
           imports = [
-            self.darwinModules.default
+            self.darwinModules
           ];
         };
       };

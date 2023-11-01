@@ -134,21 +134,6 @@
         "type": "github"
       }
     },
-    "nixos-flake": {
-      "locked": {
-        "lastModified": 1691408332,
-        "narHash": "sha256-0IveIyIFaORG+SzMzXfl9A4IopQ4KDmThDeH34ryL0c=",
-        "owner": "squirmy",
-        "repo": "nixos-flake",
-        "rev": "531043e2c7825406fb271fb831abe656d0997706",
-        "type": "github"
-      },
-      "original": {
-        "owner": "squirmy",
-        "repo": "nixos-flake",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1684570954,
@@ -206,7 +191,6 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixos-flake": "nixos-flake",
         "nixpkgs": "nixpkgs_2"
       }
     },

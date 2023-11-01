@@ -8,7 +8,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-flake.url = "github:squirmy/nixos-flake";
 
     # Rust toolchains and rust-analyzer nightly for Nix
     fenix.url = "github:nix-community/fenix";
@@ -23,14 +22,14 @@
       systems = ["aarch64-darwin" "x86_64-darwin"];
 
       imports = [
-        inputs.nixos-flake.flakeModule
+        ./lib
         ./users
         ./home
         ./nix-darwin
       ];
 
       flake = {
-        darwinConfigurations."Adams-MBP" = self.nixos-flake.lib.mkMacosHomeManagerSystem {
+        darwinConfigurations."Adams-MBP" = self.lib.mkMacosHomeManagerSystem {
           nixpkgs.hostPlatform = "aarch64-darwin";
           imports = [
             self.darwinModules.default

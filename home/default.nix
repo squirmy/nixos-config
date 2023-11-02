@@ -13,6 +13,7 @@
 
       # Programs and packages to manage with home manager.
       imports = [
+        ./trampoline.nix
         ./terminal.nix
         ./secrets.nix
         ./ssh.nix

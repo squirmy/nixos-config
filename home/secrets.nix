@@ -1,11 +1,4 @@
-{pkgs, ...}: let
-  # This is not stable on x86_64-darwin
-  # Disable the tests until this is resolved
-  # https://github.com/FiloSottile/age/issues/517
-  ageWithoutTests = pkgs.age.overrideAttrs (_: {
-    doCheck = false;
-  });
-in {
+{pkgs, ...}: {
   # A basic password store implementation using a yubikey
   # to decrypt the secrets + yubikey agent for ssh auth.
   # https://words.filippo.io/dispatches/passage/
@@ -14,7 +7,12 @@ in {
     # A simple, modern and secure encryption tool with small explicit keys,
     # no config options, and UNIX-style composability.
     # https://github.com/FiloSottile/age
-    ageWithoutTests
+    (age.overrideAttrs (finalAttrs: previousAttrs: {
+      # This is not stable on x86_64-darwin
+      # Disable the tests until this is resolved
+      # https://github.com/FiloSottile/age/issues/517
+      doCheck = false;
+    }))
 
     # age-plugin-yubikey
     # Enables files to be encrypted to age identities stored on YubiKeys.

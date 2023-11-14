@@ -12,6 +12,9 @@ in {
   programs.zsh = {
     enable = true;
     initExtra = ''
+      # emacs keymap
+      bindkey -e
+
       # Start typing + [Up-Arrow] - fuzzy find history forward
       autoload -U up-line-or-beginning-search
       zle -N up-line-or-beginning-search

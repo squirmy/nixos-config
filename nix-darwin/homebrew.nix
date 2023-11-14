@@ -8,9 +8,17 @@
     "nrlquaker/createzap"
   ];
 
+  # Upgrade outdated mac app store apps
+  homebrew.onActivation.upgrade = true;
+
   # Prefer installing application from the Mac App Store
+  # Sometimes when installing an application the app store gives an error:
+  # > Redownload Unavailable with This Apple ID
+  # The fix for me was to install using the app store and then move the app to the trash
+  # From then on the app is able to be installed using homebrew mas.
   homebrew.masApps = {
     "1Password for Safari" = 1569813296;
+    "Slack for Desktop" = 803453959;
   };
 
   # If an app isn't available in the Mac App Store, or the version in the App Store has

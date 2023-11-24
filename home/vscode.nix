@@ -59,6 +59,8 @@ in {
   programs.vscode.enableExtensionUpdateCheck = false;
   programs.vscode.mutableExtensionsDir = false;
 
+  # The extention id's can sometimes contain uppercase characters.
+  # You'll need to make all letters lowercase for them to work.
   programs.vscode.extensions = with marketplace; [
     jnoortheen.nix-ide
     dbaeumer.vscode-eslint
@@ -71,6 +73,9 @@ in {
     bradlc.vscode-tailwindcss
     github.vscode-github-actions
     eamodio.gitlens
+    mkhl.direnv
+    ms-dotnettools.csharp
+    ms-dotnettools.vscode-dotnet-runtime
   ];
 
   programs.vscode.userSettings = {
@@ -136,5 +141,8 @@ in {
     "shellcheck.executablePath" = "${pkgs.shellcheck.bin}/bin/shellcheck";
 
     "svelte.ask-to-enable-ts-plugin" = false;
+
+    # annoyances
+    "git.openRepositoryInParentFolders" = "never";
   };
 }

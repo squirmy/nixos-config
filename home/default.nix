@@ -23,6 +23,7 @@
         # ./rust.nix
         ./shell.nix
         ./vscode.nix
+        ./zoom.nix
       ];
     };
   };

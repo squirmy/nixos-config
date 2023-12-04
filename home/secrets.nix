@@ -1,28 +1,27 @@
-{pkgs, ...}: {
+{
+  flake,
+  pkgs,
+  ...
+}: {
   # A basic password store implementation using a yubikey
   # to decrypt the secrets + yubikey agent for ssh auth.
   # https://words.filippo.io/dispatches/passage/
   home.packages = with pkgs; [
     # age
-    # A simple, modern and secure encryption tool with small explicit keys,
-    # no config options, and UNIX-style composability.
-    # https://github.com/FiloSottile/age
-    (age.overrideAttrs (finalAttrs: previousAttrs: {
-      # This is not stable on x86_64-darwin
-      # Disable the tests until this is resolved
-      # https://github.com/FiloSottile/age/issues/517
-      doCheck = false;
-    }))
+    # A simple, secure and modern file encryption tool (and Rust library)
+    # with small explicit keys, no config options, and UNIX-style composability
+    # https://github.com/str4d/rage
+    rage
+
+    # ragenix
+    # age-encrypted secrets for NixOS; drop-in replacement for agenix
+    # https://github.com/yaxitech/ragenix
+    flake.inputs.agenix.packages.${system}.default
 
     # age-plugin-yubikey
     # Enables files to be encrypted to age identities stored on YubiKeys.
     # https://github.com/str4d/age-plugin-yubikey
     age-plugin-yubikey
-
-    # passage
-    # A fork of password-store that uses age as backend.
-    # https://github.com/FiloSottile/passage
-    passage
 
     # yubikey-agent
     # A seamless ssh-agent for YubiKeys.

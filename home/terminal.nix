@@ -11,20 +11,6 @@ in {
   # using oh-my-zsh.
   programs.zsh = {
     enable = true;
-    initExtra = ''
-      # emacs keymap
-      bindkey -e
-
-      # Start typing + [Up-Arrow] - fuzzy find history forward
-      autoload -U up-line-or-beginning-search
-      zle -N up-line-or-beginning-search
-      bindkey "^[[A" up-line-or-beginning-search # Up
-
-      # Start typing + [Down-Arrow] - fuzzy find history backward
-      autoload -U down-line-or-beginning-search
-      zle -N down-line-or-beginning-search
-      bindkey "^[[B" down-line-or-beginning-search # Down
-    '';
     envExtra = ''
       # Colorize ls
       export CLICOLOR=1
@@ -33,6 +19,15 @@ in {
       export VISUAL=vim
       export EDITOR="$VISUAL"
     '';
+  };
+
+  # fzf
+  # 🌸 A command-line fuzzy finder
+  # https://github.com/junegunn/fzf
+  # Why: Handy for searching through history for past commands
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # kitty

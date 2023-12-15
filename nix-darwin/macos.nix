@@ -11,6 +11,7 @@
   # to the value to update to.
   # Issue: https://github.com/LnL7/nix-darwin/issues/88
   system.defaults.NSGlobalDomain = {
+    AppleShowAllFiles = true;
     AppleInterfaceStyle = "Dark";
     AppleInterfaceStyleSwitchesAutomatically = false;
     NSAutomaticCapitalizationEnabled = false;
@@ -19,6 +20,8 @@
     NSAutomaticQuoteSubstitutionEnabled = false;
     NSAutomaticSpellingCorrectionEnabled = false;
   };
+
+  system.defaults.dock.appswitcher-all-displays = true;
 
   # Set the user's name & home directory. This should be
   # in sync with home manager. (home/default.nix)

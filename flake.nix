@@ -15,10 +15,6 @@
 
     # Nix expressions for VSCode and OpenVSX extensions updated daily
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-
-    # age-encrypted secrets for NixOS; drop-in replacement for agenix
-    agenix.url = "github:yaxitech/ragenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {self, ...}:

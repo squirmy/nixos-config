@@ -13,11 +13,6 @@
     # https://github.com/str4d/rage
     rage
 
-    # ragenix
-    # age-encrypted secrets for NixOS; drop-in replacement for agenix
-    # https://github.com/yaxitech/ragenix
-    flake.inputs.agenix.packages.${system}.default
-
     # age-plugin-yubikey
     # Enables files to be encrypted to age identities stored on YubiKeys.
     # https://github.com/str4d/age-plugin-yubikey

@@ -15,6 +15,13 @@
 
     # Nix expressions for VSCode and OpenVSX extensions updated daily
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    # Fix .app programs installed by Nix on Mac
+    # Why: Applications installed by home-manager don't show up in spotlight. This
+    # module works around the issue. Can be removed if this is ever included
+    # in home-manager.
+    # Issue: https://github.com/nix-community/home-manager/issues/1341
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs = inputs @ {self, ...}:

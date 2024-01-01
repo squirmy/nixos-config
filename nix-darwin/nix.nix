@@ -8,9 +8,6 @@
     config = {
       allowUnfree = true;
     };
-    overlays = [
-      flake.inputs.fenix.overlays.default
-    ];
   };
 
   nix = {

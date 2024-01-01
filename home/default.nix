@@ -17,9 +17,6 @@
         ./secrets.nix
         ./ssh.nix
         ./git.nix
-        # TODO: remove this and other rust configuration after moving this
-        # to a project specfic flake.
-        # ./rust.nix
         ./rider.nix
         ./shell.nix
         ./vscode.nix

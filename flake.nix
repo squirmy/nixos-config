@@ -9,10 +9,6 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # Rust toolchains and rust-analyzer nightly for Nix
-    fenix.url = "github:nix-community/fenix";
-    fenix.inputs.nixpkgs.follows = "nixpkgs";
-
     # Fix .app programs installed by Nix on Mac
     # Why: Applications installed by home-manager don't show up in spotlight. This
     # module works around the issue. Can be removed if this is ever included

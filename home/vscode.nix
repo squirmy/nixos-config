@@ -1,10 +1,4 @@
-{
-  pkgs,
-  flake,
-  ...
-}: let
-  marketplace = flake.inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # nil
     # NIx Language server, an incremental analysis assistent for writing in Nix.
@@ -56,27 +50,8 @@ in {
 
   programs.vscode.enable = true;
   programs.vscode.enableUpdateCheck = false;
-  programs.vscode.enableExtensionUpdateCheck = false;
-  programs.vscode.mutableExtensionsDir = false;
-
-  # The extention id's can sometimes contain uppercase characters.
-  # You'll need to make all letters lowercase for them to work.
-  programs.vscode.extensions = with marketplace; [
-    jnoortheen.nix-ide
-    dbaeumer.vscode-eslint
-    rust-lang.rust-analyzer
-    tamasfe.even-better-toml
-    serayuzgur.crates
-    esbenp.prettier-vscode
-    timonwong.shellcheck
-    svelte.svelte-vscode
-    bradlc.vscode-tailwindcss
-    github.vscode-github-actions
-    eamodio.gitlens
-    mkhl.direnv
-    ms-dotnettools.csharp
-    ms-dotnettools.vscode-dotnet-runtime
-  ];
+  programs.vscode.enableExtensionUpdateCheck = true;
+  programs.vscode.mutableExtensionsDir = true;
 
   programs.vscode.userSettings = {
     # Visual Tweaks
@@ -105,12 +80,8 @@ in {
     "javascript.updateImportsOnFileMove.enabled" = "never";
     "typescript.updateImportsOnFileMove.enabled" = "never";
 
-    # rust linting and formatting
-    "rust-analyzer.check.command" = "clippy";
-    "[rust]" = {
-      "editor.defaultFormatter" = "rust-lang.rust-analyzer";
-      "editor.formatOnSave" = true;
-    };
+    # shellcheck
+    "shellcheck.executablePath" = "${pkgs.shellcheck.bin}/bin/shellcheck";
 
     # nix
     "nix.enableLanguageServer" = true;
@@ -126,21 +97,21 @@ in {
       "editor.formatOnSave" = true;
     };
 
-    # markdown
-    "[markdown]" = {
+    # default formatters
+    "[json][jsonc]" = {
+      "editor.defaultFormatter" = "vscode.json-language-features";
       "editor.formatOnSave" = true;
-      "editor.defaultFormatter" = "esbenp.prettier-vscode";
     };
 
-    # toml
+    "[markdown]" = {
+      "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "editor.formatOnSave" = true;
+    };
+
     "[toml]" = {
       "editor.defaultFormatter" = "tamasfe.even-better-toml";
       "editor.formatOnSave" = true;
     };
-
-    "shellcheck.executablePath" = "${pkgs.shellcheck.bin}/bin/shellcheck";
-
-    "svelte.ask-to-enable-ts-plugin" = false;
 
     # annoyances
     "git.openRepositoryInParentFolders" = "never";

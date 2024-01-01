@@ -64,6 +64,16 @@ There are some things you need to be aware of before you run this on your system
 4. Update the DNS resolvers in [nix-darwin/network.nix](./nix-darwin/network.nix) if you prefer another resolver.
 5. Read through the rest of the files carefully and decide if you want the configuration. Remove anything you do not want to be included. You can always add things back in.
 
+## Known Issues
+
+### 1. Could not write domain: com.apple.Safari.
+
+This can be fixed by giving your terminal full disk access in Settings -> Privacy & Security -> Full Disk Access.
+
+Fix found on [reddit](https://www.reddit.com/r/MacOSBeta/comments/15yjcnc/comment/jxdhpj4/).
+
+> Safari is sandboxed preventing defaults from read/writing to it. Your terminal needs full disk access so defaults can access the sandboxed container.
+
 ## Valuable Resources
 
 Nix Darwin

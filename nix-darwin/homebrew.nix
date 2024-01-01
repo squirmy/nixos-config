@@ -1,8 +1,13 @@
-{...}: {
+{config, ...}: {
   homebrew.enable = true;
   homebrew.onActivation.autoUpdate = true;
   homebrew.onActivation.cleanup = "zap";
   homebrew.global.brewfile = true;
+
+  # Required so that applications installed with homebrew are in your path.
+  programs.zsh.shellInit = ''
+    eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
+  '';
 
   homebrew.taps = [
     "nrlquaker/createzap"

@@ -11,8 +11,6 @@
   # Options documented here:
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt
   programs.git.extraConfig = {
-    pull.rebase = true;
-    rebase.autoStash = true;
     fetch.prune = true;
     diff.colorMoved = "default";
   };

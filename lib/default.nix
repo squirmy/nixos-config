@@ -67,7 +67,7 @@ in {
                   imports = [
                     {
                       # Set the username & home directory. This should be
-                      # in sync with nix-darwin. (nix-darwin/macos.nix)
+                      # in sync with nix-darwin. (below)
                       home.username = machine.user.username;
                       home.homeDirectory = machine.user.home;
                     }
@@ -77,10 +77,9 @@ in {
               }
               {
                 # nix-darwin configuration
-                nixpkgs.hostPlatform = machine.system;
 
                 # Set the user's name & home directory. This should be
-                # in sync with home manager. (home/default.nix)
+                # in sync with home manager. (above)
                 users.users.${machine.user.username} = {
                   name = machine.user.username;
                   home = machine.user.home;

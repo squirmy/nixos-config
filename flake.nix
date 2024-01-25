@@ -9,7 +9,7 @@
   };
 
   outputs = inputs @ {self, ...}: let
-    user = (import ./users/myself.nix) {};
+    myself = (import ./users/myself.nix) {};
   in
     inputs.flake-parts.lib.mkFlake {inherit inputs;} ({config, ...}: {
       systems = ["aarch64-darwin" "x86_64-darwin"];
@@ -17,18 +17,18 @@
       imports = [./lib];
 
       macos-machines."Adams-MBP" = {
+        user = myself;
         system = "aarch64-darwin";
-
-        inherit user;
 
         nix-darwin = {
           imports = [./nix-darwin];
+          nixpkgs.hostPlatform = "aarch64-darwin";
         };
 
         home-manager = {
           imports = [./home];
-          programs.git.userName = user.name;
-          programs.git.userEmail = user.email;
+          programs.git.userName = myself.name;
+          programs.git.userEmail = myself.email;
         };
       };
     });

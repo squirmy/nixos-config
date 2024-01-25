@@ -15,5 +15,5 @@ jobs:
       - name: Build the flake
         run: |
           # Github Action runners do not support M1 yet.
-          nix run nixpkgs#sd 'system = "aarch64-darwin"' 'system = "x86_64-darwin"' flake.nix
+          nix run nixpkgs#sd 'nixpkgs.hostPlatform = "aarch64-darwin"' 'nixpkgs.hostPlatform = "x86_64-darwin"' flake.nix
           nix run nixpkgs#nixci

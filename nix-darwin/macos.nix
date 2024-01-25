@@ -27,6 +27,9 @@
     NSGlobalDomain.WebKitDeveloperExtras = true;
 
     "com.apple.Safari" = {
+      # SmartSearchField = Address Bar
+      ShowFullURLInSmartSearchField = true;
+
       # Don’t send search queries to Apple
       UniversalSearchEnabled = false;
       SuppressSearchSuggestions = true;

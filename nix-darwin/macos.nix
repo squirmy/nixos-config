@@ -1,4 +1,4 @@
-{flake, ...}: {
+{...}: {
   # Allow using TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -70,11 +70,4 @@
     # Following line should allow us to avoid a logout/login cycle
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
-
-  # Set the user's name & home directory. This should be
-  # in sync with home manager. (home/default.nix)
-  users.users.${flake.config.myself.username} = {
-    name = flake.config.myself.username;
-    home = flake.config.myself.home;
-  };
 }

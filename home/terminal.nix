@@ -1,11 +1,4 @@
-{
-  config,
-  flake,
-  ...
-}: let
-  inherit (config.lib.file) mkOutOfStoreSymlink;
-  inherit (flake.config.myself) flakeDirectory;
-in {
+{...}: {
   # zsh
   # Why: It's the default on macOS, and I was previously
   # using oh-my-zsh.
@@ -49,9 +42,6 @@ in {
       modify_font cell_height +2.6px";
     '';
   };
-  # Switch the default icon out for a cuter one! 😸
-  # Uses file: config/kitty/kitty-light.icns
-  xdg.configFile."kitty/kitty.app.icns".source = mkOutOfStoreSymlink "${flakeDirectory}/config/kitty/kitty-light.icns";
 
   # Starship
   # The minimal, blazing-fast, and infinitely customizable prompt for any shell!

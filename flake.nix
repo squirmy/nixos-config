@@ -8,13 +8,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-
-    # Fix .app programs installed by Nix on Mac
-    # Why: Applications installed by home-manager don't show up in spotlight. This
-    # module works around the issue. Can be removed if this is ever included
-    # in home-manager.
-    # Issue: https://github.com/nix-community/home-manager/issues/1341
-    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs = inputs @ {self, ...}:

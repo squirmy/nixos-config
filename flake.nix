@@ -18,18 +18,12 @@
 
       macos-machines."Adams-MBP" = {
         user = myself;
-        system = "aarch64-darwin";
 
-        nix-darwin = {
-          imports = [./nix-darwin];
-          nixpkgs.hostPlatform = "aarch64-darwin";
-        };
+        nix-darwin.system = "aarch64-darwin";
+        nix-darwin.modules = ./nix-darwin;
 
-        home-manager = {
-          imports = [./home];
-          programs.git.userName = myself.name;
-          programs.git.userEmail = myself.email;
-        };
+        home-manager.enable = true;
+        home-manager.modules = ./home;
       };
     });
 }

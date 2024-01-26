@@ -26,15 +26,31 @@
     };
   };
 
+  nixDarwinOptions = {
+    system = lib.mkOption {
+      type = lib.types.str;
+    };
+    modules = lib.mkOption {
+      type = lib.types.deferredModule;
+    };
+  };
+
+  homeManagerOptions = {
+    enable = lib.options.mkEnableOption "home-manager";
+    modules = lib.mkOption {
+      type = lib.types.deferredModule;
+    };
+  };
+
   machineOptions = {
     system = lib.mkOption {
       type = lib.types.str;
     };
     nix-darwin = lib.mkOption {
-      type = lib.types.deferredModule;
+      type = lib.types.submodule {options = nixDarwinOptions;};
     };
     home-manager = lib.mkOption {
-      type = lib.types.deferredModule;
+      type = lib.types.submodule {options = homeManagerOptions;};
     };
     user = lib.mkOption {
       type = lib.types.submodule {
@@ -53,16 +69,17 @@ in {
     flake = {
       darwinConfigurations =
         builtins.mapAttrs (
-          _machine-name: machine: (inputs.nix-darwin.lib.darwinSystem {
-            specialArgs = specialArgsFor.darwin;
-            modules = [
+          _machine-name: machine: let
+            # Allow access to the user
+            specialArgs = specialArgsFor.darwin // {myself = machine.user;};
+
+            # home-manager configuration
+            home-manager-modules = lib.lists.optionals machine.home-manager.enable [
               inputs.home-manager.darwinModules.home-manager
               {
-                # home-manager configuration
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = specialArgsFor.darwin;
-
+                home-manager.extraSpecialArgs = specialArgs;
                 home-manager.users.${machine.user.username} = {pkgs, ...}: {
                   imports = [
                     {
@@ -71,12 +88,16 @@ in {
                       home.username = machine.user.username;
                       home.homeDirectory = machine.user.home;
                     }
-                    machine.home-manager
+                    machine.home-manager.modules
                   ];
                 };
               }
+            ];
+
+            # nix-darwin configuration
+            nix-darwin-modules = [
               {
-                # nix-darwin configuration
+                nixpkgs.hostPlatform = machine.nix-darwin.system;
 
                 # Set the user's name & home directory. This should be
                 # in sync with home manager. (above)
@@ -84,10 +105,12 @@ in {
                   name = machine.user.username;
                   home = machine.user.home;
                 };
-
-                imports = [machine.nix-darwin];
               }
+              machine.nix-darwin.modules
             ];
+          in (inputs.nix-darwin.lib.darwinSystem {
+            specialArgs = specialArgs;
+            modules = nix-darwin-modules ++ home-manager-modules;
           })
         )
         config.macos-machines;

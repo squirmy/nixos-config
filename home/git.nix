@@ -1,7 +1,9 @@
-{...}: {
+{myself, ...}: {
   config = {
     # Git
     programs.git.enable = true;
+    programs.git.userName = myself.name;
+    programs.git.userEmail = myself.email;
 
     programs.git.ignores = [
       ".DS_Store"

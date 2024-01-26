@@ -8,16 +8,14 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = inputs @ {self, ...}: let
-    myself = (import ./users/myself.nix) {};
-  in
+  outputs = inputs @ {...}:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64-darwin" "x86_64-darwin"];
 
       imports = [./lib];
 
       macos-machines."Adams-MBP" = {
-        user = myself;
+        user = (import ./users/myself.nix) {};
 
         nix-darwin.system = "aarch64-darwin";
         nix-darwin.modules = ./nix-darwin;

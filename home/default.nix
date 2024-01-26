@@ -15,5 +15,6 @@
     ./shell.nix
     ./vscode.nix
     ./zoom.nix
+    ./fonts.nix
   ];
 }

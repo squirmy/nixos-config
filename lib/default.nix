@@ -42,10 +42,7 @@
     };
   };
 
-  machineOptions = {
-    system = lib.mkOption {
-      type = lib.types.str;
-    };
+  macosMachineOptions = {
     nix-darwin = lib.mkOption {
       type = lib.types.submodule {options = nixDarwinOptions;};
     };
@@ -61,7 +58,7 @@
   };
 in {
   options.macos-machines = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule {options = machineOptions;});
+    type = lib.types.attrsOf (lib.types.submodule {options = macosMachineOptions;});
     default = {};
   };
 

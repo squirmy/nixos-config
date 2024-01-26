@@ -11,7 +11,7 @@
   outputs = inputs @ {self, ...}: let
     myself = (import ./users/myself.nix) {};
   in
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} ({config, ...}: {
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64-darwin" "x86_64-darwin"];
 
       imports = [./lib];
@@ -25,5 +25,5 @@
         home-manager.enable = true;
         home-manager.modules = ./home;
       };
-    });
+    };
 }

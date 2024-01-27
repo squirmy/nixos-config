@@ -4,5 +4,6 @@
   # https://www.jetbrains.com/rider/
   home.packages = with pkgs; [
     jetbrains.rider
+    tmux
   ];
 }

@@ -5,6 +5,8 @@
   lib,
   ...
 }: let
+  catalog = config.catalog;
+
   specialArgsFor = rec {
     common = {
       flake = {inherit self inputs config;};
@@ -26,28 +28,10 @@
     };
   };
 
-  nixDarwinOptions = {
+  macosMachineOptions = {
+    home-manager.enable = lib.options.mkEnableOption "home-manager";
     system = lib.mkOption {
       type = lib.types.str;
-    };
-    modules = lib.mkOption {
-      type = lib.types.deferredModule;
-    };
-  };
-
-  homeManagerOptions = {
-    enable = lib.options.mkEnableOption "home-manager";
-    modules = lib.mkOption {
-      type = lib.types.deferredModule;
-    };
-  };
-
-  macosMachineOptions = {
-    nix-darwin = lib.mkOption {
-      type = lib.types.submodule {options = nixDarwinOptions;};
-    };
-    home-manager = lib.mkOption {
-      type = lib.types.submodule {options = homeManagerOptions;};
     };
     user = lib.mkOption {
       type = lib.types.submodule {
@@ -57,18 +41,41 @@
     };
   };
 in {
-  options.macos-machines = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule {options = macosMachineOptions;});
+  options.catalog.options = lib.mkOption {
+    type = lib.types.deferredModule;
+    default = {};
+  };
+  options.catalog.nixDarwinModules = lib.mkOption {
+    type = lib.types.deferredModule;
+    default = {};
+  };
+  options.catalog.homeManagerModules = lib.mkOption {
+    type = lib.types.deferredModule;
     default = {};
   };
 
-  config = {
+  options.macos-machines = lib.mkOption {
+    type = lib.types.attrsOf (lib.types.submoduleWith {
+      modules = [catalog.options {options = macosMachineOptions;}];
+    });
+    default = {};
+  };
+
+  config = let
+    # Share the options between nix-darwin and home-manager so that they can be
+    # configured in a way that is agnostic to the where the configuration applies.
+    nixDarwinModules = {imports = [catalog.options catalog.nixDarwinModules];};
+    homeManagerModules = {imports = [catalog.options catalog.homeManagerModules];};
+  in {
     flake = {
       darwinConfigurations =
         builtins.mapAttrs (
           _machine-name: machine: let
             # Allow access to the user
             specialArgs = specialArgsFor.darwin // {myself = machine.user;};
+
+            # Remove non-catalog options from the machine config
+            catalogOptions = builtins.removeAttrs machine ["home-manager" "system" "user"];
 
             # home-manager configuration
             home-manager-modules = lib.lists.optionals machine.home-manager.enable [
@@ -85,7 +92,8 @@ in {
                       home.username = machine.user.username;
                       home.homeDirectory = machine.user.home;
                     }
-                    machine.home-manager.modules
+                    homeManagerModules
+                    catalogOptions
                   ];
                 };
               }
@@ -94,7 +102,7 @@ in {
             # nix-darwin configuration
             nix-darwin-modules = [
               {
-                nixpkgs.hostPlatform = machine.nix-darwin.system;
+                nixpkgs.hostPlatform = machine.system;
 
                 # Set the user's name & home directory. This should be
                 # in sync with home manager. (above)
@@ -103,7 +111,8 @@ in {
                   home = machine.user.home;
                 };
               }
-              machine.nix-darwin.modules
+              nixDarwinModules
+              catalogOptions
             ];
           in (inputs.nix-darwin.lib.darwinSystem {
             specialArgs = specialArgs;

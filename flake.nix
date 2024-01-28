@@ -8,20 +8,19 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = inputs @ {...}:
+  outputs = inputs @ {self, ...}:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64-darwin" "x86_64-darwin"];
 
       imports = [./lib];
 
+      catalog.nixDarwinModules = ./nix-darwin;
+      catalog.homeManagerModules = ./home-manager;
+
       macos-machines."Adams-MBP" = {
+        system = "aarch64-darwin";
         user = (import ./users/myself.nix) {};
-
-        nix-darwin.system = "aarch64-darwin";
-        nix-darwin.modules = ./nix-darwin;
-
         home-manager.enable = true;
-        home-manager.modules = ./home;
       };
     };
 }

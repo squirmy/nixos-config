@@ -1,4 +1,4 @@
-{...}: let
+let
   username = "squirmy";
   home = "/Users/${username}";
 in {

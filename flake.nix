@@ -19,7 +19,7 @@
 
       nix-machine.macos."Adams-MBP" = {
         system = "aarch64-darwin";
-        user = (import ./users/myself.nix) {};
+        user = ./users/myself.nix;
         home-manager.enable = true;
       };
     };

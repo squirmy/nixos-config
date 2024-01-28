@@ -75,7 +75,7 @@ in {
             specialArgs = specialArgsFor.darwin // {myself = machine.user;};
 
             # Remove non-catalog options from the machine config
-            catalogOptions = builtins.removeAttrs machine ["home-manager" "system" "user"];
+            catalogOptions = builtins.removeAttrs machine (builtins.attrNames macosMachineOptions);
 
             # home-manager configuration
             home-manager-modules = lib.lists.optionals machine.home-manager.enable [

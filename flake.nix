@@ -14,10 +14,10 @@
 
       imports = [./lib];
 
-      catalog.nixDarwinModules = ./nix-darwin;
-      catalog.homeManagerModules = ./home-manager;
+      nix-machine.nixDarwinModules = ./nix-darwin;
+      nix-machine.homeManagerModules = ./home-manager;
 
-      macos-machines."Adams-MBP" = {
+      nix-machine.macos."Adams-MBP" = {
         system = "aarch64-darwin";
         user = (import ./users/myself.nix) {};
         home-manager.enable = true;

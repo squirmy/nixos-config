@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  catalog = config.catalog;
+  nix-machine = config.nix-machine;
 
   specialArgsFor = rec {
     common = {
@@ -41,22 +41,22 @@
     };
   };
 in {
-  options.catalog.options = lib.mkOption {
+  options.nix-machine.options = lib.mkOption {
     type = lib.types.deferredModule;
     default = {};
   };
-  options.catalog.nixDarwinModules = lib.mkOption {
+  options.nix-machine.nixDarwinModules = lib.mkOption {
     type = lib.types.deferredModule;
     default = {};
   };
-  options.catalog.homeManagerModules = lib.mkOption {
+  options.nix-machine.homeManagerModules = lib.mkOption {
     type = lib.types.deferredModule;
     default = {};
   };
 
-  options.macos-machines = lib.mkOption {
+  options.nix-machine.macos = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submoduleWith {
-      modules = [catalog.options {options = macosMachineOptions;}];
+      modules = [nix-machine.options {options = macosMachineOptions;}];
     });
     default = {};
   };
@@ -64,8 +64,8 @@ in {
   config = let
     # Share the options between nix-darwin and home-manager so that they can be
     # configured in a way that is agnostic to the where the configuration applies.
-    nixDarwinModules = {imports = [catalog.options catalog.nixDarwinModules];};
-    homeManagerModules = {imports = [catalog.options catalog.homeManagerModules];};
+    nixDarwinModules = {imports = [nix-machine.options nix-machine.nixDarwinModules];};
+    homeManagerModules = {imports = [nix-machine.options nix-machine.homeManagerModules];};
   in {
     flake = {
       darwinConfigurations =
@@ -75,7 +75,7 @@ in {
             specialArgs = specialArgsFor.darwin // {myself = machine.user;};
 
             # Remove non-catalog options from the machine config
-            catalogOptions = builtins.removeAttrs machine (builtins.attrNames macosMachineOptions);
+            options = builtins.removeAttrs machine (builtins.attrNames macosMachineOptions);
 
             # home-manager configuration
             home-manager-modules = lib.lists.optionals machine.home-manager.enable [
@@ -93,7 +93,7 @@ in {
                       home.homeDirectory = machine.user.home;
                     }
                     homeManagerModules
-                    catalogOptions
+                    options
                   ];
                 };
               }
@@ -112,14 +112,14 @@ in {
                 };
               }
               nixDarwinModules
-              catalogOptions
+              options
             ];
           in (inputs.nix-darwin.lib.darwinSystem {
             specialArgs = specialArgs;
             modules = nix-darwin-modules ++ home-manager-modules;
           })
         )
-        config.macos-machines;
+        nix-machine.macos;
     };
   };
 }

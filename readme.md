@@ -60,7 +60,7 @@ There are some things you need to be aware of before you run this on your system
 
 1. There are system defaults configured in [nix-darwin/macos.nix](./nix-darwin/macos.nix) that will persist even after installation. Double check that you're ok with these settings, and if not remove or customize them.
 2. You need to customize your user details in [users/myself.nix](./users/myself.nix). Be sure to set your username, name and e-mail. You can customize the `flakeDirectory` if you wish to clone this repository to a different path.
-3. You need to customize your hostname in [flake.nix](./flake.nix). The relevant config is `macos-machines.{your-hostname-here}`. Run `hostname -s` to get the correct value.
+3. You need to customize your hostname in [flake.nix](./flake.nix). The relevant config is `nix-machine.macos.{your-hostname-here}`. Run `hostname -s` to get the correct value.
 4. Update the DNS resolvers in [nix-darwin/network.nix](./nix-darwin/network.nix) if you prefer another resolver.
 5. Read through the rest of the files carefully and decide if you want the configuration. Remove anything you do not want to be included. You can always add things back in.
 

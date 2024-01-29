@@ -10,6 +10,5 @@ lib.mkIf config.squirmy.rider.enable {
   # https://www.jetbrains.com/rider/
   home.packages = with pkgs; [
     jetbrains.rider
-    tmux
   ];
 }

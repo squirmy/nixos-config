@@ -10,7 +10,6 @@ lib.mkIf config.squirmy.shell.enable {
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
-    enableBashIntegration = true;
 
     # nix-direnv
     # A fast, persistent use_nix/use_flake implementation for direnv

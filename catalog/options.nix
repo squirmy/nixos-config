@@ -9,7 +9,7 @@
       type = lib.types.str;
     };
     rider.enable = lib.options.mkEnableOption "rider";
-    secrets.enable = lib.options.mkEnableOption "secrets";
+    yubikey.enable = lib.options.mkEnableOption "yubikey";
     shell.enable = lib.options.mkEnableOption "shell";
     ssh.enable = lib.options.mkEnableOption "ssh";
     terminal.enable = lib.options.mkEnableOption "terminal";

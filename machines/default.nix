@@ -20,7 +20,7 @@ in {
         userEmail = user.email;
       };
       rider.enable = true;
-      secrets.enable = true;
+      yubikey.enable = true;
       shell.enable = true;
       ssh.enable = true;
       terminal.enable = true;

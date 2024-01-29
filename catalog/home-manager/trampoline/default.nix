@@ -1,10 +1,11 @@
 {
-  lib,
   pkgs,
+  lib,
+  config,
   ...
 }:
-with lib; {
-  config = mkIf pkgs.stdenv.hostPlatform.isDarwin {
+with lib;
+  mkIf (pkgs.stdenv.hostPlatform.isDarwin && config.squirmy.trampoline.enable) {
     # Install MacOS applications to the user Applications folder. Also update Docked applications
     # Why: Applications installed by home-manager don't show up in spotlight. This
     # module works around the issue. Can be removed if this is ever included
@@ -21,5 +22,4 @@ with lib; {
       toDir="$HOME/Applications/Home Manager Trampolines"
       sync_trampolines "$fromDir" "$toDir"
     '';
-  };
-}
+  }

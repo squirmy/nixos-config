@@ -1,4 +1,9 @@
-{config, ...}: {
+{
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.squirmy.homebrew.enable {
   homebrew.enable = true;
   homebrew.onActivation.autoUpdate = true;
   homebrew.onActivation.cleanup = "zap";

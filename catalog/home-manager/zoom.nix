@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.squirmy.zoom.enable {
   # zoom
   # Unified communication and collaboration platform
   # https://zoom.us

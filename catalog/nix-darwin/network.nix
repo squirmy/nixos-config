@@ -1,4 +1,9 @@
-{...}: {
+{
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.squirmy.network.enable {
   # Use fast dns resolvers.
   networking.dns = [
     # Cloudflare

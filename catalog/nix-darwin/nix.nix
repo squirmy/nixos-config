@@ -2,8 +2,10 @@
   flake,
   pkgs,
   lib,
+  config,
   ...
-}: {
+}:
+lib.mkIf config.squirmy.nix.enable {
   nixpkgs = {
     config = {
       allowUnfree = true;

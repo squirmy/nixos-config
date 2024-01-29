@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.squirmy.shell.enable {
   environment.shells = with pkgs; [
     bashInteractive
     zsh

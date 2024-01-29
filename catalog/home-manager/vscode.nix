@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.squirmy.vscode.enable {
   home.packages = with pkgs; [
     # nil
     # NIx Language server, an incremental analysis assistent for writing in Nix.

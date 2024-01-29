@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.squirmy.secrets.enable {
   # A basic password store implementation using a yubikey
   # to decrypt the secrets + yubikey agent for ssh auth.
   # https://words.filippo.io/dispatches/passage/

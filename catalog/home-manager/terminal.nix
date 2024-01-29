@@ -1,4 +1,9 @@
-{...}: {
+{
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.squirmy.terminal.enable {
   # zsh
   # Why: It's the default on macOS, and I was previously
   # using oh-my-zsh.

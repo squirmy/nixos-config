@@ -1,4 +1,9 @@
-{...}: {
+{
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.squirmy.shell.enable {
   # direnv
   # unclutter your .profile
   # https://direnv.net

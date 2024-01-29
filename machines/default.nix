@@ -7,7 +7,6 @@ in {
   nix-machine.macos."Adams-MBP" = {
     inherit username homeDirectory;
     system = "aarch64-darwin";
-    home-manager.enable = true;
 
     squirmy = {
       fonts.enable = true;

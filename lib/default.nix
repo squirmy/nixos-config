@@ -31,7 +31,14 @@
   };
 
   macosMachineOptions = {
-    home-manager.enable = lib.options.mkEnableOption "home-manager";
+    # I'm assuming that home-manager is going to be wanted most of the time
+    # so enabling it by default.
+    home-manager.enable = lib.mkOption {
+      default = true;
+      example = false;
+      description = "Whether to enable home-manager.";
+      type = lib.types.bool;
+    };
     system = lib.mkOption {
       type = lib.types.str;
     };

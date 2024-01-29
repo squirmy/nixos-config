@@ -12,10 +12,7 @@
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64-darwin" "x86_64-darwin"];
 
-      imports = [./lib];
-
-      nix-machine.catalogs.squirmy.nixDarwinModules = ./nix-darwin;
-      nix-machine.catalogs.squirmy.homeManagerModules = ./home-manager;
+      imports = [./lib ./catalog];
 
       nix-machine.macos."Adams-MBP" = {
         system = "aarch64-darwin";

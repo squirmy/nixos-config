@@ -1,14 +1,11 @@
 {...}: let
   username = "squirmy";
-  home = "/Users/${username}";
-  user = {
-    inherit username home;
-    name = "Adam Woods";
-    email = "squirmy.dev@gmail.com";
-  };
+  homeDirectory = "/Users/${username}";
+  name = "Adam Woods";
+  email = "squirmy.dev@gmail.com";
 in {
   nix-machine.macos."Adams-MBP" = {
-    inherit user;
+    inherit username homeDirectory;
     system = "aarch64-darwin";
     home-manager.enable = true;
 
@@ -16,8 +13,8 @@ in {
       fonts.enable = true;
       git = {
         enable = true;
-        userName = user.name;
-        userEmail = user.email;
+        userName = name;
+        userEmail = email;
       };
       rider.enable = true;
       yubikey.enable = true;

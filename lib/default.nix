@@ -30,25 +30,16 @@
       };
   };
 
-  userOptions = {
-    username = lib.mkOption {
-      type = lib.types.str;
-    };
-    home = lib.mkOption {
-      type = lib.types.str;
-    };
-  };
-
   macosMachineOptions = {
     home-manager.enable = lib.options.mkEnableOption "home-manager";
     system = lib.mkOption {
       type = lib.types.str;
     };
-    user = lib.mkOption {
-      type = lib.types.submodule {
-        options = userOptions;
-        freeformType = lib.types.attrsOf lib.types.anything;
-      };
+    username = lib.mkOption {
+      type = lib.types.str;
+    };
+    homeDirectory = lib.mkOption {
+      type = lib.types.str;
     };
   };
 
@@ -97,7 +88,7 @@ in {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = specialArgs;
-                home-manager.users.${machine.user.username} = {pkgs, ...}: {
+                home-manager.users.${machine.username} = {pkgs, ...}: {
                   imports = [
                     {
                       # It is occasionally necessary for Home Manager to change configuration
@@ -107,8 +98,8 @@ in {
 
                       # Set the username & home directory. This should be
                       # in sync with nix-darwin. (below)
-                      home.username = machine.user.username;
-                      home.homeDirectory = machine.user.home;
+                      home.username = machine.username;
+                      home.homeDirectory = machine.homeDirectory;
                     }
                     homeManagerModules
                     options
@@ -124,9 +115,9 @@ in {
 
                 # Set the user's name & home directory. This should be
                 # in sync with home manager. (above)
-                users.users.${machine.user.username} = {
-                  name = machine.user.username;
-                  home = machine.user.home;
+                users.users.${machine.username} = {
+                  name = machine.username;
+                  home = machine.homeDirectory;
                 };
               }
               nixDarwinModules

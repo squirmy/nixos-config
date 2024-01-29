@@ -11,36 +11,6 @@
   outputs = inputs @ {self, ...}:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64-darwin" "x86_64-darwin"];
-
-      imports = [./lib ./catalog];
-
-      nix-machine.macos."Adams-MBP" = let
-        user = import ./users/myself.nix {};
-      in {
-        inherit user;
-        system = "aarch64-darwin";
-        home-manager.enable = true;
-
-        squirmy = {
-          fonts.enable = true;
-          git = {
-            enable = true;
-            userName = user.name;
-            userEmail = user.email;
-          };
-          rider.enable = true;
-          secrets.enable = true;
-          shell.enable = true;
-          ssh.enable = true;
-          terminal.enable = true;
-          trampoline.enable = true;
-          vscode.enable = true;
-          zoom.enable = true;
-          homebrew.enable = true;
-          macos.enable = true;
-          network.enable = true;
-          nix.enable = true;
-        };
-      };
+      imports = [./lib ./catalog ./machines];
     };
 }

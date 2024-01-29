@@ -85,7 +85,7 @@ in {
         builtins.mapAttrs (
           _machine-name: machine: let
             # Allow access to the user
-            specialArgs = specialArgsFor.darwin // {myself = machine.user;};
+            specialArgs = specialArgsFor.darwin;
 
             # Remove non-catalog options from the machine config
             options = builtins.removeAttrs machine (builtins.attrNames macosMachineOptions);

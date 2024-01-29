@@ -14,14 +14,20 @@
 
       imports = [./lib ./catalog];
 
-      nix-machine.macos."Adams-MBP" = {
+      nix-machine.macos."Adams-MBP" = let
+        user = import ./users/myself.nix {};
+      in {
+        inherit user;
         system = "aarch64-darwin";
-        user = ./users/myself.nix;
         home-manager.enable = true;
 
         squirmy = {
           fonts.enable = true;
-          git.enable = true;
+          git = {
+            enable = true;
+            userName = user.name;
+            userEmail = user.email;
+          };
           rider.enable = true;
           secrets.enable = true;
           shell.enable = true;

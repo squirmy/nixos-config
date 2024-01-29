@@ -2,6 +2,12 @@
   catalogOptions = {
     fonts.enable = lib.options.mkEnableOption "fonts";
     git.enable = lib.options.mkEnableOption "git";
+    git.userName = lib.mkOption {
+      type = lib.types.str;
+    };
+    git.userEmail = lib.mkOption {
+      type = lib.types.str;
+    };
     rider.enable = lib.options.mkEnableOption "rider";
     secrets.enable = lib.options.mkEnableOption "secrets";
     shell.enable = lib.options.mkEnableOption "shell";

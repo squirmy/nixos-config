@@ -1,5 +1,4 @@
 {
-  myself,
   lib,
   config,
   ...
@@ -7,8 +6,8 @@
 lib.mkIf config.squirmy.git.enable {
   # Git
   programs.git.enable = true;
-  programs.git.userName = myself.name;
-  programs.git.userEmail = myself.email;
+  programs.git.userName = config.squirmy.git.userName;
+  programs.git.userEmail = config.squirmy.git.userEmail;
 
   programs.git.ignores = [
     ".DS_Store"

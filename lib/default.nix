@@ -7,6 +7,17 @@
 }: let
   nix-machine = config.nix-machine;
 
+  catalogs = map (catalog: catalog.value) (lib.attrsets.attrsToList nix-machine.catalogs);
+
+  allCatalogOptions = lib.catAttrs "options" catalogs;
+  allNixDarwinModules = lib.catAttrs "nixDarwinModules" catalogs;
+  allHomeManagerModules = lib.catAttrs "homeManagerModules" catalogs;
+
+  # Share the options between nix-darwin and home-manager so that they can be
+  # configured in a way that is agnostic to the where the configuration applies.
+  nixDarwinModules = {imports = allCatalogOptions ++ allNixDarwinModules;};
+  homeManagerModules = {imports = allCatalogOptions ++ allHomeManagerModules;};
+
   specialArgsFor = rec {
     common = {
       flake = {inherit self inputs config;};
@@ -40,33 +51,35 @@
       };
     };
   };
+
+  catalogOptions = {
+    options = lib.mkOption {
+      type = lib.types.deferredModule;
+      default = {};
+    };
+    nixDarwinModules = lib.mkOption {
+      type = lib.types.deferredModule;
+      default = {};
+    };
+    homeManagerModules = lib.mkOption {
+      type = lib.types.deferredModule;
+      default = {};
+    };
+  };
 in {
-  options.nix-machine.options = lib.mkOption {
-    type = lib.types.deferredModule;
-    default = {};
-  };
-  options.nix-machine.nixDarwinModules = lib.mkOption {
-    type = lib.types.deferredModule;
-    default = {};
-  };
-  options.nix-machine.homeManagerModules = lib.mkOption {
-    type = lib.types.deferredModule;
+  options.nix-machine.catalogs = lib.mkOption {
+    type = lib.types.attrsOf (lib.types.submodule {options = catalogOptions;});
     default = {};
   };
 
   options.nix-machine.macos = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submoduleWith {
-      modules = [nix-machine.options {options = macosMachineOptions;}];
+      modules = allCatalogOptions ++ [{options = macosMachineOptions;}];
     });
     default = {};
   };
 
-  config = let
-    # Share the options between nix-darwin and home-manager so that they can be
-    # configured in a way that is agnostic to the where the configuration applies.
-    nixDarwinModules = {imports = [nix-machine.options nix-machine.nixDarwinModules];};
-    homeManagerModules = {imports = [nix-machine.options nix-machine.homeManagerModules];};
-  in {
+  config = {
     flake = {
       darwinConfigurations =
         builtins.mapAttrs (

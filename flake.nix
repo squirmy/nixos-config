@@ -14,8 +14,8 @@
 
       imports = [./lib];
 
-      nix-machine.nixDarwinModules = ./nix-darwin;
-      nix-machine.homeManagerModules = ./home-manager;
+      nix-machine.catalogs.squirmy.nixDarwinModules = ./nix-darwin;
+      nix-machine.catalogs.squirmy.homeManagerModules = ./home-manager;
 
       nix-machine.macos."Adams-MBP" = {
         system = "aarch64-darwin";

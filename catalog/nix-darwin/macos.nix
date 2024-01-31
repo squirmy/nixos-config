@@ -37,6 +37,9 @@ lib.mkIf config.squirmy.macos.enable {
       # SmartSearchField = Address Bar
       ShowFullURLInSmartSearchField = true;
 
+      # Always show website titles in tabs
+      EnableNarrowTabs = 0;
+
       # Don’t send search queries to Apple
       UniversalSearchEnabled = false;
       SuppressSearchSuggestions = true;

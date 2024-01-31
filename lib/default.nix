@@ -41,6 +41,7 @@
     };
     system = lib.mkOption {
       type = lib.types.str;
+      default = "aarch64-darwin";
     };
     username = lib.mkOption {
       type = lib.types.str;

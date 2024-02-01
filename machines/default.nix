@@ -5,8 +5,10 @@
   email = "squirmy.dev@gmail.com";
 in {
   nix-machine.macos."Adams-MBP" = {
-    inherit username homeDirectory;
-    system = "aarch64-darwin";
+    nix-machine = {
+      inherit username homeDirectory;
+      system = "aarch64-darwin";
+    };
 
     squirmy = {
       fonts.enable = true;

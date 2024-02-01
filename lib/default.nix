@@ -39,16 +39,6 @@
       description = "Whether to enable home-manager.";
       type = lib.types.bool;
     };
-    system = lib.mkOption {
-      type = lib.types.str;
-      default = "aarch64-darwin";
-    };
-    username = lib.mkOption {
-      type = lib.types.str;
-    };
-    homeDirectory = lib.mkOption {
-      type = lib.types.str;
-    };
   };
 
   catalogOptions = {
@@ -78,6 +68,8 @@ in {
     default = {};
   };
 
+  imports = [./catalog];
+
   config = {
     flake = {
       darwinConfigurations =
@@ -89,47 +81,23 @@ in {
             # Remove non-catalog options from the machine config
             options = builtins.removeAttrs machine (builtins.attrNames macosMachineOptions);
 
+            # nix-darwin configuration
+            nix-darwin-modules = [nixDarwinModules options];
+
             # home-manager configuration
             home-manager-modules = lib.lists.optionals machine.home-manager.enable [
               inputs.home-manager.darwinModules.home-manager
-              {
+              ({config, ...}: {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = specialArgs;
-                home-manager.users.${machine.username} = {pkgs, ...}: {
+                home-manager.users.${config.nix-machine.username} = {pkgs, ...}: {
                   imports = [
-                    {
-                      # It is occasionally necessary for Home Manager to change configuration
-                      # defaults in a way that is incompatible with stateful data.
-                      # Update this when you want to consume newer defaults.
-                      home.stateVersion = "22.11";
-
-                      # Set the username & home directory. This should be
-                      # in sync with nix-darwin. (below)
-                      home.username = machine.username;
-                      home.homeDirectory = machine.homeDirectory;
-                    }
                     homeManagerModules
                     options
                   ];
                 };
-              }
-            ];
-
-            # nix-darwin configuration
-            nix-darwin-modules = [
-              {
-                nixpkgs.hostPlatform = machine.system;
-
-                # Set the user's name & home directory. This should be
-                # in sync with home manager. (above)
-                users.users.${machine.username} = {
-                  name = machine.username;
-                  home = machine.homeDirectory;
-                };
-              }
-              nixDarwinModules
-              options
+              })
             ];
           in (inputs.nix-darwin.lib.darwinSystem {
             specialArgs = specialArgs;

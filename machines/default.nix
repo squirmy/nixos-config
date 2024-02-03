@@ -7,7 +7,10 @@ in {
   nix-machine.macos."Adams-MBP" = {
     nix-machine = {
       inherit username homeDirectory;
-      system = "aarch64-darwin";
+      nixpkgs = {
+        hostPlatform = "aarch64-darwin";
+        allowUnfree = true;
+      };
     };
 
     squirmy = {

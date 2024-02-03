@@ -1,9 +1,10 @@
 {lib, ...}: let
   catalogOptions = {
-    system = lib.mkOption {
+    nixpkgs.hostPlatform = lib.mkOption {
       type = lib.types.str;
       default = "aarch64-darwin";
     };
+    nixpkgs.allowUnfree = lib.options.mkEnableOption "unfree software";
     username = lib.mkOption {
       type = lib.types.str;
     };

@@ -60,14 +60,14 @@ in {
             # nix-darwin configuration
             nix-darwin-modules = [
               inputs.home-manager.darwinModules.home-manager
-              ({config, ...}: {
+              {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = specialArgs;
-                home-manager.users.${config.nix-machine.username} = {pkgs, ...}: {
+                home-manager.users.${options.nix-machine.username} = {
                   imports = [homeManagerModules options];
                 };
-              })
+              }
               nixDarwinModules
               options
             ];

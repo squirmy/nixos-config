@@ -58,10 +58,7 @@ in {
             };
 
             # nix-darwin configuration
-            nix-darwin-modules = [nixDarwinModules options];
-
-            # home-manager configuration
-            home-manager-modules = [
+            nix-darwin-modules = [
               inputs.home-manager.darwinModules.home-manager
               ({config, ...}: {
                 home-manager.useGlobalPkgs = true;
@@ -71,10 +68,12 @@ in {
                   imports = [homeManagerModules options];
                 };
               })
+              nixDarwinModules
+              options
             ];
           in (inputs.nix-darwin.lib.darwinSystem {
             inherit specialArgs;
-            modules = nix-darwin-modules ++ home-manager-modules;
+            modules = nix-darwin-modules;
           })
         )
         nix-machine.macos;

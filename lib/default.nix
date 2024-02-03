@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   config,
   lib,
@@ -20,7 +19,7 @@
 
   specialArgsFor = rec {
     common = {
-      flake = {inherit self inputs config;};
+      inherit inputs;
     };
     nixos = common;
     darwin =

@@ -19,7 +19,6 @@
     homebrew.enable = lib.options.mkEnableOption "homebrew";
     macos.enable = lib.options.mkEnableOption "macos";
     network.enable = lib.options.mkEnableOption "network";
-    nix.enable = lib.options.mkEnableOption "nix";
   };
 in {
   options.squirmy = lib.mkOption {

@@ -28,7 +28,6 @@ in {
       homebrew.enable = true;
       macos.enable = true;
       network.enable = true;
-      nix.enable = true;
     };
   };
 }

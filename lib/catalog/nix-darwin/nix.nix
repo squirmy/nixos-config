@@ -27,9 +27,4 @@
   # Enable nix-daemon to support multi-user mode nix.
   # This is the recommended nix installation option.
   services.nix-daemon.enable = true;
-
-  # Every once in a while, a new NixOS release may change configuration
-  # defaults in a way incompatible with stateful data. Update this
-  # when you want to consume newer defaults.
-  system.stateVersion = 4;
 }

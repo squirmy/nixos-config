@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   inputs,
   ...
@@ -18,7 +17,7 @@
     build-users-group = "nixbld";
     experimental-features = "nix-command flakes repl-flake";
     # https://github.com/NixOS/nix/issues/7273
-    auto-optimise-store = lib.mkIf (pkgs.system == "aarch64-darwin" || pkgs.system == "x86_64-darwin") false;
+    auto-optimise-store = false;
     bash-prompt-prefix = "(nix:$name)\040";
     max-jobs = "auto";
     extra-nix-path = "nixpkgs=flake:nixpkgs";

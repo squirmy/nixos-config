@@ -4,14 +4,24 @@
       type = lib.types.str;
       default = "aarch64-darwin";
     };
-    nixpkgs.allowUnfree = lib.options.mkEnableOption "unfree software";
+    nixpkgs.allowUnfree = lib.mkOption {
+      default = true;
+      example = false;
+      description = "Whether to enable unfree software.";
+      type = lib.types.bool;
+    };
+    trampoline.enable = lib.mkOption {
+      default = true;
+      example = false;
+      description = "Whether to enable trampoline.";
+      type = lib.types.bool;
+    };
     username = lib.mkOption {
       type = lib.types.str;
     };
     homeDirectory = lib.mkOption {
       type = lib.types.str;
     };
-    trampoline.enable = lib.options.mkEnableOption "trampoline";
   };
 in {
   options.nix-machine = lib.mkOption {

@@ -12,7 +12,36 @@
   outputs = inputs @ {self, ...}:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64-darwin" "x86_64-darwin"];
-      imports = [./lib ./catalog ./machines];
+      imports = [./lib ./catalog];
+
+      nix-machine.macos."Adams-MBP" = {
+        nix-machine = {
+          username = "squirmy";
+          homeDirectory = "/Users/squirmy";
+          nixpkgs.hostPlatform = "aarch64-darwin";
+        };
+
+        squirmy = {
+          fonts.enable = true;
+          git = {
+            enable = true;
+            userName = "Adam Woods";
+            userEmail = "squirmy.dev@gmail.com";
+          };
+          rider.enable = true;
+          yubikey.enable = true;
+          shell.enable = true;
+          ssh.enable = true;
+          terminal.enable = true;
+          vscode.enable = true;
+          zoom.enable = true;
+          homebrew.enable = true;
+          onepassword.enable = true;
+          slack.enable = true;
+          macos.enable = true;
+          network.enable = true;
+        };
+      };
 
       flake = {
         flakeModule = ./catalog;

@@ -9,12 +9,16 @@
     nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.inputs.nix-darwin.follows = "nix-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    nix-machine.url = "./lib";
   };
 
   outputs = inputs @ {self, ...}:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} ({flake-parts-lib, ...}: {
       systems = ["aarch64-darwin" "x86_64-darwin"];
-      imports = [./lib ./catalog];
+      imports = [
+        inputs.nix-machine.flakeModule
+        ./catalog
+      ];
 
       nix-machine.macos."Adams-MBP" = {
         nix-machine = {
@@ -48,5 +52,5 @@
       flake = {
         flakeModule = ./catalog;
       };
-    };
+    });
 }

@@ -11,6 +11,7 @@
     homeDirectory = lib.mkOption {
       type = lib.types.str;
     };
+    trampoline.enable = lib.options.mkEnableOption "trampoline";
   };
 in {
   options.nix-machine = lib.mkOption {

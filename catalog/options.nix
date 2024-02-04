@@ -13,7 +13,6 @@
     shell.enable = lib.options.mkEnableOption "shell";
     ssh.enable = lib.options.mkEnableOption "ssh";
     terminal.enable = lib.options.mkEnableOption "terminal";
-    trampoline.enable = lib.options.mkEnableOption "trampoline";
     vscode.enable = lib.options.mkEnableOption "vscode";
     zoom.enable = lib.options.mkEnableOption "zoom";
     homebrew.enable = lib.options.mkEnableOption "homebrew";

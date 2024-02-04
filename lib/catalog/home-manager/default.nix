@@ -1,4 +1,6 @@
 {config, ...}: {
+  imports = [./trampoline];
+
   # It is occasionally necessary for Home Manager to change configuration
   # defaults in a way that is incompatible with stateful data.
   # Update this when you want to consume newer defaults.

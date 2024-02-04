@@ -11,6 +11,7 @@ in {
         hostPlatform = "aarch64-darwin";
         allowUnfree = true;
       };
+      trampoline.enable = true;
     };
 
     squirmy = {
@@ -25,7 +26,6 @@ in {
       shell.enable = true;
       ssh.enable = true;
       terminal.enable = true;
-      trampoline.enable = true;
       vscode.enable = true;
       zoom.enable = true;
       homebrew.enable = true;

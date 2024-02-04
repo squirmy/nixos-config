@@ -7,7 +7,6 @@
     ./shell.nix
     ./ssh.nix
     ./terminal.nix
-    ./trampoline
     ./vscode.nix
     ./yubikey.nix
     ./zoom.nix

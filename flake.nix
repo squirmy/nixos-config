@@ -9,7 +9,7 @@
     nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.inputs.nix-darwin.follows = "nix-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nix-machine.url = "./lib";
+    nix-machine.url = "./nix-machine";
   };
 
   outputs = inputs @ {self, ...}:

@@ -123,11 +123,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-XClh8mNhL5/JBLcuXA40U2XVZ8w92jJasR7WNH1L6OA=",
-        "path": "/nix/store/6rr76shwp12hibrp20s8xpj90nz1z363-source/lib",
+        "path": "/nix/store/slyp5rzpkwbwrlwlzywvxm66bcl2pizp-source/nix-machine",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/6rr76shwp12hibrp20s8xpj90nz1z363-source/lib",
+        "path": "/nix/store/slyp5rzpkwbwrlwlzywvxm66bcl2pizp-source/nix-machine",
         "type": "path"
       }
     },

@@ -9,14 +9,13 @@
     nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.inputs.nix-darwin.follows = "nix-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nix-machine.url = "./nix-machine";
   };
 
   outputs = inputs @ {self, ...}:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} ({flake-parts-lib, ...}: {
       systems = ["aarch64-darwin" "x86_64-darwin"];
       imports = [
-        inputs.nix-machine.flakeModule
+        ./nix-machine/flake-module.nix
         ./catalog
       ];
 

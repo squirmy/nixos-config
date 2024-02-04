@@ -119,18 +119,6 @@
         "type": "github"
       }
     },
-    "nix-machine": {
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-XClh8mNhL5/JBLcuXA40U2XVZ8w92jJasR7WNH1L6OA=",
-        "path": "/nix/store/slyp5rzpkwbwrlwlzywvxm66bcl2pizp-source/nix-machine",
-        "type": "path"
-      },
-      "original": {
-        "path": "/nix/store/slyp5rzpkwbwrlwlzywvxm66bcl2pizp-source/nix-machine",
-        "type": "path"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1706925685,
@@ -171,7 +159,6 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nix-machine": "nix-machine",
         "nixpkgs": "nixpkgs"
       }
     },

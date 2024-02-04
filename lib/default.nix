@@ -50,27 +50,21 @@ in {
     flake = {
       darwinConfigurations =
         builtins.mapAttrs (
-          _machine-name: options: let
-            # allow nix-darwin and home-manager catalog modules to access inputs
-            specialArgs = {
-              inherit inputs;
-              rosettaPkgs = import inputs.nixpkgs {system = "x86_64-darwin";};
-            };
+          _machine-name: machineConfig: let
+            # allow nix-darwin modules to access inputs
+            specialArgs = import ./lib/special-args.nix {inherit inputs;};
 
             # nix-darwin configuration
             nix-darwin-modules = [
               inputs.home-manager.darwinModules.home-manager
               inputs.nix-homebrew.darwinModules.nix-homebrew
               {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = specialArgs;
-                home-manager.users.${options.nix-machine.username} = {
-                  imports = [homeManagerModules options];
+                home-manager.users.${machineConfig.nix-machine.username} = {
+                  imports = [homeManagerModules machineConfig];
                 };
               }
               nixDarwinModules
-              options
+              machineConfig
             ];
           in (inputs.nix-darwin.lib.darwinSystem {
             inherit specialArgs;

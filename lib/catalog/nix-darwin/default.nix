@@ -1,5 +1,5 @@
 {config, ...}: {
-  imports = [./nix.nix ./nixpkgs.nix ./homebrew.nix];
+  imports = [./nix.nix ./nixpkgs.nix ./homebrew.nix ./home-manager.nix];
 
   # Set the user's name & home directory. This should be
   # in sync with home manager.

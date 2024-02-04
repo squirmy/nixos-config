@@ -6,6 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs = inputs @ {self, ...}:

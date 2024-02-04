@@ -29,6 +29,8 @@ in {
       vscode.enable = true;
       zoom.enable = true;
       homebrew.enable = true;
+      onepassword.enable = true;
+      slack.enable = true;
       macos.enable = true;
       network.enable = true;
     };

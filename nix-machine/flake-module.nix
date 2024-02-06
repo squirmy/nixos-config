@@ -50,12 +50,12 @@ in {
     flake = {
       darwinConfigurations =
         builtins.mapAttrs (
-          _machine-name: machineConfig: let
+          _machineName: machineConfig: (inputs.nix-darwin.lib.darwinSystem {
             # allow nix-darwin modules to access inputs
             specialArgs = import ./lib/special-args.nix {inherit inputs;};
 
             # nix-darwin configuration
-            nix-darwin-modules = [
+            modules = [
               inputs.home-manager.darwinModules.home-manager
               inputs.nix-homebrew.darwinModules.nix-homebrew
               {
@@ -66,9 +66,6 @@ in {
               nixDarwinConfiguration
               machineConfig
             ];
-          in (inputs.nix-darwin.lib.darwinSystem {
-            inherit specialArgs;
-            modules = nix-darwin-modules;
           })
         )
         nix-machine.macos;

@@ -2,7 +2,7 @@
 
 A [NixOS Flake](https://nixos.wiki/wiki/Flakes) for my macOS development environment.
 
-I have tried to keep this as simple as possible.I only have one machine and the simpler this configuration is the more likely I am to be able to maintain and keep this up to date.
+I have tried to keep this as simple as possible. I only have one machine and the simpler this configuration is the more likely I am to be able to maintain and keep this up to date.
 
 There are many comments throughout the files helping to explain why lines of configuration exist. I'm going to need this later when I forget just exactly why I put that line there.
 

@@ -16,7 +16,7 @@
       systems = ["aarch64-darwin" "x86_64-darwin"];
       imports = [
         ./nix-machine/flake-module.nix
-        ./catalog
+        ./configuration
       ];
 
       nix-machine.macos."Adams-MBP" = {
@@ -49,7 +49,7 @@
       };
 
       flake = {
-        flakeModule = ./catalog;
+        flakeModule = ./configuration;
       };
     });
 }

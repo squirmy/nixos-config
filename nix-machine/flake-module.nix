@@ -6,45 +6,45 @@
 }: let
   nix-machine = config.nix-machine;
 
-  catalogs = map (catalog: catalog.value) (lib.attrsets.attrsToList nix-machine.catalogs);
+  configurations = map (x: x.value) (lib.attrsets.attrsToList nix-machine.configurations);
 
-  allCatalogOptions = lib.catAttrs "options" catalogs;
-  allNixDarwinModules = lib.catAttrs "nixDarwinModules" catalogs;
-  allHomeManagerModules = lib.catAttrs "homeManagerModules" catalogs;
+  yyy = lib.catAttrs "options" configurations;
+  nixDarwinConfigurations = lib.catAttrs "nixDarwin" configurations;
+  homeManagerConfigurations = lib.catAttrs "homeManager" configurations;
 
   # Share the options between nix-darwin and home-manager so that they can be
   # configured in a way that is agnostic to the where the configuration applies.
-  nixDarwinModules = {imports = allCatalogOptions ++ allNixDarwinModules;};
-  homeManagerModules = {imports = allCatalogOptions ++ allHomeManagerModules;};
+  nixDarwinConfiguration = {imports = yyy ++ nixDarwinConfigurations;};
+  homeManagerConfiguration = {imports = yyy ++ homeManagerConfigurations;};
 
-  catalogOptions = {
+  configurationOptions = {
     options = lib.mkOption {
       type = lib.types.deferredModule;
       default = {};
     };
-    nixDarwinModules = lib.mkOption {
+    nixDarwin = lib.mkOption {
       type = lib.types.deferredModule;
       default = {};
     };
-    homeManagerModules = lib.mkOption {
+    homeManager = lib.mkOption {
       type = lib.types.deferredModule;
       default = {};
     };
   };
 in {
-  options.nix-machine.catalogs = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule {options = catalogOptions;});
+  options.nix-machine.configurations = lib.mkOption {
+    type = lib.types.attrsOf (lib.types.submodule {options = configurationOptions;});
     default = {};
   };
 
   options.nix-machine.macos = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submoduleWith {
-      modules = allCatalogOptions;
+      modules = yyy;
     });
     default = {};
   };
 
-  imports = [./catalog];
+  imports = [./configuration];
 
   config = {
     flake = {
@@ -60,10 +60,10 @@ in {
               inputs.nix-homebrew.darwinModules.nix-homebrew
               {
                 home-manager.users.${machineConfig.nix-machine.username} = {
-                  imports = [homeManagerModules machineConfig];
+                  imports = [homeManagerConfiguration machineConfig];
                 };
               }
-              nixDarwinModules
+              nixDarwinConfiguration
               machineConfig
             ];
           in (inputs.nix-darwin.lib.darwinSystem {

@@ -1,5 +1,5 @@
 {lib, ...}: let
-  catalogOptions = {
+  configurationOptions = {
     fonts.enable = lib.options.mkEnableOption "fonts";
     git.enable = lib.options.mkEnableOption "git";
     git.userName = lib.mkOption {
@@ -23,7 +23,7 @@
   };
 in {
   options.squirmy = lib.mkOption {
-    type = lib.types.submodule {options = catalogOptions;};
+    type = lib.types.submodule {options = configurationOptions;};
     default = {};
   };
 }

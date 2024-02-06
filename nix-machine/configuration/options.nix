@@ -1,5 +1,5 @@
 {lib, ...}: let
-  catalogOptions = {
+  configurationOptions = {
     nixpkgs.hostPlatform = lib.mkOption {
       type = lib.types.str;
       default = "aarch64-darwin";
@@ -25,7 +25,7 @@
   };
 in {
   options.nix-machine = lib.mkOption {
-    type = lib.types.submodule {options = catalogOptions;};
+    type = lib.types.submodule {options = configurationOptions;};
     default = {};
   };
 }

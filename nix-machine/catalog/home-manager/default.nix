@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   imports = [./trampoline];
 
   # It is occasionally necessary for Home Manager to change configuration
@@ -6,7 +10,7 @@
   # Update this when you want to consume newer defaults.
   # Release notes detailing changes to defaults are here:
   # https://github.com/nix-community/home-manager/tree/master/docs/release-notes
-  home.stateVersion = "22.11";
+  home.stateVersion = lib.mkDefault "22.11";
 
   # Set the username & home directory. This should be
   # in sync with nix-darwin.

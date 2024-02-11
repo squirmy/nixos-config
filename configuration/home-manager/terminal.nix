@@ -4,21 +4,6 @@
   ...
 }:
 lib.mkIf config.squirmy.terminal.enable {
-  # zsh
-  # Why: It's the default on macOS, and I was previously
-  # using oh-my-zsh.
-  programs.zsh = {
-    enable = true;
-    envExtra = ''
-      # Colorize ls
-      export CLICOLOR=1
-
-      # Set default editor for all programs (including git)
-      export VISUAL=vim
-      export EDITOR="$VISUAL"
-    '';
-  };
-
   # fzf
   # 🌸 A command-line fuzzy finder
   # https://github.com/junegunn/fzf

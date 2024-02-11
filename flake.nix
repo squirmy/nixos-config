@@ -46,6 +46,7 @@
           slack.enable = true;
           macos.enable = true;
           network.enable = true;
+          vim.enable = true;
         };
       };
 

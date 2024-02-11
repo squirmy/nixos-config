@@ -11,5 +11,6 @@
     ./yubikey.nix
     ./zoom.nix
     ./zsh.nix
+    ./vim.nix
   ];
 }

@@ -20,6 +20,7 @@
     slack.enable = lib.options.mkEnableOption "slack";
     macos.enable = lib.options.mkEnableOption "macos";
     network.enable = lib.options.mkEnableOption "network";
+    vim.enable = lib.options.mkEnableOption "vim";
     zsh.enable = lib.options.mkEnableOption "zsh";
   };
 in {

@@ -47,12 +47,8 @@ lib.mkIf config.squirmy.vscode.enable {
     pre-commit
   ];
 
-  programs.zsh = {
-    envExtra = ''
-      # Remove color from pre-commit. It's hard to read.
-      export PRE_COMMIT_COLOR=never
-    '';
-  };
+  # Remove color from pre-commit. It's hard to read.
+  home.sessionVariables = {PRE_COMMIT_COLOR = "never";};
 
   programs.vscode.enable = true;
   programs.vscode.enableUpdateCheck = false;

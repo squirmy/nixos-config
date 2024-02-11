@@ -29,10 +29,6 @@ lib.mkIf config.squirmy.yubikey.enable {
     ];
   };
 
-  programs.zsh = {
-    envExtra = ''
-      # Use a yubikey for ssh auth
-      export SSH_AUTH_SOCK="/tmp/yubikey-agent.sock"
-    '';
-  };
+  # Use a yubikey for ssh auth
+  home.sessionVariables = {SSH_AUTH_SOCK = "/tmp/yubikey-agent.sock";};
 }

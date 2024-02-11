@@ -11,7 +11,5 @@ lib.mkIf config.squirmy.zsh.enable {
   programs.zsh.enable = true;
 
   # Colorize ls on macos
-  programs.zsh.envExtra = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin ''
-    export CLICOLOR=1
-  '';
+  home.sessionVariables = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {CLICOLOR = "1";};
 }

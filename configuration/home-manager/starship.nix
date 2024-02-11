@@ -3,43 +3,14 @@
   config,
   ...
 }:
-lib.mkIf config.squirmy.terminal.enable {
-  # fzf
-  # 🌸 A command-line fuzzy finder
-  # https://github.com/junegunn/fzf
-  # Why: Handy for searching through history for past commands
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  # kitty
-  # The fast, feature-rich, GPU based terminal emulator
-  # https://sw.kovidgoyal.net/kitty/
-  # Why:
-  #   1. Font & Color scheme is able to be configured easily, unlike iterm.
-  #   2. Wasn't impressed with the Alacritty maintainers attitude towards
-  #      accepting contributions from the community.
-  #      - https://github.com/alacritty/alacritty/issues/3926
-  programs.kitty = {
-    enable = true;
-    shellIntegration.enableZshIntegration = true;
-    theme = "Tomorrow Night Eighties";
-    extraConfig = ''
-      # Use JetBrainsMono with its recommended font size and line height
-      font_family JetBrainsMono Nerd Font
-      font_size 13.0
-      modify_font cell_height +2.6px";
-    '';
-  };
-
+lib.mkIf config.squirmy.starship.enable {
   # Starship
   # The minimal, blazing-fast, and infinitely customizable prompt for any shell!
   # https://starship.rs/
   # Why: The prompt seems to do enough to suit my purposes, and looks nice.
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = config.squirmy.zsh.enable;
     # Symbols taken from nerd-font-symbols preset
     # run: starship preset nerd-font-symbols
     settings = {

@@ -38,7 +38,9 @@
           zsh.enable = true;
           direnv.enable = true;
           ssh.enable = true;
-          terminal.enable = true;
+          starship.enable = true;
+          kitty.enable = true;
+          fzf.enable = true;
           vscode.enable = true;
           zoom.enable = true;
           homebrew.enable = true;

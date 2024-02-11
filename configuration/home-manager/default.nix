@@ -6,7 +6,9 @@
     ./rider.nix
     ./direnv.nix
     ./ssh.nix
-    ./terminal.nix
+    ./starship.nix
+    ./kitty.nix
+    ./fzf.nix
     ./vscode.nix
     ./yubikey.nix
     ./zoom.nix

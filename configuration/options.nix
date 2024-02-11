@@ -12,7 +12,9 @@
     yubikey.enable = lib.options.mkEnableOption "yubikey";
     direnv.enable = lib.options.mkEnableOption "direnv";
     ssh.enable = lib.options.mkEnableOption "ssh";
-    terminal.enable = lib.options.mkEnableOption "terminal";
+    starship.enable = lib.options.mkEnableOption "starship";
+    kitty.enable = lib.options.mkEnableOption "kitty";
+    fzf.enable = lib.options.mkEnableOption "fzf";
     vscode.enable = lib.options.mkEnableOption "vscode";
     zoom.enable = lib.options.mkEnableOption "zoom";
     homebrew.enable = lib.options.mkEnableOption "homebrew";

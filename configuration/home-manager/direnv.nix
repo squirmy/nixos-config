@@ -3,19 +3,17 @@
   config,
   ...
 }:
-lib.mkIf config.squirmy.shell.enable {
+lib.mkIf config.squirmy.direnv.enable {
   # direnv
   # unclutter your .profile
   # https://direnv.net
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = config.squirmy.zsh.enable;
 
     # nix-direnv
     # A fast, persistent use_nix/use_flake implementation for direnv
     # https://github.com/nix-community/nix-direnv
     nix-direnv.enable = true;
   };
-
-  programs.zsh.enable = true;
 }

@@ -4,7 +4,7 @@
   config,
   ...
 }:
-lib.mkIf config.squirmy.shell.enable {
+lib.mkIf config.squirmy.zsh.enable {
   environment.shells = with pkgs; [
     bashInteractive
     zsh

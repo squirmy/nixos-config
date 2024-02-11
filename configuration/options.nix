@@ -10,7 +10,7 @@
     };
     rider.enable = lib.options.mkEnableOption "rider";
     yubikey.enable = lib.options.mkEnableOption "yubikey";
-    shell.enable = lib.options.mkEnableOption "shell";
+    direnv.enable = lib.options.mkEnableOption "direnv";
     ssh.enable = lib.options.mkEnableOption "ssh";
     terminal.enable = lib.options.mkEnableOption "terminal";
     vscode.enable = lib.options.mkEnableOption "vscode";
@@ -20,6 +20,7 @@
     slack.enable = lib.options.mkEnableOption "slack";
     macos.enable = lib.options.mkEnableOption "macos";
     network.enable = lib.options.mkEnableOption "network";
+    zsh.enable = lib.options.mkEnableOption "zsh";
   };
 in {
   options.squirmy = lib.mkOption {

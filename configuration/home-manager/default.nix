@@ -4,11 +4,12 @@
     ./fonts.nix
     ./git.nix
     ./rider.nix
-    ./shell.nix
+    ./direnv.nix
     ./ssh.nix
     ./terminal.nix
     ./vscode.nix
     ./yubikey.nix
     ./zoom.nix
+    ./zsh.nix
   ];
 }

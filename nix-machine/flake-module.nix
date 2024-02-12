@@ -17,8 +17,6 @@
   nixDarwinConfiguration = {imports = sharedOptions ++ nixDarwinConfigurations;};
   homeManagerConfiguration = {imports = sharedOptions ++ homeManagerConfigurations;};
 
-  nix-homebrew = lib.lists.optionals (lib.hasAttr "nix-homebrew" inputs) [inputs.nix-homebrew.darwinModules.nix-homebrew];
-
   configurationOptions = {
     options = lib.mkOption {
       type = lib.types.deferredModule;
@@ -57,18 +55,16 @@ in {
             specialArgs = import ./lib/special-args.nix {inherit inputs;};
 
             # nix-darwin configuration
-            modules =
-              nix-homebrew
-              ++ [
-                inputs.home-manager.darwinModules.home-manager
-                {
-                  home-manager.users.${machineConfig.nix-machine.username} = {
-                    imports = [homeManagerConfiguration machineConfig];
-                  };
-                }
-                nixDarwinConfiguration
-                machineConfig
-              ];
+            modules = [
+              inputs.home-manager.darwinModules.home-manager
+              {
+                home-manager.users.${machineConfig.nix-machine.username} = {
+                  imports = [homeManagerConfiguration machineConfig];
+                };
+              }
+              nixDarwinConfiguration
+              machineConfig
+            ];
           })
         )
         nix-machine.macos;

@@ -41,6 +41,7 @@ function copy_paths() {
   local paths=("${@:3}")
 
   keys=$(jq -n '$ARGS.positional' --args "${paths[@]}")
+  # shellcheck disable=SC2016
   jqfilter='to_entries |[.[]| select(.key as $item| $keys | index($item) >= 0) ] | from_entries'
 
   temp_dir=$(mktemp -d)

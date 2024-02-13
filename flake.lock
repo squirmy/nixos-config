@@ -59,6 +59,21 @@
         "type": "github"
       }
     },
+    "nix-machine": {
+      "locked": {
+        "lastModified": 1707817374,
+        "narHash": "sha256-Q8pWV+OID+AEafKpXxMmIjwqFf2k32+Ic3qH9Y6mkhA=",
+        "owner": "squirmy",
+        "repo": "nix-machine",
+        "rev": "b1500bd953c6cd974e79eb5b69725b48995f1d62",
+        "type": "github"
+      },
+      "original": {
+        "owner": "squirmy",
+        "repo": "nix-machine",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1707743206,
@@ -98,6 +113,7 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
+        "nix-machine": "nix-machine",
         "nixpkgs": "nixpkgs"
       }
     }

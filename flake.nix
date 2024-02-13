@@ -5,6 +5,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-machine.url = "github:squirmy/nix-machine";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
@@ -12,7 +13,7 @@
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64-darwin" "x86_64-darwin"];
       imports = [
-        ./nix-machine/flake-module.nix
+        inputs.nix-machine.flakeModule
         ./configuration
       ];
 

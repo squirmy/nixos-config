@@ -8,8 +8,8 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = inputs @ {self, ...}:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} ({flake-parts-lib, ...}: {
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64-darwin" "x86_64-darwin"];
       imports = [
         ./nix-machine/flake-module.nix
@@ -52,5 +52,5 @@
       flake = {
         flakeModule = ./configuration;
       };
-    });
+    };
 }

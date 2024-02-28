@@ -12,4 +12,9 @@ lib.mkIf config.squirmy.homebrew.enable {
 
   # Upgrade outdated mac app store apps
   homebrew.onActivation.upgrade = true;
+
+  # Required so that applications installed with homebrew are in your path.
+  programs.zsh.shellInit = lib.mkIf config.squirmy.zsh.enable ''
+    eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
+  '';
 }

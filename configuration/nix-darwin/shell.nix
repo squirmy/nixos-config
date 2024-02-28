@@ -12,9 +12,4 @@ lib.mkIf config.squirmy.zsh.enable {
 
   # Manage .zshrc. Required for packages to be in your path.
   programs.zsh.enable = true;
-
-  # Required so that applications installed with homebrew are in your path.
-  programs.zsh.shellInit = lib.mkIf config.squirmy.homebrew.enable ''
-    eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
-  '';
 }

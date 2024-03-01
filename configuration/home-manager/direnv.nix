@@ -9,7 +9,7 @@ lib.mkIf config.squirmy.direnv.enable {
   # https://direnv.net
   programs.direnv = {
     enable = true;
-    enableZshIntegration = config.squirmy.zsh.enable;
+    enableZshIntegration = config.nix-machine.shells.zsh.enable;
 
     # nix-direnv
     # A fast, persistent use_nix/use_flake implementation for direnv

@@ -14,7 +14,7 @@ lib.mkIf config.squirmy.homebrew.enable {
   homebrew.onActivation.upgrade = true;
 
   # Required so that applications installed with homebrew are in your path.
-  programs.zsh.shellInit = lib.mkIf config.squirmy.zsh.enable ''
+  programs.zsh.shellInit = lib.mkIf config.nix-machine.shells.zsh.enable ''
     eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
   '';
 }

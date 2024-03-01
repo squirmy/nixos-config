@@ -12,7 +12,7 @@
     ./vscode.nix
     ./yubikey.nix
     ./zoom.nix
-    ./zsh.nix
     ./vim.nix
+    ./shell.nix
   ];
 }

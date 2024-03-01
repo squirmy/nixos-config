@@ -10,7 +10,7 @@ lib.mkIf config.squirmy.starship.enable {
   # Why: The prompt seems to do enough to suit my purposes, and looks nice.
   programs.starship = {
     enable = true;
-    enableZshIntegration = config.squirmy.zsh.enable;
+    enableZshIntegration = config.nix-machine.shells.zsh.enable;
     # Symbols taken from nerd-font-symbols preset
     # run: starship preset nerd-font-symbols
     settings = {

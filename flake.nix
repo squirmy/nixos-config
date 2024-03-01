@@ -22,6 +22,7 @@
           username = "squirmy";
           homeDirectory = "/Users/squirmy";
           nixpkgs.hostPlatform = "aarch64-darwin";
+          shells.zsh.enable = true;
         };
 
         squirmy = {
@@ -33,7 +34,7 @@
           };
           rider.enable = true;
           yubikey.enable = true;
-          zsh.enable = true;
+          shell.enable = true;
           direnv.enable = true;
           ssh.enable = true;
           starship.enable = true;

@@ -14,7 +14,7 @@ lib.mkIf config.squirmy.kitty.enable {
   #      - https://github.com/alacritty/alacritty/issues/3926
   programs.kitty = {
     enable = true;
-    shellIntegration.enableZshIntegration = config.squirmy.zsh.enable;
+    shellIntegration.enableZshIntegration = config.nix-machine.shells.zsh.enable;
     theme = "Tomorrow Night Eighties";
     extraConfig = ''
       # Use JetBrainsMono with its recommended font size and line height

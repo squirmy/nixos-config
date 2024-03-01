@@ -10,6 +10,6 @@ lib.mkIf config.squirmy.fzf.enable {
   # Why: Handy for searching through history for past commands
   programs.fzf = {
     enable = true;
-    enableZshIntegration = config.squirmy.zsh.enable;
+    enableZshIntegration = config.nix-machine.shells.zsh.enable;
   };
 }

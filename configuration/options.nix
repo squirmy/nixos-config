@@ -23,7 +23,7 @@
     macos.enable = lib.options.mkEnableOption "macos";
     network.enable = lib.options.mkEnableOption "network";
     vim.enable = lib.options.mkEnableOption "vim";
-    zsh.enable = lib.options.mkEnableOption "zsh";
+    shell.enable = lib.options.mkEnableOption "shell";
   };
 in {
   options.squirmy = lib.mkOption {

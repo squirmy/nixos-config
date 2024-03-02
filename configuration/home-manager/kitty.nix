@@ -20,7 +20,7 @@ lib.mkIf config.squirmy.kitty.enable {
       # Use JetBrainsMono with its recommended font size and line height
       font_family JetBrainsMono Nerd Font
       font_size 13.0
-      modify_font cell_height +2.6px";
+      modify_font cell_height +2.6px
     '';
   };
 }

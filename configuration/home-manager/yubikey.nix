@@ -4,9 +4,8 @@
   config,
   ...
 }: let
-  buildPythonPackage = pkgs.python311Packages.buildPythonPackage;
-
   openssh-key-parser = {
+    buildPythonPackage,
     setuptools-scm,
     bcrypt,
     cryptography,
@@ -15,7 +14,7 @@
     buildPythonPackage {
       pname = "openssh-key-parser";
       version = "0.0.7";
-      format = "pyproject";
+      pyproject = true;
 
       src = pkgs.fetchFromGitHub {
         owner = "scottcwang";
@@ -49,8 +48,10 @@ in
       # Why: Mentioned on https://developers.yubico.com/SSH/Securing_SSH_with_FIDO2.html
       # for viewing the contents of the private key.
       # Usage: python -m openssh_key ~/.ssh/id_ed25519_sk
-      (pkgs.python3.withPackages (python-pkgs: [
-        openssh-key-parser
+      (pkgs.python311Packages.python.withPackages (python-pkgs: [
+        (pkgs.callPackage openssh-key-parser {
+          inherit (python-pkgs) setuptools-scm bcrypt cryptography buildPythonPackage;
+        })
       ]))
     ];
   }

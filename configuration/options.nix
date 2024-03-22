@@ -24,6 +24,7 @@
     network.enable = lib.options.mkEnableOption "network";
     vim.enable = lib.options.mkEnableOption "vim";
     shell.enable = lib.options.mkEnableOption "shell";
+    experiments.enable = lib.options.mkEnableOption "experiments";
   };
 in {
   options.squirmy = lib.mkOption {

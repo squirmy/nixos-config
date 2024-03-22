@@ -14,5 +14,6 @@
     ./zoom.nix
     ./vim.nix
     ./shell.nix
+    ./experiments.nix
   ];
 }

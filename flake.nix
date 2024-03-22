@@ -48,6 +48,7 @@
           macos.enable = true;
           network.enable = true;
           vim.enable = true;
+          experiments.enable = true;
         };
       };
 

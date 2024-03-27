@@ -115,7 +115,27 @@ lib.mkIf config.squirmy.vscode.enable {
       "editor.formatOnSave" = true;
     };
 
-    # annoyances
+    # 🧘 do not disturb
+    "editor.acceptSuggestionOnCommitCharacter" = false;
+    "editor.codeLens" = false;
+    "editor.copyWithSyntaxHighlighting" = false;
+    "editor.dragAndDrop" = false;
+    "editor.hover.delay" = 1200;
+    "editor.lightbulb.enabled" = "off";
+    "editor.minimap.enabled" = false;
+    "editor.parameterHints.enabled" = false;
+    "editor.quickSuggestions" = {
+      "other" = false;
+      "comments" = false;
+      "strings" = false;
+    };
+    "editor.suggestOnTriggerCharacters" = false;
+    "explorer.openEditors.visible" = 0;
+    "extensions.ignoreRecommendations" = true;
     "git.openRepositoryInParentFolders" = "never";
+    "keyboard.touchbar.enabled" = false;
+    "update.showReleaseNotes" = false;
+    "workbench.enableExperiments" = false;
+    "workbench.tips.enabled" = false;
   };
 }

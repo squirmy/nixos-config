@@ -43,7 +43,8 @@
           vscode.enable = true;
           zoom.enable = true;
           homebrew.enable = true;
-          onepassword.enable = true;
+          _1blocker.enable = true;
+          _1password.enable = true;
           slack.enable = true;
           macos.enable = true;
           network.enable = true;

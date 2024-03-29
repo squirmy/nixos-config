@@ -3,7 +3,7 @@
   config,
   ...
 }:
-lib.mkIf config.squirmy.onepassword.enable {
+lib.mkIf config.squirmy._1password.enable {
   # Prefer installing application from the Mac App Store
   # Sometimes when installing an application the app store gives an error:
   # > Redownload Unavailable with This Apple ID

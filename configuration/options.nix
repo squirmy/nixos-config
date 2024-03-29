@@ -18,7 +18,8 @@
     vscode.enable = lib.options.mkEnableOption "vscode";
     zoom.enable = lib.options.mkEnableOption "zoom";
     homebrew.enable = lib.options.mkEnableOption "homebrew";
-    onepassword.enable = lib.options.mkEnableOption "1password";
+    _1password.enable = lib.options.mkEnableOption "1password";
+    _1blocker.enable = lib.options.mkEnableOption "1blocker";
     slack.enable = lib.options.mkEnableOption "slack";
     macos.enable = lib.options.mkEnableOption "macos";
     network.enable = lib.options.mkEnableOption "network";

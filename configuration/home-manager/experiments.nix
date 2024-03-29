@@ -10,4 +10,10 @@ lib.mkIf config.squirmy.experiments.enable {
     podman
     lima
   ];
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = config.nix-machine.shells.zsh.enable;
+    options = ["--cmd" "cd"];
+  };
 }

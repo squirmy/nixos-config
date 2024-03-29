@@ -21,6 +21,7 @@
     _1password.enable = lib.options.mkEnableOption "1password";
     _1blocker.enable = lib.options.mkEnableOption "1blocker";
     darkroom.enable = lib.options.mkEnableOption "darkroom";
+    magnet.enable = lib.options.mkEnableOption "magnet";
     slack.enable = lib.options.mkEnableOption "slack";
     macos.enable = lib.options.mkEnableOption "macos";
     network.enable = lib.options.mkEnableOption "network";

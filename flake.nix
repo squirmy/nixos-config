@@ -45,6 +45,7 @@
           homebrew.enable = true;
           _1blocker.enable = true;
           _1password.enable = true;
+          darkroom.enable = true;
           slack.enable = true;
           macos.enable = true;
           network.enable = true;

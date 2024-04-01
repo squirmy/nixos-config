@@ -28,6 +28,7 @@
     vim.enable = lib.options.mkEnableOption "vim";
     shell.enable = lib.options.mkEnableOption "shell";
     experiments.enable = lib.options.mkEnableOption "experiments";
+    xcode.enable = lib.options.mkEnableOption "xcode";
   };
 in {
   options.squirmy = lib.mkOption {

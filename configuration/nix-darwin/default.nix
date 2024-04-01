@@ -8,5 +8,6 @@
     ./darkroom.nix
     ./magnet.nix
     ./slack.nix
+    ./xcode.nix
   ];
 }

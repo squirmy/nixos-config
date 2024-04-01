@@ -95,25 +95,6 @@ lib.mkIf config.squirmy.vscode.enable {
         };
       };
     };
-    "[nix]" = {
-      "editor.formatOnSave" = true;
-    };
-
-    # default formatters
-    "[json][jsonc]" = {
-      "editor.defaultFormatter" = "vscode.json-language-features";
-      "editor.formatOnSave" = true;
-    };
-
-    "[markdown]" = {
-      "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "editor.formatOnSave" = true;
-    };
-
-    "[toml]" = {
-      "editor.defaultFormatter" = "tamasfe.even-better-toml";
-      "editor.formatOnSave" = true;
-    };
 
     # 🧘 do not disturb
     "editor.acceptSuggestionOnCommitCharacter" = false;
@@ -131,7 +112,6 @@ lib.mkIf config.squirmy.vscode.enable {
     };
     "editor.suggestOnTriggerCharacters" = false;
     "explorer.openEditors.visible" = 0;
-    "extensions.ignoreRecommendations" = true;
     "git.openRepositoryInParentFolders" = "never";
     "keyboard.touchbar.enabled" = false;
     "update.showReleaseNotes" = false;

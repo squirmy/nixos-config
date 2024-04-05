@@ -1,11 +1,11 @@
 {
-    "recommendations": [
-        "jnoortheen.nix-ide",
-        "dbaeumer.vscode-eslint",
-        "tamasfe.even-better-toml",
-        "esbenp.prettier-vscode",
-        "timonwong.shellcheck",
-        "eamodio.gitlens",
-        "mkhl.direnv",
-    ]
+  "recommendations": [
+    "jnoortheen.nix-ide",
+    "dbaeumer.vscode-eslint",
+    "tamasfe.even-better-toml",
+    "esbenp.prettier-vscode",
+    "timonwong.shellcheck",
+    "eamodio.gitlens",
+    "mkhl.direnv"
+  ]
 }

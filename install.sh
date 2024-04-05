@@ -29,7 +29,7 @@
   function install_clt() {
     description="Command Line Tools"
 
-    if xcode-select --print-path &> /dev/null; then
+    if xcode-select --print-path &>/dev/null; then
       print_installed "$description"
     else
       print_installing "$description"
@@ -42,7 +42,7 @@
   function install_nixos() {
     description="NixOS"
 
-    if which nix &> /dev/null; then
+    if which nix &>/dev/null; then
       print_installed "$description"
     else
       print_installing "$description"
@@ -62,7 +62,7 @@
   function install_homebrew() {
     description="Homebrew"
 
-    if which brew &> /dev/null; then
+    if which brew &>/dev/null; then
       print_installed "$description"
     else
       print_installing "$description"

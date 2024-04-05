@@ -27,3 +27,4 @@ function set_hostname() {
 set_hostname
 
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
+nix develop --command bash -c "true"

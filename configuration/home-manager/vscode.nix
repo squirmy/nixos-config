@@ -102,7 +102,6 @@ lib.mkIf config.squirmy.vscode.enable {
     "editor.copyWithSyntaxHighlighting" = false;
     "editor.dragAndDrop" = false;
     "editor.hover.delay" = 1200;
-    "editor.lightbulb.enabled" = "off";
     "editor.minimap.enabled" = false;
     "editor.parameterHints.enabled" = false;
     "editor.quickSuggestions" = {

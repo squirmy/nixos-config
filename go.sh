@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 hostname="Adams-MBP"
 
 function set_hostname() {

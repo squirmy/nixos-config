@@ -47,7 +47,7 @@
     else
       print_installing "$description"
       # NixOS multi-user installation
-      bash -c "$(curl -fsSL https://nixos.org/nix/install)" --daemon --yes
+      bash -c "$(curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm)"
 
       # Get nix into the path
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then

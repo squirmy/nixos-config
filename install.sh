@@ -106,7 +106,7 @@
   function go() {
     (
       cd "$nixos_config_dir"
-      ./go.sh
+      ./go.sh --install-hook
     )
   }
 

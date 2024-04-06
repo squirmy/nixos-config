@@ -30,4 +30,6 @@ set_hostname
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
 
 # Trigger the devshell to install the pre-commit hooks.
-nix develop --command bash -c "true"
+if [ "${1:-}" == "--install-hook" ]; then
+  nix develop --command bash -c "true"
+fi

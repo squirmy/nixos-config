@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
-# download `darwin-rebuild` and execute it. Once this is complete `darwin-rebuild` will
-# be installed, but it's rather simple to just keep using the same command.
-
 hostname="Adams-MBP"
 
 function set_hostname() {
@@ -26,5 +22,10 @@ function set_hostname() {
 # be set again.
 set_hostname
 
+# On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
+# download `darwin-rebuild` and execute it. Once this is complete `darwin-rebuild` will
+# be installed, but it's rather simple to just keep using the same command.
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
+
+# Trigger the devshell to install the pre-commit hooks.
 nix develop --command bash -c "true"

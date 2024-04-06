@@ -16,35 +16,10 @@ lib.mkIf config.squirmy.vscode.enable {
     # https://github.com/kamadorueda/alejandra
     alejandra
 
-    # shfmt
-    # A shell parser, formatter, and interpreter with bash support; includes shfmt
-    # https://github.com/mvdan/sh
-    shfmt
-
-    # Prettier
-    # Opinionated Code Formatter
-    # https://github.com/prettier/prettier
-    nodePackages.prettier
-
-    # taplo
-    # A TOML toolkit written in Rust
-    # https://github.com/tamasfe/taplo
-    taplo
-
-    # treefmt
-    # one CLI to format your repo
-    # https://github.com/numtide/treefmt
-    treefmt
-
     # shellcheck
     # ShellCheck, a static analysis tool for shell scripts
     # https://github.com/koalaman/shellcheck
     shellcheck
-
-    # pre-commit
-    # A framework for managing and maintaining multi-language pre-commit hooks
-    # https://pre-commit.com
-    pre-commit
   ];
 
   # Remove color from pre-commit. It's hard to read.

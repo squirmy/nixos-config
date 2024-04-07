@@ -112,6 +112,7 @@ lib.mkIf config.squirmy.macos.enable {
     ${lib.concatStringsSep "\n" disableHotKeyCommands}
   '';
 
+  # credit: https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
   system.activationScripts.postUserActivation.text = ''
     # Following line should allow us to avoid a logout/login cycle
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u

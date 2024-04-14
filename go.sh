@@ -24,12 +24,17 @@ function set_hostname() {
 # be set again.
 set_hostname
 
+# Update flake inputs before applying the config
+if [ "${1:-}" == "--update" ]; then
+  nix flake update
+fi
+
 # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
 # download `darwin-rebuild` and execute it. Once this is complete `darwin-rebuild` will
 # be installed, but it's rather simple to just keep using the same command.
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
 
 # Trigger the devshell to install the pre-commit hooks.
-if [ "${1:-}" == "--install-hook" ]; then
+if [ "${1:-}" == "--install-hook" ] || [ "${1:-}" == "--update" ]; then
   nix develop --command bash -c "true"
 fi

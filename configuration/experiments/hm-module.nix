@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 lib.mkIf config.squirmy.experiments.enable {
@@ -9,6 +10,10 @@ lib.mkIf config.squirmy.experiments.enable {
   #   podman
   #   lima
   # ];
+
+  home.packages = [
+    pkgs.discord
+  ];
 
   programs.zoxide = {
     enable = true;

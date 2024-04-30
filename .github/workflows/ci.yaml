@@ -7,7 +7,7 @@ on:
 
 jobs:
   tests:
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
@@ -15,6 +15,4 @@ jobs:
       - name: Build the flake
         run: |
           nix flake check
-          # Github Action runners do not support M1 yet.
-          nix run nixpkgs#sd 'nixpkgs.hostPlatform = "aarch64-darwin"' 'nixpkgs.hostPlatform = "x86_64-darwin"' flake.nix
-          nix run nixpkgs#nixci
+          nix run nix-darwin --extra-experimental-features "nix-command flakes" -- build --flake .#Adams-MBP

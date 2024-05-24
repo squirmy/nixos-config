@@ -13,6 +13,7 @@ lib.mkIf config.squirmy.experiments.enable {
 
   home.packages = [
     pkgs.discord
+    pkgs.devenv
   ];
 
   programs.zoxide = {

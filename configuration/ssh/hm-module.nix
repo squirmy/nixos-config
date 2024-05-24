@@ -10,5 +10,6 @@ lib.mkIf config.squirmy.ssh.enable {
 
   home.packages = [
     pkgs.openssh
+    pkgs.openssl
   ];
 }

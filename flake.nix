@@ -17,6 +17,7 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
+    nh-darwin.url = "github:ToyVo/nh-darwin";
   };
 
   outputs = inputs:
@@ -67,7 +68,7 @@
           network.enable = true;
           vim.enable = true;
           experiments.enable = true;
-          xcode.enable = true;
+          xcode.enable = false;
         };
       };
 

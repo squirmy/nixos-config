@@ -19,6 +19,17 @@ function set_hostname() {
   fi
 }
 
+function switch() {
+  if which nh-darwin &>/dev/null; then
+    # Once the flake has been switched once, nh-darwin is available to use
+    nh-darwin os switch . --hostname "$hostname"
+  else
+    # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
+    # download `darwin-rebuild` and execute it.
+    nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
+  fi
+}
+
 # My hostname seemed to reset itself when setting up a fresh mac. Possibly
 # being set by company mdm software. So I check here to see if it needs to
 # be set again.
@@ -29,10 +40,7 @@ if [ "${1:-}" == "--update" ]; then
   nix flake update
 fi
 
-# On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
-# download `darwin-rebuild` and execute it. Once this is complete `darwin-rebuild` will
-# be installed, but it's rather simple to just keep using the same command.
-nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
+switch
 
 # Trigger the devshell to install the pre-commit hooks.
 if [ "${1:-}" == "--install-hook" ] || [ "${1:-}" == "--update" ]; then

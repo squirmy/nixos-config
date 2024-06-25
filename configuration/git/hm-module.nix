@@ -25,7 +25,9 @@ lib.mkIf config.squirmy.git.enable {
   # Why: Enhanced `git diff` with syntax highlighting.
   # Also used for `git add -p`
   programs.git.delta.enable = true;
-
+  programs.git.delta.options = {
+    syntax-theme = "ansi";
+  };
   # GitUI
   # Blazing 💥 fast terminal-ui for git written in rust 🦀
   # https://github.com/extrawurst/gitui

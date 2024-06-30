@@ -48,7 +48,6 @@
             userName = "Adam Woods";
             userEmail = "squirmy.dev@gmail.com";
           };
-          rider.enable = true;
           yubikey.enable = true;
           shell.enable = true;
           direnv.enable = true;

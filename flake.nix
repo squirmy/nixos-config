@@ -67,7 +67,6 @@
           network.enable = true;
           vim.enable = true;
           experiments.enable = true;
-          xcode.enable = false;
         };
       };
 

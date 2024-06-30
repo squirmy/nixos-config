@@ -111,6 +111,10 @@
     )
   }
 
+  function remove_non_managed_nix() {
+    sudo -i nix-env -e nix
+  }
+
   current_username=$(id -un)
   if [ "$current_username" != "$username" ]; then
     print "$error_level" "If you're $username. You've got the wrong username: ${current_username}"
@@ -125,5 +129,6 @@
   backup_etc_shells
   set_hostname
   go
+  remove_non_managed_nix
 
 } # End of wrapping

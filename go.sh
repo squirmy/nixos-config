@@ -20,13 +20,13 @@ function set_hostname() {
 }
 
 function switch() {
-  if which nh-darwin &>/dev/null; then
+  if which nh_darwin &>/dev/null; then
     # Once the flake has been switched once, nh-darwin is available to use
-    nh-darwin os switch . --hostname "$hostname"
+    nh_darwin os switch . --hostname "$hostname"
   else
     # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
     # download `darwin-rebuild` and execute it.
-    nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
+    nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
   fi
 }
 

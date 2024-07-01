@@ -1,7 +1,7 @@
 {inputs, ...}: {
   nixpkgs.overlays = [
     (_final: _prev: {
-      swift = inputs.nixpkgs-swift.legacyPackages.aarch64-darwin.swift;
+      dockutil = inputs.nixpkgs-dockutil.legacyPackages.aarch64-darwin.dockutil;
     })
   ];
 }

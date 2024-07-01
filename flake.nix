@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-swift.url = "github:NixOS/nixpkgs/3f316d2a50699a78afe5e77ca486ad553169061e";
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -42,31 +43,31 @@
         };
 
         squirmy = {
-          # fonts.enable = true;
-          # git = {
-          #   enable = true;
-          #   userName = "Adam Woods";
-          #   userEmail = "squirmy.dev@gmail.com";
-          # };
-          # yubikey.enable = true;
-          # shell.enable = true;
-          # direnv.enable = true;
-          # ssh.enable = true;
-          # starship.enable = true;
-          # kitty.enable = true;
-          # fzf.enable = true;
-          # vscode.enable = true;
-          # zoom.enable = true;
-          # homebrew.enable = true;
-          # _1blocker.enable = true;
-          # _1password.enable = true;
-          # darkroom.enable = true;
-          # magnet.enable = true;
-          # slack.enable = true;
-          # macos.enable = true;
-          # network.enable = true;
-          # vim.enable = true;
-          # experiments.enable = true;
+          fonts.enable = true;
+          git = {
+            enable = true;
+            userName = "Adam Woods";
+            userEmail = "squirmy.dev@gmail.com";
+          };
+          yubikey.enable = true;
+          shell.enable = true;
+          direnv.enable = true;
+          ssh.enable = true;
+          starship.enable = true;
+          kitty.enable = true;
+          fzf.enable = true;
+          vscode.enable = true;
+          zoom.enable = true;
+          homebrew.enable = true;
+          _1blocker.enable = true;
+          _1password.enable = true;
+          darkroom.enable = true;
+          magnet.enable = true;
+          slack.enable = true;
+          macos.enable = true;
+          network.enable = true;
+          vim.enable = true;
+          experiments.enable = true;
         };
       };
 

@@ -88,6 +88,17 @@ lib.mkIf config.squirmy.starship.enable {
       rust.symbol = " ";
       scala.symbol = " ";
       spack.symbol = "🅢 ";
+
+      elixir.disabled = true;
+      custom.elixir = {
+        format = "via [$symbol(v$output )]($style)";
+        command = "elixir --short-version 2>/dev/null || (elixir --version | grep '^Elixir' | awk '{print $2}')";
+        when = "test -f mix.exs";
+        style = "bold purple";
+        symbol = " ";
+      };
+
+      format = "$all\$\{custom.elixir\}$nix_shell$conda$meson$spack$memory_usage$aws$gcloud$openstack$azure$nats$direnv$env_var$crystal$custom$sudo$cmd_duration$line_break$jobs$battery$time$status$os$container$shell$character";
     };
   };
 }

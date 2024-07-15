@@ -93,7 +93,7 @@ lib.mkIf config.squirmy.starship.enable {
       custom.elixir = {
         format = "via [$symbol(v$output )]($style)";
         command = "elixir --short-version 2>/dev/null || (elixir --version | grep '^Elixir' | awk '{print $2}')";
-        when = "test -f mix.exs";
+        detect_files = ["mix.exs"];
         style = "bold purple";
         symbol = " ";
       };

@@ -21,12 +21,10 @@ lib.mkIf config.squirmy.experiments.enable {
     enableZshIntegration = config.nix-machine.shells.zsh.enable;
     extraConfig = ''
       local wezterm = require 'wezterm'
-      local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').main
 
-      local config = {}
+      local config = wezterm.config_builder()
 
-      config.colors = theme.colors()
-      config.window_frame = theme.window_frame()
+      config.color_scheme = 'Snazzy (Gogh)'
 
       config.font = wezterm.font('JetBrainsMono Nerd Font', { weight = 'Medium' })
       config.font_size = 13.0

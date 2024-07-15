@@ -53,7 +53,7 @@
           shell.enable = true;
           direnv.enable = true;
           ssh.enable = true;
-          starship.enable = true;
+          pure.enable = true;
           kitty.enable = true;
           fzf.enable = true;
           vscode.enable = true;

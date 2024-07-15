@@ -55,8 +55,10 @@ lib.mkIf config.squirmy.macos.enable {
       WebContinuousSpellCheckingEnabled = true;
       WebAutomaticSpellingCorrectionEnabled = false;
 
+      # Used for storing passkeys
+      AutoFillPasswords = true;
+
       # Disable AutoFill
-      AutoFillPasswords = false;
       AutoFillFromAddressBook = false;
       AutoFillCreditCardData = false;
       AutoFillMiscellaneousForms = false;

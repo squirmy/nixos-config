@@ -54,7 +54,7 @@
           direnv.enable = true;
           ssh.enable = true;
           pure.enable = true;
-          kitty.enable = true;
+          wezterm.enable = true;
           fzf.enable = true;
           vscode.enable = true;
           zoom.enable = true;

@@ -14,6 +14,7 @@ lib.mkIf config.squirmy.experiments.enable {
   home.packages = [
     pkgs.discord
     pkgs.devenv
+    pkgs.alt-tab-macos
   ];
 
   programs.zoxide = {

@@ -2,19 +2,26 @@
 
 A [NixOS Flake](https://nixos.wiki/wiki/Flakes) for my macOS development environment.
 
-I have tried to keep this as simple as possible. I only have one machine and the simpler this configuration is the more likely I am to be able to maintain and keep this up to date.
+This flake uses [nix-machine](https://github.com/squirmy/nix-machine) - a convenience flake for configuring your machine using [nix-darwin](https://github.com/LnL7/nix-darwin) and [home-manager](https://github.com/nix-community/home-manager).
 
-There are many comments throughout the files helping to explain why lines of configuration exist. I'm going to need this later when I forget just exactly why I put that line there.
+All configuration for my machine lives within [the configuration directory](./configuration/) and is disabled by default.
 
-My introduction to NixOS was through the following resources:
+Configuration that I have deemed to be a good default for nix, nix-darwin, and home manager has been moved into [nix-machine's configuration directory](https://github.com/squirmy/nix-machine/tree/main/configuration).
 
-- https://xyno.space/post/nix-darwin-introduction
-- https://github.com/malob/nixpkgs
-- https://github.com/srid/nixos-config
+The general contents of this flake are:
 
-Combined, they proved a handy resource for working out where I was going wrong, and how I might improve this setup. They also introduced me to some new tools which I'll be trialling instead of my previous setup.
+- MacOS defaults and network configuration
+- Terminal emulator, prompt and shell setup
+- Git configuration
+- OpenSSH with Yubikey support
+- VSCode configuration with unmanaged extensions
+- Chat and video conferencing apps
+- Various apps from the App Store via Homebrew
+- Pre-commit checks: secrets, shellcheck and formatting
 
-One thing is for sure, creating your own flake is personal, as each of the above configurations were differently structured. This configuration is no different.
+### Scripts
+
+The [`install.sh`](./install.sh) and [`go.sh`](./go.sh) scripts are the entry points into this repository. The install script is used on a fresh macOS installation to bootstrap the development environment. The go script is used to apply new configuration, or update the flake inputs.
 
 ## Getting Started
 

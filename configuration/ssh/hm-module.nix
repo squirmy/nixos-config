@@ -5,7 +5,6 @@
   ...
 }:
 lib.mkIf config.squirmy.ssh.enable {
-  # Enable ssh. Not sure how much to setup with this just yet.
   programs.ssh.enable = true;
   programs.ssh.package = pkgs.openssh;
   programs.ssh.addKeysToAgent = "yes";
@@ -19,4 +18,9 @@ lib.mkIf config.squirmy.ssh.enable {
     pkgs.openssh
     pkgs.openssl
   ];
+
+  # Set SSH_AUTH_SOCK to the same value the ssh-agent is configured with
+  home.sessionVariables = {
+    SSH_AUTH_SOCK = config.squirmy.ssh.authSock;
+  };
 }

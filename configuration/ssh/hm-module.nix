@@ -9,7 +9,9 @@ lib.mkIf config.squirmy.ssh.enable {
   programs.ssh.package = pkgs.openssh;
   programs.ssh.matchBlocks = {
     "github.com" = {
-      identityFile = "/users/${config.nix-machine.username}/.ssh/id_ed25519_sk_rk_no-pin-required";
+      identityFile = [
+        "/users/${config.nix-machine.username}/.ssh/id_ed25519_sk_rk_${config.nix-machine.username}"
+      ];
     };
   };
 

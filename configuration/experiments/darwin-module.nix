@@ -8,4 +8,8 @@
   homebrew.masApps = {
     "Citrix Secure Access" = 1338991513;
   };
+
+  homebrew.casks = [
+    "firefox"
+  ];
 }

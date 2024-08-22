@@ -11,9 +11,6 @@ lib.mkIf config.squirmy.experiments.enable {
     pkgs.alt-tab-macos
     # todo; switch when this becomes available (https://github.com/NixOS/nixpkgs/pull/313973)
     # pkgs.teams-for-linux
-
-    pkgs.docker
-    pkgs.colima
   ];
 
   programs.zoxide = {

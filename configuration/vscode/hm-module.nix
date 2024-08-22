@@ -40,6 +40,7 @@ lib.mkIf config.squirmy.vscode.enable {
     "workbench.tree.indent" = 10;
 
     # Font
+    "editor.fontSize" = 15;
     "editor.fontFamily" = "Fira Code";
     "editor.fontLigatures" = true;
     "editor.fontWeight" = "450"; # Retina
@@ -80,5 +81,24 @@ lib.mkIf config.squirmy.vscode.enable {
     "update.showReleaseNotes" = false;
     "workbench.enableExperiments" = false;
     "workbench.tips.enabled" = false;
+
+    # minimal
+
+    "zenMode.centerLayout" = false;
+    "zenMode.fullScreen" = false;
+    "zenMode.hideLineNumbers" = false;
+    "zenMode.hideStatusBar" = false;
+    "zenMode.silentNotifications" = false;
+    "zenMode.showTabs" = "none";
+
+    "editor.renderLineHighlight" = "none";
+    "editor.foldingHighlight" = false;
+    "editor.inlayHints.enabled" = "off";
+    "editor.guides.indentation" = false;
+    "editor.bracketPairColorization.enabled" = false;
+
+    "window.commandCenter" = false;
+    "workbench.activityBar.location" = "hidden";
+    "workbench.layoutControl.enabled" = false;
   };
 }

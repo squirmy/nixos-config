@@ -20,6 +20,7 @@
 
     pre-commit = {
       check.enable = true;
+
       settings.hooks = {
         treefmt.enable = true;
         shellcheck.enable = true;

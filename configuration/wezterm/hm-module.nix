@@ -20,6 +20,8 @@ lib.mkIf config.squirmy.wezterm.enable {
 
       config.enable_tab_bar = false
 
+      config.front_end = "WebGpu"
+
       return config
     '';
   };

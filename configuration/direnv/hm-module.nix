@@ -14,6 +14,6 @@ lib.mkIf config.squirmy.direnv.enable {
     # nix-direnv
     # A fast, persistent use_nix/use_flake implementation for direnv
     # https://github.com/nix-community/nix-direnv
-    nix-direnv.enable = true;
+    # nix-direnv.enable = true;
   };
 }

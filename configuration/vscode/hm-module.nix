@@ -100,5 +100,7 @@ lib.mkIf config.squirmy.vscode.enable {
     "window.commandCenter" = false;
     "workbench.activityBar.location" = "hidden";
     "workbench.layoutControl.enabled" = false;
+
+    "editor.stickyScroll.enabled" = false;
   };
 }

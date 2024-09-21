@@ -18,8 +18,4 @@ lib.mkIf config.squirmy.experiments.enable {
     enableZshIntegration = config.nix-machine.shells.zsh.enable;
     options = ["--cmd" "cd"];
   };
-
-  programs.tmux = {
-    enable = true;
-  };
 }

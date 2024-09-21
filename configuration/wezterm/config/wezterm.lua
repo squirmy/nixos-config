@@ -27,7 +27,7 @@ config.inactive_pane_hsb = {
 }
 
 -- Keys
-config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
+--config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   -- Send C-a when pressing C-a twice
   { key = 'a', mods = 'LEADER|CTRL', action = act.SendKey({ key = 'a', mods = 'CTRL' }) },
@@ -117,6 +117,7 @@ config.key_tables = {
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = false
+config.enable_tab_bar = false
 wezterm.on('update-status', function(window, pane)
   -- Workspace name
   local stat = window:active_workspace()

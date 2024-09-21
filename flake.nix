@@ -67,6 +67,7 @@
           macos.enable = true;
           network.enable = true;
           vim.enable = true;
+          tmux.enable = true;
           experiments.enable = true;
         };
       };

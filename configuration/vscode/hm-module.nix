@@ -20,6 +20,8 @@ lib.mkIf config.squirmy.vscode.enable {
     # ShellCheck, a static analysis tool for shell scripts
     # https://github.com/koalaman/shellcheck
     shellcheck
+
+    dprint
   ];
 
   # Remove color from pre-commit. It's hard to read.

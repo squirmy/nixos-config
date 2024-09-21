@@ -38,6 +38,7 @@ set_hostname
 # Update flake inputs before applying the config
 if [ "${1:-}" == "--update" ]; then
   nix flake update
+  dprint config update
 fi
 
 switch

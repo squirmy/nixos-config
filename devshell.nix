@@ -13,7 +13,9 @@
         alejandra.enable = true;
         deadnix.enable = true;
         shfmt.enable = true;
-        prettier.enable = true;
+        dprint = {
+          enable = true;
+        };
         taplo.enable = true;
         stylua.enable = true;
       };

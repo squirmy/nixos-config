@@ -50,12 +50,8 @@
             userEmail = "squirmy.dev@gmail.com";
           };
           yubikey.enable = true;
-          shell.enable = true;
-          direnv.enable = true;
           ssh.enable = true;
-          pure.enable = true;
-          wezterm.enable = true;
-          fzf.enable = true;
+          terminal.enable = true;
           vscode.enable = true;
           zoom.enable = true;
           homebrew.enable = true;
@@ -66,8 +62,6 @@
           slack.enable = true;
           macos.enable = true;
           network.enable = true;
-          vim.enable = true;
-          tmux.enable = true;
           experiments.enable = true;
         };
       };

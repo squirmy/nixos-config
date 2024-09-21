@@ -1,6 +1,7 @@
 {
   "prettier.enable": false,
   "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide",
     "editor.formatOnSave": true
   },
   "[json][jsonc]": {

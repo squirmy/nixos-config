@@ -15,6 +15,7 @@
         shfmt.enable = true;
         prettier.enable = true;
         taplo.enable = true;
+        stylua.enable = true;
       };
     };
 
@@ -31,6 +32,7 @@
           language = "system";
           pass_filenames = false;
         };
+        lua-ls.enable = true;
       };
     };
 

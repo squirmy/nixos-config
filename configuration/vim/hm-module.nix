@@ -17,4 +17,6 @@ lib.mkIf config.squirmy.vim.enable {
   programs.neovim.vimdiffAlias = true;
 
   programs.ripgrep.enable = true;
+
+  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/users/${config.nix-machine.username}/.config/nixos-config/configuration/vim/config";
 }

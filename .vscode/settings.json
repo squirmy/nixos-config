@@ -8,12 +8,20 @@
     "editor.defaultFormatter": "dprint.dprint",
     "editor.formatOnSave": true
   },
+  "[yaml][yml]": {
+    "editor.defaultFormatter": "dprint.dprint",
+    "editor.formatOnSave": true
+  },
   "[toml]": {
     "editor.defaultFormatter": "dprint.dprint",
     "editor.formatOnSave": true
   },
   "[markdown]": {
     "editor.defaultFormatter": "dprint.dprint",
+    "editor.formatOnSave": true
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
     "editor.formatOnSave": true
   }
 }

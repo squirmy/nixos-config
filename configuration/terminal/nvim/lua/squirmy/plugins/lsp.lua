@@ -22,7 +22,7 @@ return {
         vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
         vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
-      end
+      end,
     })
 
     local cmp_lsp = require('cmp_nvim_lsp')
@@ -39,16 +39,16 @@ return {
             },
             completion = {
               callSnippet = 'Replace',
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     }
 
     require('fidget').setup({})
     require('neodev').setup({})
     require('mason').setup()
-    require('mason-lspconfig').setup {
+    require('mason-lspconfig').setup({
       ensure_installed = { 'lua_ls' },
       handlers = {
         function(server_name)
@@ -56,8 +56,8 @@ return {
           server.capabilities = vim.tbl_deep_extend('force', capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
-      }
-    }
+      },
+    })
 
     vim.diagnostic.config({
       float = {
@@ -69,5 +69,5 @@ return {
         prefix = '',
       },
     })
-  end
+  end,
 }

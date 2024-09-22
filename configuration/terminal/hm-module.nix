@@ -11,11 +11,15 @@ in
     # Don't use home manager's "programs" for some packages so that we can
     # specify the configuration explicitly.
     home.packages = [
+      pkgs.gitmux
+      pkgs.gum
       pkgs.nodejs_22
       pkgs.pure-prompt
+      pkgs.sesh
       pkgs.tmux
       pkgs.tree-sitter
       wezterm
+      pkgs.yq-go
     ];
 
     programs.zsh.initExtra = lib.mkIf config.nix-machine.shells.zsh.enable ''

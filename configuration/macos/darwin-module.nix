@@ -26,9 +26,12 @@ lib.mkIf config.squirmy.macos.enable {
     NSAutomaticPeriodSubstitutionEnabled = false;
     NSAutomaticQuoteSubstitutionEnabled = false;
     NSAutomaticSpellingCorrectionEnabled = false;
+    _HIHideMenuBar = true;
   };
 
   system.defaults.dock.appswitcher-all-displays = true;
+  system.defaults.dock.autohide = true;
+  system.defaults.universalaccess.reduceMotion = true;
 
   system.defaults.CustomUserPreferences = {
     NSGlobalDomain.WebKitDeveloperExtras = true;

@@ -22,6 +22,11 @@ return {
         vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
         vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
+
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          buffer = event.buf,
+          callback = function() vim.lsp.buf.format({ async = false, id = event.data.client_id }) end,
+        })
       end,
     })
 
@@ -49,7 +54,7 @@ return {
     require('neodev').setup({})
     require('mason').setup()
     require('mason-lspconfig').setup({
-      ensure_installed = { 'lua_ls' },
+      ensure_installed = { 'lua_ls', 'gopls' },
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}

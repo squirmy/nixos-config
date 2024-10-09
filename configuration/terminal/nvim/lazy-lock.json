@@ -13,8 +13,8 @@
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
   "nvim-cmp": { "branch": "main", "commit": "ae644feb7b67bf1ce4260c231d1d4300b19c6f30" },
-  "nvim-lspconfig": { "branch": "master", "commit": "dd329912c8d446240584a2dbcd3802af3a19105a" },
-  "nvim-treesitter": { "branch": "master", "commit": "6511cd984ab4b21e28f83af488f38dc89c3b0586" },
+  "nvim-lspconfig": { "branch": "master", "commit": "a9bc587e9ae0cbcb3e90a2e9342f86b3b78c4408" },
+  "nvim-treesitter": { "branch": "master", "commit": "679883ad31f1752cac92a4ca182cee8b2751d4f1" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "rose-pine": { "branch": "main", "commit": "8b1fd252255a7f2c41b4192a787ab62660b29f72" },
   "vim-tmux-navigator": { "branch": "master", "commit": "a9b52e7d36114d40350099f254b5f299a35df978" }

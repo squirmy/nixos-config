@@ -40,6 +40,7 @@
           homeDirectory = "/Users/squirmy";
           nixpkgs.hostPlatform = "aarch64-darwin";
           shells.zsh.enable = true;
+          trampoline.enable = false;
         };
 
         squirmy = {

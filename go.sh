@@ -35,15 +35,20 @@ function switch() {
 # be set again.
 set_hostname
 
-# Update flake inputs before applying the config
 if [ "${1:-}" == "--update" ]; then
+  # Update flake inputs before applying the config
   nix flake update
+
+  # Update non-nix managed dependencies
   dprint config update
 fi
 
 switch
 
-# Trigger the devshell to install the pre-commit hooks.
 if [ "${1:-}" == "--install-hook" ] || [ "${1:-}" == "--update" ]; then
+  # Ensure nvim plugins are installed and up to date
+  nvim --headless "+Lazy! sync" +qa
+
+  # Trigger the devshell to install the pre-commit hooks.
   nix develop --command bash -c "true"
 fi

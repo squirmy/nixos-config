@@ -20,13 +20,15 @@ function set_hostname() {
 }
 
 function switch() {
-  if which nh_darwin &>/dev/null; then
-    # Once the flake has been switched once, nh-darwin is available to use
-    nh_darwin os switch . --hostname "$hostname"
+  if which nh &>/dev/null; then
+    # Once the flake has been switched once, nh is available to use
+    nh os switch . --hostname "$hostname" -- --accept-flake-config
   else
     # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
     # download `darwin-rebuild` and execute it.
-    nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#"${hostname}"
+    nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch \
+      --flake .#"${hostname}" \
+      --option accept-flake-config true
   fi
 }
 
@@ -37,7 +39,7 @@ set_hostname
 
 if [ "${1:-}" == "--update" ]; then
   # Update flake inputs before applying the config
-  nix flake update
+  nix flake update --accept-flake-config
 
   # Update non-nix managed dependencies
   dprint config update
@@ -50,5 +52,5 @@ if [ "${1:-}" == "--install-hook" ] || [ "${1:-}" == "--update" ]; then
   nvim --headless "+Lazy! sync" +qa
 
   # Trigger the devshell to install the pre-commit hooks.
-  nix develop --command bash -c "true"
+  nix develop --accept-flake-config --command bash -c "true"
 fi

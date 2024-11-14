@@ -58,7 +58,7 @@ Steps:
 4. Run the install script
 
 ```bash
-bash <(curl -L 'https://raw.githubusercontent.com/squirmy/nixos-config/main/install.sh')
+NIXOS_CONFIG_HOSTNAME=Squirmy-MBP bash <(curl -L 'https://raw.githubusercontent.com/squirmy/nixos-config/main/install.sh')
 ```
 
 ## I'm Not Squirmy

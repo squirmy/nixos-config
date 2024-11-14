@@ -5,7 +5,6 @@
   set -euo pipefail
 
   username="squirmy"
-  hostname="Adams-MBP"
   nixos_config_dir="$HOME/.config/nixos-config"
   nixos_config_repo_ssh="git@github.com:$username/nixos-config.git"
   nixos_config_repo_http="https://github.com/$username/nixos-config"
@@ -93,15 +92,13 @@
     fi
   }
 
-  function set_hostname() {
-    current_hostname=$(hostname -s)
-    if [ "$current_hostname" != "$hostname" ]; then
-      print "$info_level" "Setting hostname to $hostname"
-      sudo scutil --set ComputerName "$hostname"
-      sudo scutil --set LocalHostName "$hostname"
-    else
-      print "$success_level" "Hostname already set to $hostname, skipping..."
+  function set_config() {
+    if [ -z "${NIXOS_CONFIG_HOSTNAME+x}" ]; then
+      echo "Hostname not set. Use: NIXOS_CONFIG_HOSTNAME=<hostname> install.sh"
+      exit 1
     fi
+
+    echo "NIXOS_CONFIG_HOSTNAME=\"$NIXOS_CONFIG_HOSTNAME\"" >"$nixos_config_dir/.env"
   }
 
   function go() {
@@ -127,7 +124,7 @@
   install_homebrew
   clone_nixos_config
   backup_etc_shells
-  set_hostname
+  set_config
   go
   remove_non_managed_nix
 

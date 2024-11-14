@@ -821,22 +821,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-dockutil": {
-      "locked": {
-        "lastModified": 1712473363,
-        "narHash": "sha256-TIScFAVdI2yuybMxxNjC4YZ/j++c64wwuKbpnZnGiyU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e89cf1c932006531f454de7d652163a9a5c86668",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e89cf1c932006531f454de7d652163a9a5c86668",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1730504152,
@@ -1111,7 +1095,6 @@
         "nix-darwin": "nix-darwin",
         "nix-machine": "nix-machine",
         "nixpkgs": "nixpkgs_8",
-        "nixpkgs-dockutil": "nixpkgs-dockutil",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
         "treefmt-nix": "treefmt-nix"
       }

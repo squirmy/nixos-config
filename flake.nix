@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-dockutil.url = "github:NixOS/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -55,6 +54,38 @@
           terminal.enable = true;
           vscode.enable = true;
           zoom.enable = true;
+          homebrew.enable = true;
+          _1blocker.enable = true;
+          _1password.enable = true;
+          darkroom.enable = true;
+          slack.enable = true;
+          macos.enable = true;
+          network.enable = true;
+          experiments.enable = true;
+          ninetofive.enable = true;
+        };
+      };
+
+      nix-machine.macos."Squirmy-MBP" = {
+        nix-machine = {
+          username = "squirmy";
+          homeDirectory = "/Users/squirmy";
+          nixpkgs.hostPlatform = "aarch64-darwin";
+          shells.zsh.enable = true;
+          trampoline.enable = false;
+        };
+
+        squirmy = {
+          fonts.enable = true;
+          git = {
+            enable = true;
+            userName = "Adam Woods";
+            userEmail = "squirmy.dev@gmail.com";
+          };
+          yubikey.enable = true;
+          ssh.enable = true;
+          terminal.enable = true;
+          vscode.enable = true;
           homebrew.enable = true;
           _1blocker.enable = true;
           _1password.enable = true;

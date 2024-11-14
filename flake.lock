@@ -744,11 +744,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726186749,
-        "narHash": "sha256-zj9/RaJ/+LHHQVhwg5IdjZCONiTUs1uwvY6WMHaCOmk=",
+        "lastModified": 1731586847,
+        "narHash": "sha256-Ht48Ox328X0H0gK6XvJ53ARvrVngpK9W/9Yi40FxIy4=",
         "owner": "squirmy",
         "repo": "nix-machine",
-        "rev": "b0af24e6b00e8fbfdd6118c41fefb43804f46343",
+        "rev": "74d2f462e6fdfa9bebeec3aee4041cb37a5806ff",
         "type": "github"
       },
       "original": {

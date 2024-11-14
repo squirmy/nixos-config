@@ -12,6 +12,8 @@ function read_config() {
     echo "Hostname not set. Set NIXOS_CONFIG_HOSTNAME in .env"
     exit 1
   fi
+
+  export NIX_CONFIG="accept-flake-config = true"
 }
 
 function set_hostname() {
@@ -32,13 +34,12 @@ function set_hostname() {
 function switch() {
   if which nh &>/dev/null; then
     # Once the flake has been switched once, nh is available to use
-    nh os switch . --hostname "$NIXOS_CONFIG_HOSTNAME" -- --accept-flake-config
+    nh os switch . --hostname "$NIXOS_CONFIG_HOSTNAME"
   else
     # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
     # download `darwin-rebuild` and execute it.
     nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch \
-      --flake .#"${NIXOS_CONFIG_HOSTNAME}" \
-      --option accept-flake-config true
+      --flake .#"${NIXOS_CONFIG_HOSTNAME}"
   fi
 }
 
@@ -50,7 +51,7 @@ set_hostname
 
 if [ "${1:-}" == "--update" ]; then
   # Update flake inputs before applying the config
-  nix flake update --accept-flake-config
+  nix flake update
 
   # Update non-nix managed dependencies
   dprint config update
@@ -63,5 +64,5 @@ if [ "${1:-}" == "--install-hook" ] || [ "${1:-}" == "--update" ]; then
   nvim --headless "+Lazy! sync" +qa
 
   # Trigger the devshell to install the pre-commit hooks.
-  nix develop --accept-flake-config --command bash -c "true"
+  nix develop --command bash -c "true"
 fi

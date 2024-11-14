@@ -46,7 +46,10 @@
     else
       print_installing "$description"
       # NixOS multi-user installation
-      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
+      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix |
+        sh -s -- install --no-confirm \
+          --extra-conf 'extra-trusted-substituters = https://nix-community.cachix.org https://toyvo.cachix.org' \
+          --extra-conf 'extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= toyvo.cachix.org-1:s++CG1te6YaS9mjICre0Ybbya2o/S9fZIyDNGiD4UXs='
 
       # Get nix into the path
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then

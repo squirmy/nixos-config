@@ -61,7 +61,8 @@ switch
 
 if [ "${1:-}" == "--install-hook" ] || [ "${1:-}" == "--update" ]; then
   # Ensure nvim plugins are installed and up to date
-  nvim --headless "+Lazy! sync" +qa
+  # Running it in a new shell ensures nvim is in the path after installation
+  zsh -c 'nvim --headless "+Lazy! sync" +qa'
 
   # Trigger the devshell to install the pre-commit hooks.
   nix develop --command bash -c "true"

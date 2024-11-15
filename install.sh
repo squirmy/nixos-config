@@ -80,21 +80,6 @@
     fi
   }
 
-  function backup_etc_shells() {
-    etc_shells="/etc/shells"
-    etc_shells_backup="${etc_shells}.before-nix-darwin"
-    if [ -f $etc_shells ]; then
-      if [ -f $etc_shells_backup ]; then
-        print "$success_level" "Backup file $etc_shells_backup already exists, skipping..."
-      else
-        print "$info_level" "Backing up $etc_shells to $etc_shells_backup..."
-        sudo mv /etc/shells /etc/shells.before-nix-darwin
-      fi
-    else
-      print "$success_level" "$etc_shells already backed up, skipping..."
-    fi
-  }
-
   function set_config() {
     if [ -z "${NIXOS_CONFIG_HOSTNAME+x}" ]; then
       echo "Hostname not set. Use: NIXOS_CONFIG_HOSTNAME=<hostname> install.sh"
@@ -126,7 +111,6 @@
   install_nixos
   install_homebrew
   clone_nixos_config
-  backup_etc_shells
   set_config
   go
   remove_non_managed_nix

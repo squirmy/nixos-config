@@ -22,6 +22,6 @@ lib.mkIf config.squirmy.experiments.enable {
   # in install.sh. It needs to be updated if I ever change it,
   # or the nix installer changes it.
   environment.etc."nix/nix.conf".knownSha256Hashes = [
-    "sha256-6uY2sJkjOU7R5NwwF5hXvrcgYLyybA8QwsaneHuvfcE="
+    "eae636b09923394ed1e4dc30179857beb72060bcb26c0f10c2c6a7787baf7dc1"
   ];
 }

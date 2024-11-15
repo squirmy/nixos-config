@@ -92,12 +92,8 @@
   function go() {
     (
       cd "$nixos_config_dir"
-      ./go.sh --install-hook
+      bash -c "./go.sh --install-hook"
     )
-  }
-
-  function remove_non_managed_nix() {
-    sudo -i nix-env -e nix
   }
 
   current_username=$(id -un)
@@ -113,6 +109,5 @@
   clone_nixos_config
   set_config
   go
-  remove_non_managed_nix
 
 } # End of wrapping

@@ -32,15 +32,10 @@ function set_hostname() {
 }
 
 function switch() {
-  if which nh &>/dev/null; then
-    # Once the flake has been switched once, nh is available to use
-    nh os switch . --hostname "$NIXOS_CONFIG_HOSTNAME"
-  else
-    # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
-    # download `darwin-rebuild` and execute it.
-    nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch \
-      --flake .#"${NIXOS_CONFIG_HOSTNAME}"
-  fi
+  # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
+  # download `darwin-rebuild` and execute it.
+  nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch \
+    --flake .#"${NIXOS_CONFIG_HOSTNAME}"
 }
 
 # My hostname seemed to reset itself when setting up a fresh mac. Possibly

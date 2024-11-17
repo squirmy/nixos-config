@@ -1,6 +1,8 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # Back to unstable after: https://github.com/LnL7/nix-darwin/pull/1179
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/8809585e6937d0b07fc066792c8c9abf9c3fe5c4";
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -17,7 +19,6 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
-    nh-darwin.url = "github:ToyVo/nh-darwin";
   };
 
   outputs = inputs:
@@ -105,7 +106,6 @@
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
-      "https://toyvo.cachix.org"
     ];
   };
 }

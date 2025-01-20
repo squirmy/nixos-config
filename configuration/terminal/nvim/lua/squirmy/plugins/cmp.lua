@@ -12,9 +12,7 @@ return {
         --    https://github.com/rafamadriz/friendly-snippets
         {
           'rafamadriz/friendly-snippets',
-          config = function()
-            require('luasnip.loaders.from_vscode').lazy_load()
-          end,
+          config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
         },
       },
     },
@@ -32,9 +30,7 @@ return {
 
     cmp.setup({
       snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
+        expand = function(args) luasnip.lsp_expand(args.body) end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
 
@@ -67,14 +63,10 @@ return {
         -- <c-l> will move you to the right of each of the expansion locations.
         -- <c-h> is similar, except moving you backwards.
         ['<C-l>'] = cmp.mapping(function()
-          if luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          end
+          if luasnip.expand_or_locally_jumpable() then luasnip.expand_or_jump() end
         end, { 'i', 's' }),
         ['<C-h>'] = cmp.mapping(function()
-          if luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          end
+          if luasnip.locally_jumpable(-1) then luasnip.jump(-1) end
         end, { 'i', 's' }),
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:

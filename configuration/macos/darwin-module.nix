@@ -5,7 +5,7 @@
 }:
 lib.mkIf config.squirmy.macos.enable {
   # Allow using TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Configure system defaults:
   # 1. Dark mode

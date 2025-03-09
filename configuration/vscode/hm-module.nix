@@ -28,11 +28,11 @@ lib.mkIf config.squirmy.vscode.enable {
   home.sessionVariables = {PRE_COMMIT_COLOR = "never";};
 
   programs.vscode.enable = true;
-  programs.vscode.enableUpdateCheck = false;
-  programs.vscode.enableExtensionUpdateCheck = true;
+  programs.vscode.profiles.default.enableUpdateCheck = false;
+  programs.vscode.profiles.default.enableExtensionUpdateCheck = true;
   programs.vscode.mutableExtensionsDir = true;
 
-  programs.vscode.userSettings = {
+  programs.vscode.profiles.default.userSettings = {
     # Visual Tweaks
     "editor.accessibilitySupport" = "off";
     "editor.cursorSmoothCaretAnimation" = "on";

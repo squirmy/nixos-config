@@ -15,4 +15,7 @@ lib.mkIf config.squirmy.experiments.enable {
   environment.etc."nix/nix.conf".knownSha256Hashes = [
     "eae636b09923394ed1e4dc30179857beb72060bcb26c0f10c2c6a7787baf7dc1"
   ];
+
+  # For now, until I sort out the nix build group
+  ids.gids.nixbld = 350;
 }

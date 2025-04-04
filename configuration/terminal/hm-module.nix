@@ -23,11 +23,15 @@ in
     ];
 
     programs.zsh.initExtra = lib.mkIf config.nix-machine.shells.zsh.enable ''
+      # emacs key bindings
+      bindkey -e
+
       # wezterm
       source "${wezterm}/etc/profile.d/wezterm.sh"
 
       # pure-prompt
       fpath+=(${pkgs.pure-prompt})
+      prompt off
       autoload -U promptinit; promptinit
       PURE_GIT_PULL=0
       prompt pure

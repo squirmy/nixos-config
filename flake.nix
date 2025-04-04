@@ -5,6 +5,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     nix-machine.url = "github:squirmy/nix-machine";
     nix-machine.inputs.nixpkgs.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -93,6 +95,19 @@
           macos.enable = true;
           network.enable = true;
           experiments.enable = true;
+        };
+      };
+
+      nix-machine.linux."Squirmy-WSL2" = {
+        nix-machine = {
+          username = "nixos";
+          homeDirectory = "/home/nixos";
+          nixpkgs.hostPlatform = "x86_64-linux";
+          shells.zsh.enable = true;
+        };
+
+        squirmy = {
+          wsl = true;
         };
       };
 

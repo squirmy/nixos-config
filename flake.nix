@@ -98,7 +98,7 @@
         };
       };
 
-      nix-machine.linux."Squirmy-WSL2" = {
+      nix-machine.linux."Squirmy-WSL" = {
         nix-machine = {
           username = "nixos";
           homeDirectory = "/home/nixos";
@@ -113,6 +113,7 @@
             userName = "Adam Woods";
             userEmail = "squirmy.dev@gmail.com";
           };
+          terminal.enable = true;
         };
       };
 

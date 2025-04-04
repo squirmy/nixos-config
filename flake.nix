@@ -107,7 +107,7 @@
         };
 
         squirmy = {
-          wsl = true;
+          wsl.enable = true;
         };
       };
 

@@ -75,7 +75,7 @@ in
     home.file.".config/tmux".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/tmux";
     home.file.".config/wezterm".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/wezterm";
     home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/nvim";
-    home.file.".config/hammerspoon".source = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (config.lib.file.mkOutOfStoreSymlink "${configDir}/hammerspoon");
+    home.file.".config/hammerspoon".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/hammerspoon";
 
     # Colorize ls on macos
     home.sessionVariables = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {CLICOLOR = "1";};

@@ -108,6 +108,11 @@
 
         squirmy = {
           wsl.enable = true;
+          git = {
+            enable = true;
+            userName = "Adam Woods";
+            userEmail = "squirmy.dev@gmail.com";
+          };
         };
       };
 

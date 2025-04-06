@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  configDir = "/users/${config.nix-machine.username}/.config/nixos-config/configuration/terminal";
+  configDir = "${config.nix-machine.homeDirectory}/.config/nixos-config/configuration/terminal";
   wezterm = pkgs.wezterm;
 in
   lib.mkIf config.squirmy.terminal.enable {

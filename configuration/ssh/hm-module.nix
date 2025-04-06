@@ -10,7 +10,7 @@ lib.mkIf config.squirmy.ssh.enable {
   programs.ssh.matchBlocks = {
     "github.com" = {
       identityFile = [
-        "/users/${config.nix-machine.username}/.ssh/squirmy:SHA256:z0_8MioTATFoqKQPUSlyuhjKAVTAs5sbyI42ERuApVc"
+        "${config.nix-machine.homeDirectory}/.ssh/squirmy:SHA256:z0_8MioTATFoqKQPUSlyuhjKAVTAs5sbyI42ERuApVc"
       ];
     };
   };

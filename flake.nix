@@ -113,7 +113,9 @@
             userName = "Adam Woods";
             userEmail = "squirmy.dev@gmail.com";
           };
+          ssh.enable = true;
           terminal.enable = true;
+          yubikey.enable = true;
         };
       };
 

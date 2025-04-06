@@ -7,6 +7,11 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
+-- Start wezterm up directly in wsl
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.default_domain = 'WSL:NixOS'
+end
+
 -- Required until this issue is fixed: https://github.com/wez/wezterm/issues/5990
 config.front_end = 'WebGpu'
 

@@ -11,6 +11,10 @@ lib.mkIf config.squirmy.wsl.enable {
 
   environment.systemPackages = [
     pkgs.libfido2
+    pkgs.zig
+    pkgs.libclang
+    pkgs.gcc
+    pkgs.go
   ];
   services.pcscd.enable = true;
   services.udev = {

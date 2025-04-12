@@ -21,7 +21,10 @@ lib.mkIf config.squirmy.ssh.enable {
   ];
 
   # Set SSH_AUTH_SOCK to the same value the ssh-agent is configured with
-  home.sessionVariables = {
+  home.sessionVariables = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     SSH_AUTH_SOCK = config.squirmy.ssh.authSock;
   };
+
+  services.ssh-agent.enable = !pkgs.stdenv.hostPlatform.isDarwin;
+
 }

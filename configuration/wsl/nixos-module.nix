@@ -10,19 +10,14 @@ lib.mkIf config.squirmy.wsl.enable {
   wsl.wslConf.interop.appendWindowsPath = false;
 
   environment.systemPackages = [
-    pkgs.libfido2
-    pkgs.zig
-    pkgs.libclang
+    pkgs.gnumake
     pkgs.gcc
-    pkgs.go
   ];
-  services.pcscd.enable = true;
-  services.udev = {
+
+  # Setup docker in rootless mode
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
     enable = true;
-    packages = [pkgs.yubikey-personalization];
-    extraRules = ''
-      SUBSYSTEM=="usb", MODE="0666"
-      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", TAG+="uaccess", MODE="0666"
-    '';
+    setSocketVariable = true;
   };
 }

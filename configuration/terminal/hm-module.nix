@@ -20,6 +20,7 @@ in
       pkgs.tree-sitter
       wezterm
       pkgs.yq-go
+      pkgs.go
     ];
 
     programs.zsh.initExtra = lib.mkIf config.nix-machine.shells.zsh.enable ''

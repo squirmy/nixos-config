@@ -54,7 +54,7 @@ return {
     require('neodev').setup({})
     require('mason').setup()
     require('mason-lspconfig').setup({
-      ensure_installed = { 'lua_ls', 'gopls' },
+      ensure_installed = { 'lua_ls', 'gopls', 'ts_ls', 'eslint' },
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}

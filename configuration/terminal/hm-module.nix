@@ -21,6 +21,23 @@ in
       wezterm
       pkgs.yq-go
       pkgs.go
+
+      # nil
+      # NIx Language server, an incremental analysis assistent for writing in Nix.
+      # https://github.com/oxalica/nil
+      pkgs.nil
+
+      # Alejandra
+      # The Uncompromising Nix Code Formatter
+      # https://github.com/kamadorueda/alejandra
+      pkgs.alejandra
+
+      # shellcheck
+      # ShellCheck, a static analysis tool for shell scripts
+      # https://github.com/koalaman/shellcheck
+      pkgs.shellcheck
+
+      pkgs.dprint
     ];
 
     programs.zsh.initExtra = lib.mkIf config.nix-machine.shells.zsh.enable ''

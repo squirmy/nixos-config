@@ -17,25 +17,31 @@ function read_config() {
 }
 
 function set_hostname() {
-  current_hostname=$(hostname -s)
-  if [ "$current_hostname" != "$NIXOS_CONFIG_HOSTNAME" ]; then
-    read -p "Change hostname from: '$current_hostname' to '$NIXOS_CONFIG_HOSTNAME' ? " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-      echo "Setting hostname to $NIXOS_CONFIG_HOSTNAME"
-      sudo scutil --set ComputerName "$NIXOS_CONFIG_HOSTNAME"
-      sudo scutil --set LocalHostName "$NIXOS_CONFIG_HOSTNAME"
-    else
-      exit 1
+  if [ ! -f /etc/NIXOS ]; then
+    current_hostname=$(hostname -s)
+    if [ "$current_hostname" != "$NIXOS_CONFIG_HOSTNAME" ]; then
+      read -p "Change hostname from: '$current_hostname' to '$NIXOS_CONFIG_HOSTNAME' ? " -n 1 -r
+      echo
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Setting hostname to $NIXOS_CONFIG_HOSTNAME"
+        sudo scutil --set ComputerName "$NIXOS_CONFIG_HOSTNAME"
+        sudo scutil --set LocalHostName "$NIXOS_CONFIG_HOSTNAME"
+      else
+        exit 1
+      fi
     fi
   fi
 }
 
 function switch() {
-  # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
-  # download `darwin-rebuild` and execute it.
-  nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch \
-    --flake .#"${NIXOS_CONFIG_HOSTNAME}"
+  if [ ! -f /etc/NIXOS ]; then
+    # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
+    # download `darwin-rebuild` and execute it.
+    nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch \
+      --flake .#"${NIXOS_CONFIG_HOSTNAME}"
+  else
+    sudo nixos-rebuild switch --flake .#"${NIXOS_CONFIG_HOSTNAME}"
+  fi
 }
 
 # My hostname seemed to reset itself when setting up a fresh mac. Possibly
@@ -46,7 +52,7 @@ set_hostname
 
 if [ "${1:-}" == "--update" ]; then
   # Update flake inputs before applying the config
-  nix flake update
+  nix --extra-experimental-features "nix-command flakes" flake update
 
   # Update non-nix managed dependencies
   dprint config update
@@ -60,5 +66,5 @@ if [ "${1:-}" == "--install-hook" ] || [ "${1:-}" == "--update" ]; then
   zsh -c 'nvim --headless "+Lazy! sync" +qa'
 
   # Trigger the devshell to install the pre-commit hooks.
-  nix develop --command bash -c "true"
+  nix --extra-experimental-features "nix-command flakes" develop --command bash -c "true"
 fi

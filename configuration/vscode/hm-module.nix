@@ -5,25 +5,6 @@
   ...
 }:
 lib.mkIf config.squirmy.vscode.enable {
-  home.packages = with pkgs; [
-    # nil
-    # NIx Language server, an incremental analysis assistent for writing in Nix.
-    # https://github.com/oxalica/nil
-    nil
-
-    # Alejandra
-    # The Uncompromising Nix Code Formatter
-    # https://github.com/kamadorueda/alejandra
-    alejandra
-
-    # shellcheck
-    # ShellCheck, a static analysis tool for shell scripts
-    # https://github.com/koalaman/shellcheck
-    shellcheck
-
-    dprint
-  ];
-
   # Remove color from pre-commit. It's hard to read.
   home.sessionVariables = {PRE_COMMIT_COLOR = "never";};
 

@@ -3,7 +3,8 @@
   lib,
   config,
   ...
- }: lib.mkIf config.squirmy.yubikey.enable {
+}:
+lib.mkIf config.squirmy.yubikey.enable {
   environment.systemPackages = [
     pkgs.libfido2
   ];
@@ -18,4 +19,4 @@
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", TAG+="uaccess", MODE="0666"
     '';
   };
-};
+}

@@ -20,4 +20,16 @@ lib.mkIf config.squirmy.wsl.enable {
     enable = true;
     setSocketVariable = true;
   };
+
+  time.timeZone = "Australia/Melbourne";
+
+  nixpkgs.config.allowUnfree = true;
+
+  nix.settings.trusted-substituters = [
+    "https://nixpkgs-terraform.cachix.org"
+  ];
+
+  nix.settings.trusted-public-keys = [
+    "nixpkgs-terraform.cachix.org-1:8Sit092rIdAVENA3ZVeH9hzSiqI/jng6JiCrQ1Dmusw="
+  ];
 }

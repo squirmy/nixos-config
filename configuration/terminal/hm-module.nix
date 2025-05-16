@@ -13,7 +13,7 @@ in
     home.packages = [
       pkgs.gitmux
       pkgs.gum
-      pkgs.nodejs_23
+      pkgs.nodejs_24
       pkgs.pure-prompt
       pkgs.sesh
       pkgs.tmux

@@ -12,6 +12,7 @@ lib.mkIf config.squirmy.wsl.enable {
   environment.systemPackages = [
     pkgs.gnumake
     pkgs.gcc
+    pkgs.asdbctl
   ];
 
   # Setup docker in rootless mode

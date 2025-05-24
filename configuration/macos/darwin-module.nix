@@ -81,7 +81,7 @@ lib.mkIf config.squirmy.macos.enable {
     "com.apple.commerce".AutoUpdate = true;
   };
 
-  system.activationScripts.extraUserActivation.text = let
+  system.activationScripts.extraActivation.text = let
     hotkeys = [
       32 # Mission Control
       34
@@ -118,7 +118,7 @@ lib.mkIf config.squirmy.macos.enable {
   '';
 
   # credit: https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
-  system.activationScripts.postUserActivation.text = ''
+  system.activationScripts.postActivation.text = ''
     # Following line should allow us to avoid a logout/login cycle
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';

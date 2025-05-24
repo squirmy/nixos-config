@@ -18,4 +18,7 @@ lib.mkIf config.squirmy.experiments.enable {
 
   # For now, until I sort out the nix build group
   ids.gids.nixbld = 350;
+
+  # whilst nix-darwin does there thing
+  system.primaryUser = config.nix-machine.username;
 }

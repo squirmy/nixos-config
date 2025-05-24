@@ -40,7 +40,7 @@ in
       pkgs.dprint
     ];
 
-    programs.zsh.initExtra = lib.mkIf config.nix-machine.shells.zsh.enable ''
+    programs.zsh.initContent = lib.mkIf config.nix-machine.shells.zsh.enable ''
       # emacs key bindings
       bindkey -e
 

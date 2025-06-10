@@ -19,6 +19,10 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    vscodes.url = "github:jcszymansk/vscodes";
+    vscodes.inputs.nixpkgs.follows = "nixpkgs";
+    vscodes.inputs.homeManager.follows = "home-manager";
   };
 
   outputs = inputs:

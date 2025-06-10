@@ -253,7 +253,8 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix",
+        "vscodes": "vscodes"
       }
     },
     "treefmt-nix": {
@@ -273,6 +274,29 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "vscodes": {
+      "inputs": {
+        "homeManager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743963955,
+        "narHash": "sha256-igdMGKrZnUO4ko+lxVmHCjNnM3X10qcHrGpnANJUO8o=",
+        "owner": "jcszymansk",
+        "repo": "vscodes",
+        "rev": "733857925716adc8e78ecf5d0de3e40dd6e609cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jcszymansk",
+        "repo": "vscodes",
         "type": "github"
       }
     }

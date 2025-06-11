@@ -67,7 +67,6 @@
       "workbench.tips.enabled" = false;
 
       # minimal
-
       "zenMode.centerLayout" = false;
       "zenMode.fullScreen" = false;
       "zenMode.hideLineNumbers" = false;
@@ -86,6 +85,10 @@
       "workbench.layoutControl.enabled" = false;
 
       "editor.stickyScroll.enabled" = false;
+
+      # zig config
+      "zig.path" = "zig";
+      "zig.zls.path" = "zls";
     };
   };
 in {

@@ -23,6 +23,9 @@
     vscodes.url = "github:jcszymansk/vscodes";
     vscodes.inputs.nixpkgs.follows = "nixpkgs";
     vscodes.inputs.homeManager.follows = "home-manager";
+
+    fenix.url = "github:nix-community/fenix";
+    fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:

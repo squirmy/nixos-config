@@ -37,10 +37,26 @@ function switch() {
   if [ ! -f /etc/NIXOS ]; then
     # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
     # download `darwin-rebuild` and execute it.
-    sudo nix run github:LnL7/nix-darwin --extra-experimental-features "nix-command flakes" -- switch \
-      --flake .#"${NIXOS_CONFIG_HOSTNAME}"
+    sudo nix run github:LnL7/nix-darwin --option access-tokens "$gh_auth_token" --extra-experimental-features "nix-command flakes" -- switch \
+      --flake .#"${NIXOS_CONFIG_HOSTNAME}" --option access-tokens "$gh_auth_token"
   else
     sudo nixos-rebuild switch --flake .#"${NIXOS_CONFIG_HOSTNAME}"
+  fi
+}
+
+function gh_auth() {
+  gh_auth_token=$(gh auth token 2>/dev/null || true)
+
+  if [[ -z $gh_auth_token ]]; then
+    echo "Warning: GitHub CLI authentication failed. Reduced rate limits will apply." >&2
+  fi
+}
+
+run_nix() {
+  if [[ -n ${gh_auth_token:-} ]]; then
+    nix --extra-experimental-features "nix-command flakes" --option access-tokens "github.com=$gh_auth_token" "$@"
+  else
+    nix --extra-experimental-features "nix-command flakes" "$@"
   fi
 }
 
@@ -49,10 +65,11 @@ function switch() {
 # be set again.
 read_config
 set_hostname
+gh_auth
 
 if [ "${1:-}" == "--update" ]; then
   # Update flake inputs before applying the config
-  nix --extra-experimental-features "nix-command flakes" flake update
+  run_nix flake update
 
   # Update non-nix managed dependencies
   dprint config update
@@ -66,5 +83,5 @@ if [ "${1:-}" == "--install-hook" ] || [ "${1:-}" == "--update" ]; then
   zsh -c 'nvim --headless "+Lazy! sync" +qa'
 
   # Trigger the devshell to install the pre-commit hooks.
-  nix --extra-experimental-features "nix-command flakes" develop --command bash -c "true"
+  run_nix develop --command bash -c "true"
 fi

@@ -6,6 +6,7 @@
 }:
 lib.mkIf config.squirmy.ssh.enable {
   programs.ssh.enable = true;
+  programs.ssh.enableDefaultConfig = false;
   programs.ssh.package = pkgs.openssh;
   programs.ssh.matchBlocks = {
     "github.com" = {
@@ -26,5 +27,4 @@ lib.mkIf config.squirmy.ssh.enable {
   };
 
   services.ssh-agent.enable = !pkgs.stdenv.hostPlatform.isDarwin;
-
 }

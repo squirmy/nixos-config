@@ -15,6 +15,7 @@ in
       pkgs.gum
       pkgs.nodejs_24
       pkgs.pure-prompt
+      pkgs.ripgrep
       pkgs.sesh
       pkgs.tmux
       pkgs.tree-sitter

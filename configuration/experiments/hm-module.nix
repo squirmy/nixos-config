@@ -16,7 +16,7 @@ in
       pkgs.colima
       pkgs.docker
       pkgs.go
-      beam_pkgs.elixir
+      beam_pkgs.elixir_1_19
       beam_pkgs.erlang
       (rust_pkgs.complete.withComponents
         [

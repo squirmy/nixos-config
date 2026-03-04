@@ -14,6 +14,7 @@ lib.mkIf config.squirmy.experiments.enable {
   # or the nix installer changes it.
   environment.etc."nix/nix.conf".knownSha256Hashes = [
     "eae636b09923394ed1e4dc30179857beb72060bcb26c0f10c2c6a7787baf7dc1"
+    "37422541652120efdfd47d6772cfdfd0a0fb1c3a04a40697ee3851d3ddcf9b3d"
   ];
 
   # For now, until I sort out the nix build group

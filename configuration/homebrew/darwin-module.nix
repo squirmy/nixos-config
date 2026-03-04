@@ -15,6 +15,6 @@ lib.mkIf config.squirmy.homebrew.enable {
 
   # Required so that applications installed with homebrew are in your path.
   programs.zsh.shellInit = lib.mkIf config.nix-machine.shells.zsh.enable ''
-    eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
+    eval "$(${config.homebrew.prefix}/bin/brew shellenv)"
   '';
 }

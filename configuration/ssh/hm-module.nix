@@ -8,9 +8,9 @@ lib.mkIf config.squirmy.ssh.enable {
   programs.ssh.enable = true;
   programs.ssh.enableDefaultConfig = false;
   programs.ssh.package = pkgs.openssh;
-  programs.ssh.matchBlocks = {
+  programs.ssh.settings = {
     "github.com" = {
-      identityFile = [
+      IdentityFile = [
         "${config.nix-machine.homeDirectory}/.ssh/squirmy:SHA256:z0_8MioTATFoqKQPUSlyuhjKAVTAs5sbyI42ERuApVc"
       ];
     };

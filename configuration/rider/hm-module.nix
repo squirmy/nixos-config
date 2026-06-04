@@ -9,6 +9,7 @@ lib.mkIf config.squirmy.rider.enable {
   # Fast & powerful cross-platform .NET IDE
   # https://www.jetbrains.com/rider/
   home.packages = with pkgs; [
-    jetbrains.rider
+    #jetbrains.rider
+    jetbrains.datagrip
   ];
 }

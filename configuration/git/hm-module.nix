@@ -48,5 +48,9 @@ in
     # GitHub CLI
     # https://github.com/cli/cli
     programs.gh.enable = true;
-    programs.gh.settings.git_protocol = "ssh";
+
+    programs.gh.settings = {
+      git_protocol = "ssh";
+      pager = "cat";
+    };
   }

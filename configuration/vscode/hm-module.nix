@@ -89,6 +89,8 @@
       # zig config
       "zig.path" = "zig";
       "zig.zls.path" = "zls";
+
+      "github.copilot.chat.anthropic.thinking.effort" = "medium";
     };
   };
 in {

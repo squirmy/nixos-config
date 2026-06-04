@@ -73,6 +73,7 @@
           network.enable = true;
           experiments.enable = true;
           ninetofive.enable = true;
+          rider.enable = true;
         };
       };
 

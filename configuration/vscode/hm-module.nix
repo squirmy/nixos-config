@@ -21,7 +21,7 @@
       "workbench.tree.indent" = 10;
 
       # Default Theme
-      "workbench.colorTheme" = "Default Dark Modern";
+      "workbench.colorTheme" = "Dark 2026";
 
       # Font
       "editor.fontSize" = 15;
@@ -91,6 +91,7 @@
       "zig.zls.path" = "zls";
 
       "github.copilot.chat.anthropic.thinking.effort" = "medium";
+      "chat.viewSessions.orientation" = "stacked";
     };
   };
 in {

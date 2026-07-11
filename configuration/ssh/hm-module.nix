@@ -8,13 +8,8 @@ lib.mkIf config.squirmy.ssh.enable {
   programs.ssh.enable = true;
   programs.ssh.enableDefaultConfig = false;
   programs.ssh.package = pkgs.openssh;
-  programs.ssh.settings = {
-    "github.com" = {
-      IdentityFile = [
-        "${config.nix-machine.homeDirectory}/.ssh/squirmy:SHA256:z0_8MioTATFoqKQPUSlyuhjKAVTAs5sbyI42ERuApVc"
-      ];
-    };
-  };
+  # Authentication to github.com uses the FIDO2 resident SSH key stored on the
+  # YubiKey, loaded into ssh-agent with `ssh-add -K` (no key file on disk).
 
   home.packages = [
     pkgs.openssh

@@ -71,6 +71,42 @@ There are some things you need to be aware of before you run this on your system
 4. Update the DNS resolvers in [configuration/nix-darwin/network.nix](./configuration/nix-darwin/network.nix) if you prefer another resolver.
 5. Read through the rest of the files carefully and decide if you want the configuration. Remove anything you do not want to be included. You can always add things back in.
 
+## Generating a YubiKey SSH Key for GitHub
+
+SSH auth to GitHub uses a FIDO2 **resident** key stored on the YubiKey. The
+private key stub never lives on disk — it is loaded into `ssh-agent` straight
+off the key with `ssh-add -K`.
+
+⚠️ **Generate it touch-only — do _not_ use `-O verify-required`.** A
+verify-required key demands a PIN on every signature, and the background
+launchd `ssh-agent` has no way to prompt for a PIN, so it fails with
+`agent refused operation`. Touch-only keys sign through the agent with just a
+touch.
+
+```bash
+# 1. Generate a touch-only resident key (one PIN entry + a touch to create it)
+ssh-keygen -t ed25519-sk -O resident -C "adam.tomato@gmail.com github" -f ~/.ssh/id_ed25519_sk
+
+# 2. Register the public key with GitHub
+gh ssh-key add ~/.ssh/id_ed25519_sk.pub --title "yubikey-$(hostname -s)"
+
+# 3. Delete the stub files — the credential stays on the YubiKey
+rm ~/.ssh/id_ed25519_sk ~/.ssh/id_ed25519_sk.pub
+
+# 4. Load the resident key from the YubiKey into the agent
+ssh-add -D
+ssh-add -K
+
+# 5. Test — should flash for a touch, then greet you
+ssh -T git@github.com
+```
+
+After an agent restart (reboot/logout) re-run `ssh-add -K` to reload the key.
+
+If the FIDO2 PIN gets blocked, the only recovery is `ykman fido reset`, which
+**wipes every FIDO2 credential** (all passkeys and this SSH key) — you would
+then regenerate from step 1.
+
 ## Known Issues
 
 ### 1. Could not write domain: com.apple.Safari.

@@ -41,6 +41,13 @@ in
       pkgs.dprint
     ];
 
+    # /nix/store is flagged by compinit's insecure-directory check because it
+    # isn't owned/writable like a typical system dir, but that's a false
+    # positive under Nix — pass -u to trust it instead of prompting every time.
+    programs.zsh.completionInit = lib.mkIf config.nix-machine.shells.zsh.enable ''
+      autoload -U compinit && compinit -u
+    '';
+
     programs.zsh.initContent = lib.mkIf config.nix-machine.shells.zsh.enable ''
       # emacs key bindings
       bindkey -e

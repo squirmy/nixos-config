@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  beam_pkgs = pkgs.beam.packagesWith pkgs.beam.interpreters.erlang;
+  beam_pkgs = pkgs.beamPackages;
   rust_pkgs = inputs.fenix.packages.${pkgs.stdenv.hostPlatform.system};
 in
   lib.mkIf config.squirmy.experiments.enable {
@@ -31,7 +31,7 @@ in
       pkgs.colima
       pkgs.docker
       pkgs.go
-      beam_pkgs.elixir_1_19
+      beam_pkgs.elixir_1_20
       beam_pkgs.erlang
       (rust_pkgs.complete.withComponents
         [

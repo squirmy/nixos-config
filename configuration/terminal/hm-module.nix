@@ -6,6 +6,10 @@
 }: let
   configDir = "${config.nix-machine.homeDirectory}/.config/nixos-config/configuration/terminal";
   wezterm = pkgs.wezterm;
+  tmux = pkgs.tmux.overrideAttrs (oldAttrs: {
+    buildInputs = (oldAttrs.buildInputs or []) ++ [pkgs.jemalloc];
+    configureFlags = (oldAttrs.configureFlags or []) ++ ["--enable-jemalloc"];
+  });
 in
   lib.mkIf config.squirmy.terminal.enable {
     # Don't use home manager's "programs" for some packages so that we can
@@ -17,7 +21,7 @@ in
       pkgs.pure-prompt
       pkgs.ripgrep
       pkgs.sesh
-      pkgs.tmux
+      tmux
       pkgs.tree-sitter
       wezterm
       pkgs.yq-go

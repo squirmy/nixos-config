@@ -8,9 +8,7 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- Start wezterm up directly in wsl
-if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-  config.default_domain = 'WSL:NixOS'
-end
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then config.default_domain = 'WSL:NixOS' end
 
 -- Required until this issue is fixed: https://github.com/wez/wezterm/issues/5990
 config.front_end = 'WebGpu'
@@ -35,8 +33,6 @@ config.inactive_pane_hsb = {
 -- Keys
 --config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
-  k.cmd_key('q', k.multiple_actions(':qa!')),
-
   k.cmd_to_tmux_prefix('1', '1'), -- switch to window by number
   k.cmd_to_tmux_prefix('2', '2'),
   k.cmd_to_tmux_prefix('3', '3'),

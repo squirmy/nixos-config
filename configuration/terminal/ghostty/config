@@ -1,6 +1,9 @@
 # Ghostty Terminal Configuration
 # Mirroring wezterm setup
 
+# Disable automatic updates
+auto-update = off
+
 # Theme
 theme = Snazzy
 
@@ -30,44 +33,39 @@ background-opacity = 1.0
 unfocused-split-opacity = 0.7
 
 # Keybindings - CMD mappings to tmux
-# Switch to window by number
-keybind = cmd+1=text:\x021
-keybind = cmd+2=text:\x022
-keybind = cmd+3=text:\x023
-keybind = cmd+4=text:\x024
-keybind = cmd+5=text:\x025
-keybind = cmd+6=text:\x026
-keybind = cmd+7=text:\x027
-keybind = cmd+8=text:\x028
-keybind = cmd+9=text:\x029
-
-# Tmux operations
-keybind = cmd+grave=text:\x02n
-keybind = cmd+shift+c=text:\x02C
-keybind = cmd+d=text:\x02D
-keybind = cmd+l=text:\x02L
-keybind = cmd+k=text:\x02K
-keybind = cmd+n=text:\x02%
-keybind = cmd+shift+n=text:\x02\x22
-keybind = cmd+t=text:\x02c
-keybind = cmd+w=text:\x02x
-keybind = cmd+z=text:\x02z
-keybind = cmd+shift+t=text:\x02B
-keybind = cmd+ctrl+t=text:\x02J
+# Switch to window by number (tmux)
+keybind = super+digit1=text:\x02\x31
+keybind = super+digit2=text:\x02\x32
+keybind = super+digit3=text:\x02\x33
+keybind = super+digit4=text:\x02\x34
+keybind = super+digit5=text:\x02\x35
+keybind = super+digit6=text:\x02\x36
+keybind = super+digit7=text:\x02\x37
+keybind = super+digit8=text:\x02\x38
+keybind = super+digit9=text:\x02\x39
+keybind = super+backquote=text:\x02n
+keybind = super+shift+c=text:\x02C
+keybind = super+d=text:\x02D
+keybind = super+l=text:\x02L
+keybind = super+k=text:\x02K
+keybind = super+n=text:\x02%
+keybind = super+shift+n=text:\x02\x22
+keybind = super+t=text:\x02c
+keybind = super+w=text:\x02x
+keybind = super+z=text:\x02z
+keybind = super+shift+t=text:\x02B
+keybind = super+ctrl+t=text:\x02J
 
 # Save and reload keybindings (vim)
-keybind = cmd+s=text:\x1b:w\r
-keybind = cmd+shift+r=text:\x1b:source %\r
-
-# Quit
-keybind = cmd+q=text:\x1b:qa!\r
+keybind = super+s=text:\x1b:w\r
+keybind = super+shift+r=text:\x1b:source %\r
 
 # Tab navigation
 keybind = ctrl+tab=text:\x02n
-keybind = ctrl+shift+tab=text:\x02p
-keybind = cmd+shift+grave=text:\x02p
+keybind = ctrl+shift+tab=text:\x02n
+keybind = super+shift+backquote=text:\x02p
 
 # Copy/Paste
 copy-on-select = clipboard
-keybind = cmd+c=copy_to_clipboard
-keybind = cmd+v=paste_from_clipboard
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard

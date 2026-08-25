@@ -26,6 +26,7 @@ in
       pkgs.discord
       pkgs.claude-code
       pkgs.obsidian
+      pkgs.pi-coding-agent
 
       # Convenience
       pkgs.colima

@@ -6,6 +6,7 @@
 }: let
   configDir = "${config.nix-machine.homeDirectory}/.config/nixos-config/configuration/terminal";
   wezterm = pkgs.wezterm;
+  ghostty = pkgs.ghostty-bin;
   tmux = pkgs.tmux.overrideAttrs (oldAttrs: {
     buildInputs = (oldAttrs.buildInputs or []) ++ [pkgs.jemalloc];
     configureFlags = (oldAttrs.configureFlags or []) ++ ["--enable-jemalloc"];
@@ -24,6 +25,7 @@ in
       tmux
       pkgs.tree-sitter
       wezterm
+      ghostty
       pkgs.yq-go
       pkgs.go
 
@@ -111,6 +113,7 @@ in
     # Configuration files for development tools
     home.file.".config/tmux".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/tmux";
     home.file.".config/wezterm".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/wezterm";
+    home.file.".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/ghostty";
     home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/nvim";
     home.file.".config/hammerspoon".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/hammerspoon";
 

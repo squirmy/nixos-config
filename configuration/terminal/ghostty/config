@@ -1,0 +1,73 @@
+# Ghostty Terminal Configuration
+# Mirroring wezterm setup
+
+# Theme
+theme = Snazzy
+
+# Font Configuration
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+adjust-cell-height = 10%
+
+# Window Configuration
+window-decoration = false
+window-padding-x = 8
+window-padding-y = 8
+confirm-close-surface = true
+
+# Scrollback
+scrollback-limit = 3000
+
+# Shell Integration
+shell-integration = detect
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Colors - Inactive pane dimming
+background-opacity = 1.0
+unfocused-split-opacity = 0.7
+
+# Keybindings - CMD mappings to tmux
+# Switch to window by number
+keybind = cmd+1=text:\x021
+keybind = cmd+2=text:\x022
+keybind = cmd+3=text:\x023
+keybind = cmd+4=text:\x024
+keybind = cmd+5=text:\x025
+keybind = cmd+6=text:\x026
+keybind = cmd+7=text:\x027
+keybind = cmd+8=text:\x028
+keybind = cmd+9=text:\x029
+
+# Tmux operations
+keybind = cmd+grave=text:\x02n
+keybind = cmd+shift+c=text:\x02C
+keybind = cmd+d=text:\x02D
+keybind = cmd+l=text:\x02L
+keybind = cmd+k=text:\x02K
+keybind = cmd+n=text:\x02%
+keybind = cmd+shift+n=text:\x02\x22
+keybind = cmd+t=text:\x02c
+keybind = cmd+w=text:\x02x
+keybind = cmd+z=text:\x02z
+keybind = cmd+shift+t=text:\x02B
+keybind = cmd+ctrl+t=text:\x02J
+
+# Save and reload keybindings (vim)
+keybind = cmd+s=text:\x1b:w\r
+keybind = cmd+shift+r=text:\x1b:source %\r
+
+# Quit
+keybind = cmd+q=text:\x1b:qa!\r
+
+# Tab navigation
+keybind = ctrl+tab=text:\x02n
+keybind = ctrl+shift+tab=text:\x02p
+keybind = cmd+shift+grave=text:\x02p
+
+# Copy/Paste
+copy-on-select = clipboard
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard

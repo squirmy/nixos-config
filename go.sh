@@ -37,10 +37,10 @@ function switch() {
   if [ ! -f /etc/NIXOS ]; then
     # On a fresh NixOS installation `darwin-rebuild` is not installed. This command uses nix to
     # download `darwin-rebuild` and execute it.
-    sudo nix run github:LnL7/nix-darwin --option access-tokens "$gh_auth_token" --extra-experimental-features "nix-command flakes" -- switch \
+    sudo NIX_CONFIG="$NIX_CONFIG" nix run github:LnL7/nix-darwin --option access-tokens "$gh_auth_token" --extra-experimental-features "nix-command flakes" -- switch \
       --flake .#"${NIXOS_CONFIG_HOSTNAME}" --option access-tokens "$gh_auth_token"
   else
-    sudo nixos-rebuild switch --flake .#"${NIXOS_CONFIG_HOSTNAME}"
+    sudo NIX_CONFIG="$NIX_CONFIG" nixos-rebuild switch --flake .#"${NIXOS_CONFIG_HOSTNAME}"
   fi
 }
 

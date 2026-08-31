@@ -8,13 +8,17 @@ lib.mkIf config.squirmy.experiments.enable {
     "firefox"
   ];
 
-  # This is a (perhaps futile) attempt at allowing nix-darwin to
-  # overwrite the modified version of nix.conf that was installed
-  # in install.sh. It needs to be updated if I ever change it,
-  # or the nix installer changes it.
-  environment.etc."nix/nix.conf".knownSha256Hashes = [
-    "eae636b09923394ed1e4dc30179857beb72060bcb26c0f10c2c6a7787baf7dc1"
-    "37422541652120efdfd47d6772cfdfd0a0fb1c3a04a40697ee3851d3ddcf9b3d"
+  # These are configured when installing lix and land in nix/nix.custom.conf
+  nix.settings.trusted-substituters = [
+    "https://nix-community.cachix.org"
+  ];
+  nix.settings.trusted-public-keys = [
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  ];
+
+  # Allow nix-darwin to overwrite the nix.custom.conf created by the Lix installer
+  environment.etc."nix/nix.custom.conf".knownSha256Hashes = [
+    "b312344e53125fa33b510a7ebe765be7a8981f3aead73f3f168f2899c62a72f4"
   ];
 
   # For now, until I sort out the nix build group

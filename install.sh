@@ -48,8 +48,8 @@
       # NixOS multi-user installation
       curl -sSf -L https://install.lix.systems/lix |
         sh -s -- install --no-confirm \
-          --extra-conf 'extra-trusted-substituters = https://nix-community.cachix.org https://toyvo.cachix.org' \
-          --extra-conf 'extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= toyvo.cachix.org-1:s++CG1te6YaS9mjICre0Ybbya2o/S9fZIyDNGiD4UXs='
+          --extra-conf 'extra-trusted-substituters = https://nix-community.cachix.org' \
+          --extra-conf 'extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs='
 
       # Get nix into the path
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then

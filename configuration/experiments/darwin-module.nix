@@ -17,9 +17,13 @@ lib.mkIf config.squirmy.experiments.enable {
   ];
 
   # Allow nix-darwin to overwrite the nix.custom.conf created by the Lix installer
-  environment.etc."nix/nix.custom.conf".knownSha256Hashes = [
-    "b312344e53125fa33b510a7ebe765be7a8981f3aead73f3f168f2899c62a72f4"
-  ];
+  # The hash below is for a nix.custom.conf with only nix-community.cachix.org
+  system.activationScripts.checks.text = lib.mkAfter ''
+    nixCustomConfKnownSha256Hashes+=(
+      # Custom Lix installer with only nix-community.cachix.org
+      b312344e53125fa33b510a7ebe765be7a8981f3aead73f3f168f2899c62a72f4
+    )
+  '';
 
   # For now, until I sort out the nix build group
   ids.gids.nixbld = 350;

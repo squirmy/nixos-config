@@ -27,6 +27,26 @@ in
       diff.colorMoved = "default";
     };
 
+    # Route github.com over the SSH alias for the right account
+    programs.git.includes = [
+      {
+        condition = "gitdir:~/code/";
+        contents.url."git@github.com-squirmy:".insteadOf = "git@github.com:";
+      }
+      {
+        condition = "gitdir:~/.config/nixos-config/";
+        contents.url."git@github.com-squirmy:".insteadOf = "git@github.com:";
+      }
+      {
+        condition = "gitdir:~/tw/";
+        contents.url."git@github.com-awoods-tw:".insteadOf = "git@github.com:";
+      }
+      {
+        condition = "gitdir:~/js/";
+        contents.url."git@github.com-awoods-js:".insteadOf = "git@github.com:";
+      }
+    ];
+
     # Delta
     # https://github.com/dandavison/delta
     # Why: Enhanced `git diff` with syntax highlighting.

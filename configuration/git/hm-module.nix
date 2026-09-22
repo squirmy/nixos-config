@@ -9,6 +9,45 @@
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
+
+  githubLib = import ../github/lib.nix;
+
+  scopedIdentities = lib.filterAttrs (_: identity: !githubLib.isDefaultIdentity identity) config.squirmy.github.identities;
+
+  # Refuses to commit while user.email is still the machine's default,
+  # inside a directory scoped to another GitHub identity — keeps
+  # wrong-email commits out of history in the first place. Chains to any
+  # repo-local pre-commit hook so per-project hook tooling still runs.
+  identityGuardHooksDir = ".config/git/identity-guard-hooks";
+  identityGuardHook = ''
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    default_email="${config.squirmy.git.userEmail}"
+    current_email="$(git config user.email || true)"
+
+    if [ "$current_email" = "$default_email" ]; then
+      echo "error: this repo is under a scoped GitHub identity, but user.email is still the default ($default_email)." >&2
+      echo "Set it for this repo: git config user.email <address>" >&2
+      exit 1
+    fi
+
+    git_dir="$(git rev-parse --git-dir)"
+    local_hook="$git_dir/hooks/pre-commit"
+    if [ -x "$local_hook" ]; then
+      exec "$local_hook" "$@"
+    fi
+  '';
+
+  includesFor = name: identity:
+    map (dir: {
+      condition = "gitdir:${config.home.homeDirectory}/${dir}/";
+      contents = {
+        url."git@github.com-${name}:".insteadOf = "git@github.com:";
+        core.hooksPath = "${config.home.homeDirectory}/${identityGuardHooksDir}";
+      };
+    })
+    identity.directories;
 in
   lib.mkIf config.squirmy.git.enable {
     # Git
@@ -28,24 +67,14 @@ in
     };
 
     # Route github.com over the SSH alias for the right account
-    programs.git.includes = [
-      {
-        condition = "gitdir:~/code/";
-        contents.url."git@github.com-squirmy:".insteadOf = "git@github.com:";
-      }
-      {
-        condition = "gitdir:~/.config/nixos-config/";
-        contents.url."git@github.com-squirmy:".insteadOf = "git@github.com:";
-      }
-      {
-        condition = "gitdir:~/tw/";
-        contents.url."git@github.com-awoods-tw:".insteadOf = "git@github.com:";
-      }
-      {
-        condition = "gitdir:~/js/";
-        contents.url."git@github.com-awoods-js:".insteadOf = "git@github.com:";
-      }
-    ];
+    programs.git.includes = lib.flatten (lib.mapAttrsToList includesFor scopedIdentities);
+
+    home.file = lib.mkIf (scopedIdentities != {}) {
+      "${identityGuardHooksDir}/pre-commit" = {
+        text = identityGuardHook;
+        executable = true;
+      };
+    };
 
     # Delta
     # https://github.com/dandavison/delta

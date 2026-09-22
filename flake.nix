@@ -59,6 +59,23 @@
             userName = "Adam Woods";
             userEmail = "squirmy.dev@gmail.com";
           };
+          github.identities = {
+            squirmy.pubkey = ''
+              sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIHCLOWFkP2PPSxQ3KjCHe2BJTEVfPJ+aQJ6YRMbQeGafAAAABHNzaDo= ssh:
+            '';
+            awoods-tw = {
+              pubkey = ''
+                sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOs6RqFezEKvbzyynXLfMTXnXN3rciD6UHR66UfQ0cIWAAAABnNzaDp0dw== ssh:tw
+              '';
+              directories = ["tw"];
+            };
+            awoods-js = {
+              pubkey = ''
+                sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIAX72O3FL+7vlInKzfRr4tup8sH0Rgo02b73npbmWCQOAAAABnNzaDpqcw== ssh:js
+              '';
+              directories = ["js"];
+            };
+          };
           yubikey.enable = true;
           ssh.enable = true;
           terminal.enable = true;
@@ -93,6 +110,9 @@
             userName = "Adam Woods";
             userEmail = "squirmy.dev@gmail.com";
           };
+          github.identities.squirmy.pubkey = ''
+            sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIHCLOWFkP2PPSxQ3KjCHe2BJTEVfPJ+aQJ6YRMbQeGafAAAABHNzaDo= ssh:
+          '';
           yubikey.enable = true;
           ssh.enable = true;
           terminal.enable = true;
@@ -123,6 +143,9 @@
             userName = "Adam Woods";
             userEmail = "squirmy.dev@gmail.com";
           };
+          github.identities.squirmy.pubkey = ''
+            sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIHCLOWFkP2PPSxQ3KjCHe2BJTEVfPJ+aQJ6YRMbQeGafAAAABHNzaDo= ssh:
+          '';
           ssh.enable = true;
           terminal.enable = true;
           yubikey.enable = true;

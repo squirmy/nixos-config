@@ -27,13 +27,7 @@
       settings.hooks = {
         treefmt.enable = true;
         shellcheck.enable = true;
-        gitleaks = {
-          enable = true;
-          name = "gitleaks";
-          entry = "${pkgs.gitleaks}/bin/gitleaks protect --verbose --redact --staged";
-          language = "system";
-          pass_filenames = false;
-        };
+        gitleaks.enable = true;
         lua-ls.enable = true;
       };
     };

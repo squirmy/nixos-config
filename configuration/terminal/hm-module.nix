@@ -16,6 +16,7 @@ in
     # Don't use home manager's "programs" for some packages so that we can
     # specify the configuration explicitly.
     home.packages = [
+      pkgs.fd
       pkgs.gitmux
       pkgs.gum
       pkgs.nodejs_24
